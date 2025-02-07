@@ -1,0 +1,22 @@
+.teamIcon {
+    position: relative;
+    width: 80px;
+    border-radius: 15px;
+    border: 3px solid #70D1D1;
+    overflow: hidden;
+    margin-bottom: 8px;
+
+    figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding-top: 2px;
+        padding-right: 8px;
+        padding-left: 4px;
+        border-top-right-radius: 5px;
+        background: #70D1D1;
+        color: #fff;
+        font-weight: bold;
+    }
+
+}

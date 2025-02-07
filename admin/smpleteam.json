@@ -1,0 +1,543 @@
+[
+    {
+      "id": 1,
+      "num": "T01",
+      "name": "T01",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 1,
+          "grade": 3,
+          "name": "佐藤太郎",
+          "token": null
+        },
+        {
+          "id": 2,
+          "grade": 3,
+          "name": "鈴木花子",
+          "token": null
+        },
+        {
+          "id": 3,
+          "grade": 3,
+          "name": "高橋健一",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 1,
+        "team_id": 1,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 1,
+          "team_id": 1,
+          "name": "aaa",
+          "score": 73,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "num": "T02",
+      "name": "T02",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 4,
+          "grade": 3,
+          "name": "山田一郎",
+          "token": null
+        },
+        {
+          "id": 5,
+          "grade": 3,
+          "name": "伊藤美咲",
+          "token": null
+        },
+        {
+          "id": 6,
+          "grade": 3,
+          "name": "中村太一",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 2,
+        "team_id": 2,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 2,
+          "team_id": 2,
+          "name": "aaa",
+          "score": 58,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "num": "T03",
+      "name": "T03",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 7,
+          "grade": 3,
+          "name": "藤田陽子",
+          "token": null
+        },
+        {
+          "id": 8,
+          "grade": 3,
+          "name": "松本翔太",
+          "token": null
+        },
+        {
+          "id": 9,
+          "grade": 3,
+          "name": "小林美穂",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 3,
+        "team_id": 3,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 3,
+          "team_id": 3,
+          "name": "aaa",
+          "score": 89,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "num": "T04",
+      "name": "T04",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 10,
+          "grade": 3,
+          "name": "加藤誠",
+          "token": null
+        },
+        {
+          "id": 11,
+          "grade": 3,
+          "name": "大塚香織",
+          "token": null
+        },
+        {
+          "id": 12,
+          "grade": 3,
+          "name": "木村裕太",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 4,
+        "team_id": 4,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 4,
+          "team_id": 4,
+          "name": "aaa",
+          "score": 24,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "num": "T05",
+      "name": "T05",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 13,
+          "grade": 3,
+          "name": "斉藤直人",
+          "token": null
+        },
+        {
+          "id": 14,
+          "grade": 3,
+          "name": "田中里奈",
+          "token": null
+        },
+        {
+          "id": 15,
+          "grade": 3,
+          "name": "福田春樹",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 5,
+        "team_id": 5,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 5,
+          "team_id": 5,
+          "name": "aaa",
+          "score": 46,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "num": "T06",
+      "name": "T06",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 16,
+          "grade": 3,
+          "name": "渡辺雄大",
+          "token": null
+        },
+        {
+          "id": 17,
+          "grade": 3,
+          "name": "石川綾子",
+          "token": null
+        },
+        {
+          "id": 18,
+          "grade": 3,
+          "name": "村上翔平",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 6,
+        "team_id": 6,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 6,
+          "team_id": 6,
+          "name": "aaa",
+          "score": 91,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "num": "T01",
+      "name": "T01",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 1,
+          "grade": 3,
+          "name": "佐藤太郎",
+          "token": null
+        },
+        {
+          "id": 2,
+          "grade": 3,
+          "name": "鈴木花子",
+          "token": null
+        },
+        {
+          "id": 3,
+          "grade": 3,
+          "name": "高橋健一",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 1,
+        "team_id": 1,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 1,
+          "team_id": 1,
+          "name": "aaa",
+          "score": 73,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "num": "T02",
+      "name": "T02",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 4,
+          "grade": 3,
+          "name": "山田一郎",
+          "token": null
+        },
+        {
+          "id": 5,
+          "grade": 3,
+          "name": "伊藤美咲",
+          "token": null
+        },
+        {
+          "id": 6,
+          "grade": 3,
+          "name": "中村太一",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 2,
+        "team_id": 2,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 2,
+          "team_id": 2,
+          "name": "aaa",
+          "score": 58,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "num": "T03",
+      "name": "T03",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 7,
+          "grade": 3,
+          "name": "藤田陽子",
+          "token": null
+        },
+        {
+          "id": 8,
+          "grade": 3,
+          "name": "松本翔太",
+          "token": null
+        },
+        {
+          "id": 9,
+          "grade": 3,
+          "name": "小林美穂",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 3,
+        "team_id": 3,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 3,
+          "team_id": 3,
+          "name": "aaa",
+          "score": 89,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "num": "T04",
+      "name": "T04",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 10,
+          "grade": 3,
+          "name": "加藤誠",
+          "token": null
+        },
+        {
+          "id": 11,
+          "grade": 3,
+          "name": "大塚香織",
+          "token": null
+        },
+        {
+          "id": 12,
+          "grade": 3,
+          "name": "木村裕太",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 4,
+        "team_id": 4,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 4,
+          "team_id": 4,
+          "name": "aaa",
+          "score": 24,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "num": "T05",
+      "name": "T05",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 13,
+          "grade": 3,
+          "name": "斉藤直人",
+          "token": null
+        },
+        {
+          "id": 14,
+          "grade": 3,
+          "name": "田中里奈",
+          "token": null
+        },
+        {
+          "id": 15,
+          "grade": 3,
+          "name": "福田春樹",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 5,
+        "team_id": 5,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 5,
+          "team_id": 5,
+          "name": "aaa",
+          "score": 46,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "num": "T06",
+      "name": "T06",
+      "detail": "サンプルテキスト・サンプルテキスト・サンプルテキスト",
+      "isPresentation": 0,
+      "created_at": "2024-10-21 12:00:00",
+      "students": [
+        {
+          "id": 16,
+          "grade": 3,
+          "name": "渡辺雄大",
+          "token": null
+        },
+        {
+          "id": 17,
+          "grade": 3,
+          "name": "石川綾子",
+          "token": null
+        },
+        {
+          "id": 18,
+          "grade": 3,
+          "name": "村上翔平",
+          "token": null
+        }
+      ],
+      "character": {
+        "id": 6,
+        "team_id": 6,
+        "level": 1,
+        "point": 10,
+        "img": "****",
+        "created_at": "2024-10-21 12:00:00"
+      },
+      "parameters": [
+        {
+          "id": 6,
+          "team_id": 6,
+          "name": "aaa",
+          "score": 91,
+          "created_at": "2024-10-21 12:00:00"
+        }
+      ]
+    }
+  ]
+  

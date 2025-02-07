@@ -1,0 +1,1695 @@
+[
+  {
+    "category" : "認証",
+    "interactions" : [
+      {
+        "id" : 1,
+        "name" : "ログイン",
+        "about": [
+          "管理画面のログインをする",
+          "ログイン後、認証トークンを取得する"
+        ],
+        "method" : "post",
+        "url" : "/login",
+        "exampleUri" : "/login",
+        "parameters": [],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": [
+            { "name" : "account", "type" : "varchara2", "required" : true},
+            { "name" : "password", "type" : "varchara2", "required" : true}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "auth/login200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "auth/login401"
+          }
+        ]
+      },
+      {
+        "id" : 2,
+        "name" : "ログアウト",
+        "about": [
+          "管理者認証",
+          "管理画面のログアウトに使用する",
+          "トークンがなくてもログアウトする"
+        ],
+        "method" : "post",
+        "url" : "/logout",
+        "exampleUri" : "/logout",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json", 
+            "Bearer Token: {TOKEN}"
+          ], 
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "auth/logout" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr"
+          }
+        ]
+      },
+      {
+        "id" : 3,
+        "name" : "アプリ学生ログイン",
+        "about": [
+          "学生がアプリにログインする",
+          "一度ログインすると再びログインできなくなる"
+        ],
+        "method" : "post",
+        "url" : "/studentlogin",
+        "exampleUri" : "/studentlogin",
+        "parameters": [],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": [
+            { "name" : "number", "type" : "varchara2", "required" : true, "desc" : "学籍番号"},
+            { "name" : "name", "type" : "varchara2", "required" : true, "desc" : "氏名"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "auth/login200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "auth/appLogin401"
+          },
+          {
+            "code" : 401,
+            "body" : "auth/appLogin401_1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category" : "チーム",
+    "interactions" : [
+      {
+        "id" : 4,
+        "name" : "チーム一覧取得",
+        "about": [
+          "管理者認証",
+          "管理画面でチームの一覧情報を取得する"
+        ],
+        "method" : "get",
+        "url" : "/team",
+        "exampleUri" : "/team",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json", 
+            "Bearer Token: {TOKEN}"
+          ], 
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "team/team200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr"
+          }
+        ]
+      },
+      {
+        "id" : 5,
+        "name" : "来場者向けチーム一覧",
+        "about": [
+          "来場者認証",
+          "内定者を反映させたチーム一覧を取得する"
+        ],
+        "method" : "get",
+        "url" : "/showTeam/visitor",
+        "exampleUri" : "/showTeam/visitor",
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json", 
+            "Bearer Token: {TOKEN}"
+          ], 
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "team/teamForVisitor200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 6,
+        "name" : "学生向けチーム一覧",
+        "about": [
+          "内定者を反映させたチーム一覧を取得する"
+        ],
+        "method" : "get",
+        "url" : "/showTeam/student",
+        "exampleUri" : "/teamForVisitor",
+        "request" : {
+          "headers" : ["Content-Type: application/json"], 
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "team/teamForVisitor200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 7,
+        "name" : "チーム詳細取得",
+        "about": [
+          "管理画面でチームの詳細情報を取得する"
+        ],
+        "method" : "get",
+        "url" : "/team/{id}",
+        "exampleUri" : "/team/1",
+        "parameters": [
+          { "name" : "id", "type" : "varchara2", "required" : true, "desc" : "取得したいチームのID"}
+        ],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "team/teamDetail200" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          }
+        ]
+      },
+      {
+        "id" : 8,
+        "name" : "チームトップ取得",
+        "about": [
+          "アプリのチームトップ画面に必要な情報を取得"
+        ],
+        "method" : "get",
+        "url" : "/team/top/{id}",
+        "exampleUri" : "/team/top/1",
+        "parameters": [
+          { "name" : "id", "type" : "varchara2", "required" : true, "desc" : "取得したいチームのID"}
+        ],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "team/team200" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          }
+        ]
+      },
+      {
+        "id" : 9,
+        "name" : "チーム登録",
+        "about": [
+          "管理者認証",
+          "管理画面でチーム登録とともに、パラメーターとキャラクターを生成する"
+        ],
+        "method" : "post",
+        "url" : "/team",
+        "exampleUri" : "/team",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json", 
+            "Bearer Token: {TOKEN}"
+          ], 
+          "parameters": [
+            { "name" : "num", "type" : "varchara2", "required" : true, "desc" : "チーム番号(T01, T02)"},
+            { "name" : "name", "type" : "varchara2", "required" : false, "desc" : "システム名"},
+            { "name" : "detail", "type" : "varchara2", "required" : false, "desc" : "システムの説明"},
+            { "name" : "grade", "type" : "number", "required" : true, "desc" : "学年を登録(2, 3)"},
+            { "name" : "logo", "type" : "file", "required" : false, "desc" : "ロゴ画像"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 10,
+        "name" : "チーム編集",
+        "about": [
+          "管理者・学生認証",
+          "管理画面ではチームの情報を変更できる",
+          "学生はアプリから自分のチームのみ編集できる"
+        ],
+        "method" : "put",
+        "url" : "/team/{id}",
+        "exampleUri" : "/team/1",
+        "parameters": [
+          { "name" : "id", "type" : "varchara2", "required" : true, "desc" : "変更したいチームのID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json", 
+            "Bearer Token: {TOKEN}"
+          ], 
+          "parameters": [
+            { "name" : "num", "type" : "varchara2", "required" : true, "desc" : "チーム番号(T01, T02)"},
+            { "name" : "name", "type" : "varchara2", "required" : false, "desc" : "システム名"},
+            { "name" : "detail", "type" : "varchara2", "required" : false, "desc" : "システムの説明"},
+            { "name" : "grade", "type" : "number", "required" : true, "desc" : "学年を登録(2, 3)"},
+            { "name" : "logo", "type" : "file", "required" : false, "desc" : "ロゴ画像"}
+
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/unauthorized401" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          }
+        ]
+      },
+      {
+        "id" : 11,
+        "name" : "ランキング",
+        "about": [
+          "アプリのランキング情報を取得する"
+        ],
+        "method" : "get",
+        "url" : "/ranking",
+        "exampleUri" : "/ranking",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json" 
+          ], 
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "team/ranking" 
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category" : "発表ステータス",
+    "interactions" : [
+      {
+        "id" : 12,
+        "name" : "発表ステータス一覧取得",
+        "about": [
+          "発表ステータス一覧を取得する"
+        ],
+        "method" : "get",
+        "url" : "/crowd",
+        "exampleUri" : "/crowd",
+        "parameters": [],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "crowd/crowd200" 
+          }
+        ]
+      },
+      {
+        "id" : 13,
+        "name" : "チーム別発表情報取得",
+        "about": [
+          "チーム別の発表情報を取得する"
+        ],
+        "method" : "get",
+        "url" : "/crowd/{id}",
+        "exampleUri" : "/crowd/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "チームID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json"
+          ], 
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "crowd/showCrowd200" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404"
+          }
+        ]
+      },
+      {
+        "id" : 14,
+        "name" : "発表ステータス更新",
+        "about": [
+          "チームIDを指定して発表ステータスの更新をする"
+        ],
+        "method" : "put",
+        "url" : "/crowd/{id}",
+        "exampleUri" : "/crowd/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "チームID"}
+        ],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": [
+            { "name" : "isPresentation", "type" : "boolean", "required" : true, "desc" : "発表しているか否か"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category" : "来場者",
+    "interactions" : [
+      {
+        "id" : 15,
+        "name" : "来場者一覧",
+        "about": [
+          "管理者認証",
+          "来場者を一覧取得する"
+        ],
+        "method" : "get",
+        "url" : "/visitor",
+        "exampleUri" : "/visitor",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "visitor/visitor200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 16,
+        "name" : "来場者詳細",
+        "about": [
+          "管理者認証",
+          "来場者の情報を1件取得する"
+        ],
+        "method" : "get",
+        "url" : "/visitor/{id}",
+        "exampleUri" : "/visitor/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "来場者ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "visitor/visitor200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "visitor/visitor404" 
+          }
+        ]
+      },
+      {
+        "id" : 17,
+        "name" : "来場者登録",
+        "about": [
+          "来場者の情報を登録する",
+          "登録後トークンを発行する"
+        ],
+        "method" : "post",
+        "url" : "/visitor",
+        "exampleUri" : "/visitor",
+        "parameters": [],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": [
+            { "name" : "affiliation", "type" : "varchara2", "required" : true, "desc" : "所属会社（学校）"},
+            { "name" : "employment_target_id", "type" : "varchara2", "required" : false, "desc" : "法人番号"},
+            { "name" : "name", "type" : "varchara2", "required" : true, "desc" : "氏名"},
+            { "name" : "division", "type" : "number", "required" : true, "desc" : "来場者区分"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "visitor/visitor201" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          }
+        ]
+      },
+      {
+        "id" : 18,
+        "name" : "来場者編集",
+        "about": [
+          "来場者認証",
+          "来場者の情報を更新する"
+        ],
+        "method" : "put",
+        "url" : "/visitor",
+        "exampleUri" : "/visitor",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "affiliation", "type" : "varchara2", "required" : true, "desc" : "所属会社（学校）"},
+            { "name" : "employment_target_id", "type" : "varchara2", "required" : false, "desc" : "法人番号"},
+            { "name" : "name", "type" : "varchara2", "required" : true, "desc" : "氏名"},
+            { "name" : "division", "type" : "number", "required" : true, "desc" : "来場者区分"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "visitor/visitorEdit200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "visitor/visitor404" 
+          }
+
+        ]
+      },
+      {
+        "id" : 19,
+        "name" : "来場者消去",
+        "about": [
+          "管理者認証",
+          "来場者の情報を消去する"
+        ],
+        "method" : "delete",
+        "url" : "/visitor/{id}",
+        "exampleUri" : "/visitor/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "来場者ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "visitor/visitor404" 
+          }
+
+        ]
+      }
+    ]
+  },
+  {
+    "category" : "キャラクター",
+    "interactions" : [
+      {
+        "id" : 20,
+        "name" : "キャラクター情報取得",
+        "about": [
+          "キャラクターを一覧取得"
+        ],
+        "method" : "get",
+        "url" : "/character",
+        "exampleUri" : "/character",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "character/character200" 
+          }
+        ]
+      },
+      {
+        "id" : 21,
+        "name" : "キャラクター詳細取得",
+        "about": [
+          "キャラクターの詳細情報を取得"
+        ],
+        "method" : "get",
+        "url" : "/character/{id}",
+        "exampleUri" : "/character/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "キャラクターID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "character/characterDetail200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 404,
+            "body" : "character/character404" 
+          }
+        ]
+      },
+      {
+        "id" : 22,
+        "name" : "キャラクター成長",
+        "about": [
+          "学生認証",
+          "アイテムを上げキャラクターを成長させる",
+          "アイテムの元である評価はフラグを立てる"
+        ],
+        "method" : "put",
+        "url" : "/character/{id}",
+        "exampleUri" : "/character/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "キャラクターID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "rating_id", "type" : "number", "required" : true, "desc" : "評価ID。アイテムの元となる評価"},
+            { "name" : "point", "type" : "number", "required" : true, "desc" : "与えるポイント数"}
+
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "character/characterEdit200" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 400,
+            "body" : "character/isservedRating400"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "character/character404" 
+          },
+          {
+            "code" : 404,
+            "body" : "rating/rating404" 
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category" : "評価",
+    "interactions" : [
+      {
+        "id" : 23,
+        "name" : "評価一覧表示",
+        "about": [
+          "管理者認証",
+          "管理画面で評価を一覧表示するためのもの"
+        ],
+        "method" : "get",
+        "url" : "/rating",
+        "exampleUri" : "/rating",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "rating/rating200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 24,
+        "name" : "チーム別評価取得",
+        "about": [
+          "チーム別の評価を取得する",
+          "口コミやレベルアップで使用する"
+        ],
+        "method" : "get",
+        "url" : "/rating/{id}",
+        "exampleUri" : "/rating/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "チームID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "rating/ratingTeam200" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          },
+          {
+            "code" : 404,
+            "body" : "rating/neverposted404" 
+          }
+        ]
+      },
+      {
+        "id" : 25,
+        "name" : "評価登録",
+        "about": [
+          "来場者・学生認証",
+          "評価を登録する"
+        ],
+        "method" : "post",
+        "url" : "/rating",
+        "exampleUri" : "/rating",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "team_id", "type" : "number", "required" : true, "desc" : "チームID"},
+            { "name" : "design", "type" : "number", "required" : true, "desc" : "デザインの評価"},
+            { "name" : "planning", "type" : "number", "required" : true, "desc" : "企画の評価"},
+            { "name" : "skill", "type" : "number", "required" : true, "desc" : "技術の評価"},
+            { "name" : "presentation", "type" : "number", "required" : true, "desc" : "プレゼンの評価"},
+            { "name" : "negative", "type" : "varchara2", "required" : false, "desc" : "改善点"},
+            { "name" : "positive", "type" : "varchara2", "required" : false, "desc" : "良かった点"},
+	    { "name" : "other", "type" : "varchara2" , "required" : false, "desc" : "その他"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 200,
+            "body" : "team/team404" 
+          },
+          {
+            "code" : 400,
+            "body" : "rating/canNotPost400" 
+          },
+          {
+            "code" : 400,
+            "body" : "rating/alreadyposted400" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category" : "学生",
+    "interactions" : [
+      {
+        "id" : 26,
+        "name" : "学生一覧",
+        "about": [
+          "管理者認証",
+          "管理画面で学生一覧を取得する"
+        ],
+        "method" : "get",
+        "url" : "/student",
+        "exampleUri" : "/student",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "student/student200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 27,
+        "name" : "学生詳細",
+        "about": [
+          "管理者認証",
+          "管理画面で学生の詳細を取得する"
+        ],
+        "method" : "get",
+        "url" : "/student/{id}",
+        "exampleUri" : "/student/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "学生ID"}
+
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "student/studentDetail200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "student/student404" 
+          },
+          {
+            "code" : 404,
+            "body" : "student/existingStudent422" 
+          }
+        ]
+      },
+      {
+        "id" : 28,
+        "name" : "学生登録",
+        "about": [
+          "管理者認証",
+          "管理画面で学生を登録する"
+        ],
+        "method" : "post",
+        "url" : "/student",
+        "exampleUri" : "/student",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "team_id", "type" : "number", "required" : false, "desc" : "チームID"},
+            { "name" : "employment_target_id", "type" : "string", "required" : false, "desc" : "法人番号"},
+            { "name" : "number", "type" : "varchara2", "required" : true, "desc" : "学籍番号"},
+            { "name" : "grade", "type" : "number", "required" : true, "desc" : "学年"},
+            { "name" : "name", "type" : "varchara2", "required" : true, "desc" : "氏名"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          },
+          {
+            "code" : 404,
+            "body" : "student/existingStudent422" 
+          }
+        ]
+      },
+      {
+        "id" : 29,
+        "name" : "学生編集",
+        "about": [
+          "管理者・学生認証",
+          "管理画面で学生を変更する",
+          "学生は自分の情報のみ変更できる"
+        ],
+        "method" : "put",
+        "url" : "/student/{id}",
+        "exampleUri" : "/student/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "学生ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "team_id", "type" : "number", "required" : false, "desc" : "チームID"},
+            { "name" : "employment_target_id", "type" : "string", "required" : false, "desc" : "法人番号"},
+            { "name" : "number", "type" : "varchara2", "required" : true, "desc" : "学籍番号"},
+            { "name" : "grade", "type" : "number", "required" : true, "desc" : "学年"},
+            { "name" : "name", "type" : "varchara2", "required" : true, "desc" : "氏名"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/unauthorized401" 
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          },
+          {
+            "code" : 404,
+            "body" : "student/student404" 
+          },
+          {
+            "code" : 404,
+            "body" : "student/existingStudent422" 
+          }
+        ]
+      },
+      {
+        "id" : 30,
+        "name" : "学生消去",
+        "about": [
+          "管理者認証",
+          "管理画面で学生を消去する"
+        ],
+        "method" : "delete",
+        "url" : "/student/{id}",
+        "exampleUri" : "/student/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "学生ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "student/student404" 
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "アンケート",
+    "interactions" : [
+      {
+        "id" : 31,
+        "name" : "アンケート一覧",
+        "about": [
+          "管理者認証",
+          "管理画面でアンケートを表示する"
+        ],
+        "method" : "get",
+        "url" : "/questionnaire",
+        "exampleUri" : "/questionnaire",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "questionnaire/questionnaire200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 32,
+        "name" : "アンケート詳細",
+        "about": [
+          "アプリでアンケートを取得する",
+          "管理画面でアンケートの詳細を取得する",
+          "アンケートIDを持った質問を取得"
+        ],
+        "method" : "get",
+        "url" : "/questionnaire/{id}",
+        "exampleUri" : "/questionnaire/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "アンケートID"}
+        ],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "questionnaire/questionnaireDetail200"
+          },
+          {
+            "code" : 404,
+            "body" : "questionnaire/questionnaire404"
+          }
+        ]
+      },
+      {
+        "id" : 33,
+        "name" : "アンケート登録",
+        "about": [
+          "管理者認証",
+          "管理画面でアンケートを登録する"
+        ],
+        "method" : "post",
+        "url" : "/questionnaire",
+        "exampleUri" : "/questionnaire",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "title", "type" : "varchara2", "required" : true, "desc" : "アンケートのタイトル"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "questionnaire/questionnaire201"
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 34,
+        "name" : "アンケート編集",
+        "about": [
+          "管理者認証",
+          "アプリでアンケートを編集する"
+        ],
+        "method" : "put",
+        "url" : "/questionnaire/{id}",
+        "exampleUri" : "/questionnaire/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "アンケートID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "title", "type" : "varchara2", "required" : true, "desc" : "アンケートのタイトル"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "questionnaire/questionnaire404"
+          }
+        ]
+      },
+      {
+        "id" : 35,
+        "name" : "アンケート消去",
+        "about": [
+          "管理者認証",
+          "アプリでアンケートを消去する"
+        ],
+        "method" : "delete",
+        "url" : "/questionnaire/{id}",
+        "exampleUri" : "/questionnaire/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "アンケートID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "title", "type" : "varchara2", "required" : true, "desc" : "アンケートのタイトル"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "questionnaire/questionnaire404"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "質問",
+    "interactions" : [
+      {
+        "id" : 36,
+        "name" : "質問一覧表示",
+        "about": [
+          "管理者認証",
+          "管理画面で質問を表示する"
+        ],
+        "method" : "get",
+        "url" : "/survey",
+        "exampleUri" : "/survey",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "survey/survey200" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 37,
+        "name" : "質問登録",
+        "about": [
+          "管理者認証",
+          "管理画面で質問を登録する"
+        ],
+        "method" : "post",
+        "url" : "/survey",
+        "exampleUri" : "/survey",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "questionnaire_id", "type" : "number", "required" : true, "desc" : "アンケートID"},
+            { "name" : "order", "type" : "number", "required" : true, "desc" : "質問の順番"},
+            { "name" : "question", "type" : "varchara2", "required" : true, "desc" : "質問内容"},
+            { "name" : "isstring", "type" : "boolean", "required" : true, "desc" : "質問形式がtextかどうか"}
+
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "survey/survey201" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "questionnaire/questionnaire404"
+          }
+        ]
+      },
+      {
+        "id" : 38,
+        "name" : "質問編集",
+        "about": [
+          "管理者認証",
+          "管理画面で質問を変更する"
+        ],
+        "method" : "put",
+        "url" : "/survey/{id}",
+        "exampleUri" : "/survey/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "質問ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "questionnaire_id", "type" : "number", "required" : true, "desc" : "アンケートID"},
+            { "name" : "order", "type" : "number", "required" : true, "desc" : "質問の順番"},
+            { "name" : "question", "type" : "varchara2", "required" : true, "desc" : "質問内容"},
+            { "name" : "isstring", "type" : "boolean", "required" : true, "desc" : "質問形式がtextかどうか"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "questionnaire/questionnaire404"
+          },
+          {
+            "code" : 404,
+            "body" : "survey/survey200"
+          }
+        ]
+      },
+      {
+        "id" : 39,
+        "name" : "質問消去",
+        "about": [
+          "管理者認証",
+          "管理画面で質問を消去する"
+        ],
+        "method" : "delete",
+        "url" : "/survey/{id}",
+        "exampleUri" : "/survey/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "質問ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id" 
+          },
+          {
+            "code" : 400,
+            "body" : "survey/survey400" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "survey/survey200"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "回答",
+    "interactions" : [
+      {
+        "id" : 40,
+        "name" : "回答一覧表示",
+        "about": [
+          "管理者認証",
+          "管理画面で回答を表示する"
+        ],
+        "method" : "get",
+        "url" : "/survey/answer",
+        "exampleUri" : "/survey/answer",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "answer/answer200"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 41,
+        "name" : "回答詳細表示",
+        "about": [
+          "管理者認証",
+          "管理画面で回答の詳細を表示する"
+        ],
+        "method" : "get",
+        "url" : "/survey/answer/{id}",
+        "exampleUri" : "/survey/answer/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "回答ID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "answer/answerDetail200"
+          },
+          {
+            "code" : 404,
+            "body" : "answer/answer400"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 42,
+        "name" : "回答投稿",
+        "about": [
+          "来場者認証",
+          "アプリでアンケートを投稿する"
+        ],
+        "method" : "post",
+        "url" : "/survey/answer",
+        "exampleUri" : "/survey/answer",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "success/status_id"
+          },
+          {
+            "code" : 400,
+            "body" : "answer/alreadyposted400" 
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 43,
+        "name" : "テキストアンケート回答投稿",
+        "about": [
+          "来場者認証",
+          "アプリでアンケートを投稿する"
+        ],
+        "method" : "post",
+        "url" : "/survey/answer/text",
+        "exampleUri" : "/survey/answer/text",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "question_id", "type" : "number", "required" : true, "desc" : "質問ID"},
+            { "name" : "answer_id", "type" : "number", "required" : true, "desc" : "回答ID"},
+            { "name" : "answer", "type" : "varchara2", "required" : true, "desc" : "回答内容"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "success/status_id"
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "answer/notFound404" 
+          }
+        ]
+      },
+      {
+        "id" : 44,
+        "name" : "数値アンケート回答投稿",
+        "about": [
+          "来場者認証",
+          "アプリでアンケートを投稿する"
+        ],
+        "method" : "post",
+        "url" : "/survey/answer/number",
+        "exampleUri" : "/survey/answer/number",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "question_id", "type" : "number", "required" : true, "desc" : "質問ID"},
+            { "name" : "answer_id", "type" : "number", "required" : true, "desc" : "回答ID"},
+            { "name" : "answer", "type" : "number", "required" : true, "desc" : "回答内容"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 201,
+            "body" : "success/status_id"
+          },
+          {
+            "code" : 400,
+            "body" : "paramErr/paramErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          },
+          {
+            "code" : 404,
+            "body" : "answer/notFound404" 
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "パラメーター",
+    "interactions": [
+      {
+        "id" : 45,
+        "name" : "パラメーター一覧取得",
+        "about": [
+          "管理者認証",
+          "管理画面でパラメーターを一覧取得する"
+        ],
+        "method" : "get",
+        "url" : "/parameter",
+        "exampleUri" : "/parameter",
+        "parameters": [],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "parameter/parameter200"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr" 
+          }
+        ]
+      },
+      {
+        "id" : 46,
+        "name" : "チーム別パラメータ取得",
+        "about": [
+          "管理画面とアプリのチーム画面でパラメーターを取得する"
+        ],
+        "method" : "get",
+        "url" : "/parameter/{id}",
+        "exampleUri" : "/parameter/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "チームID"}
+        ],
+        "request" : {
+          "headers" : ["Content-Type: application/json"],
+          "parameters": []
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "parameter/parameterTeam"
+          },
+          {
+            "code" : 404,
+            "body" : "team/team404" 
+          }
+        ]
+      },
+      {
+        "id" : 47,
+        "name" : "パラメータ編集",
+        "about": [
+          "管理者・学生認証",
+          "パラメータを編集する"
+        ],
+        "method" : "put",
+        "url" : "/parameter/{id}",
+        "exampleUri" : "/parameter/1",
+        "parameters": [
+          { "name" : "id", "type" : "number", "required" : true, "desc" : "パラメーターID"}
+        ],
+        "request" : {
+          "headers" : [
+            "Content-Type: application/json",
+            "Bearer Token: {TOKEN}"
+          ],
+          "parameters": [
+            { "name" : "name", "type" : "varchara2", "required" : true, "desc" : "パラメーター名"},
+            { "name" : "score", "type" : "number", "required" : true, "desc" : "スコア"}
+          ]
+        },
+        "response" : [
+          {
+            "code" : 200,
+            "body" : "success/status_id"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/tokenAuthErr"
+          },
+          {
+            "code" : 401,
+            "body" : "authErr/unauthorized401" 
+          },
+          {
+            "code" : 404,
+            "body" : "parameter/parameter404" 
+          }
+        ]
+      }
+    ]
+  }
+]

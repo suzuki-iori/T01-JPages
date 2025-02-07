@@ -1,0 +1,17 @@
+.name {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.2;
+}
+.pointBarWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .point {
+        margin-left: 6px;
+        font-weight: bold;
+        line-height: 1;
+        min-width: 27px;
+    }
+}

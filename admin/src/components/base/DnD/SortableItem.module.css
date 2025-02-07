@@ -1,0 +1,17 @@
+.quevalue{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    height: 10%;
+    margin: 10px 0;
+    background:rgba(55, 171, 157,0.1);
+    border-radius: 12px;
+    
+}
+
+.quevalue p{
+    font-size: 1.2rem;
+    margin: 20px;
+}

@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    margin: 20px auto;
+    border-top: 3px solid #876344;
+    border-bottom: 3px solid #876344;
+    padding: 40px 20px;
+}
+
+.name {
+    margin-bottom: 30px;
+    text-align: center;
+}
+

@@ -1,0 +1,29 @@
+/* アンケート全体のコンテナ */
+.questionnaire-container {
+    font-family:'メイリオ', 'Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    max-width: 600px;
+    height: 100%;
+    margin: auto;
+    padding: 10px 10px 40px; 
+    text-align: center;
+    background-color: #F7F2DF; /* 薄いベージュ */
+}
+
+/* タイトルのスタイリング */
+.title {
+    color: #876344; /* ブラウン */
+    font-size: 28px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+/* モバイル対応 */
+@media (max-width: 600px) {
+    .question-label {
+        font-size: 16px;
+    }
+}
+
+
+
+

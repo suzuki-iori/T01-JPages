@@ -1,0 +1,115 @@
+.addModalTitleArea{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.addModalTitleArea h2{
+    font-size: 1.3rem;
+    text-align: center;
+    width: 85%;
+    margin: 10px 0;
+}
+
+.cancelButton{
+    border: none;
+    background:none;
+    font-size: 3rem;
+    text-align: center;
+}
+.cancelButton span{
+    width: 100%;
+    height: 100%;
+    color: #6b6a6a;
+}
+.formArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+}
+
+.editForm {
+    width: 100%;
+    max-width: 600px; /* フォームの最大幅 */
+    background-color: #fff; /* フォームの背景色 */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.innerForm {
+    display: flex;
+    flex-direction: column; /* 縦に配置 */
+}
+
+.teamForm {
+    margin-bottom: 15px; /* 各項目の間隔 */
+}
+
+.teamForm dt {
+    margin-bottom: 5px; /* ラベルと入力フィールドの間隔 */
+    font-weight: bold; /* ラベルを太字に */
+}
+
+/* .dd {
+    margin: 0; 
+} */
+textarea{
+    resize: none;
+    height: 100px;
+}
+textarea:focus{
+    border-color: #F8A100; 
+    outline: none; 
+}
+
+.teamForm input[type="text"],textarea {
+    width: 90%; 
+    padding: 10px; 
+    margin: 0 auto;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+}
+
+.teamForm input[type="text"]:focus {
+    border-color: #F8A100; 
+    outline: none; 
+}
+
+.teamForm input[id="detail"]{
+    height: 100px;
+}
+
+.error{
+    color: red;
+}
+
+.deleteButtonWrapper{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+.deleteButton {
+    width: 60%;
+    padding: 10px 15px; /* ボタンのパディング */
+    margin: 0 auto;
+    background-color: #f18989; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    border: none; /* ボーダーを削除 */
+    border-radius: 4px; /* 角を丸く */
+    font-size: 16px; /* フォントサイズ */
+    cursor: pointer; /* カーソルをポインターに */
+    transition: background-color 0.3s; /* ホバー時のトランジション */
+}
+
+.deleteButton:hover {
+    background-color: #f01e1e   ; /* ホバー時の色 */
+}

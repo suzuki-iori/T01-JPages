@@ -1,0 +1,48 @@
+dt {
+    padding: 24px 0 10px;
+}
+.question {
+    position: relative;
+    width: fit-content;
+    padding: 8px 20px;
+    border: 3px solid #876344;
+    border-radius: 5px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: calc(100% + 3px);
+        left: 10%;
+        width: 25px;
+        height: 3px;
+        box-sizing: border-box;
+        background-color: #876344;
+        box-shadow: 0 3px 0 #F7F2DF, 0 -3px 0 #F7F2DF; /* 背景色と同じ色を指定 */
+        rotate: -60deg;
+    }
+}
+dd {
+    display: flex;
+    margin: 0 10px;
+
+    .imgLabel img {
+        width: 40px;
+        height: 40px;
+    }
+
+    textarea {
+        field-sizing: content;
+        width: 100%;
+        min-width: 50px;
+        // max-width: 320px;
+        /* width: 100px; */
+        height: fit-content;
+        min-height: 80px;
+        margin-left: 20px;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        overflow: visible;
+        font-size: 16px;
+    }
+}

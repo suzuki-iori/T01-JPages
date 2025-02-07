@@ -1,0 +1,66 @@
+svg {
+    height: 80px;
+    position: absolute;
+    width: 80px;
+    cursor: pointer;
+    /*   border: 1px solid black; */
+    background-color: #fff;
+}
+
+.plate {
+    height: 80px;
+    width: 80px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    .burger {
+        // filter: url(#gooeyness);
+    }
+    .x {
+        transform: scale(0);
+        transition: transform 400ms;
+
+        .line {
+            stroke-width: 5.5px;
+        }
+    }
+    .line {
+        fill: none;
+        stroke: #876344;
+        stroke-width: 6px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transform-origin: 50%;
+        transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
+        transform 500ms 200ms;
+        transition: transform 400ms 100ms;
+    }
+}
+.active {
+    .line {
+        transition: transform 400ms;
+    }
+    .line1 {
+        transform: translateX(18px) translateY(-3px) rotate(-45deg) scale(0.7);
+    }
+    .line2 {
+        transform: translateX(-18px) translateY(-3px) rotate(45deg) scale(0.7);
+    }
+    .line3 {
+        transform: translateY(0px) rotate(45deg) scale(0.7);
+    }
+    .line4 {
+        transform: translateY(0px) rotate(-45deg) scale(0.7);
+    }
+    .line5 {
+        transform: translateX(18px) translateY(3px) rotate(45deg) scale(0.7);
+    }
+    .line6 {
+        transform: translateX(-18px) translateY(3px) rotate(-45deg) scale(0.7);
+    }
+    .x {
+        transition: transform 400ms 100ms;
+        transform: scale(1);
+    }
+}

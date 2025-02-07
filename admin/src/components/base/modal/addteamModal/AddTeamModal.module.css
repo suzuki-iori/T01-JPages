@@ -1,0 +1,104 @@
+.addModalTitleArea{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.addModalTitleArea h2{
+    font-size: 1.3rem;
+    text-align: center;
+    width: 85%;
+    margin: 10px 0;
+}
+.addInnerForm {
+    display: flex;
+    flex-direction: column; 
+}
+
+.addTeamTitleForm {
+    margin-bottom: 5px; 
+}
+
+.addTeamTitleForm dt {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+.addTeamTitleForm input[type="text"] {
+    width: 90%; 
+    padding: 10px; 
+    margin: 0 auto;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+}
+
+.addTeamTitleForm input[type="text"]:focus {
+    border-color: #F8A100; 
+    outline: none; 
+}
+
+.selectArea dt{
+    margin-bottom: 5px;
+    font-weight: bold; 
+}
+
+.checkText{
+    width: 90%;
+    height: 40px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+.checkText:focus{
+    border-color: #F8A100; 
+    outline: none; 
+}
+
+.submitButton {
+    width: 60%;
+    padding: 10px 15px; 
+    margin: 10px auto;
+    background-color: #e9c685; 
+    color: white; 
+    border: none;
+    border-radius: 4px; 
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.disabled {
+    width: 60%;
+    padding: 10px 15px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 4px; 
+    font-size: 16px; 
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+
+.submitButton:hover {
+    background-color: #F8A100 
+}
+.cancelButton{
+    border: none;
+    background:none;
+    font-size: 3rem;
+    text-align: center;
+}
+.cancelButton span{
+    width: 100%;
+    height: 100%;
+    color: #6b6a6a;
+}
+
+textarea{
+    resize: none;
+    height: 100px;
+}
+textarea:focus{
+    border-color: #F8A100; 
+    outline: none; 
+}

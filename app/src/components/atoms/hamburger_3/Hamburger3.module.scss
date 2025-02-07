@@ -1,0 +1,94 @@
+svg {
+    height: 80px;
+    position: absolute;
+    width: 80px;
+    cursor: pointer;
+    /*   border: 1px solid black; */
+    background-color: #fff;
+}
+
+.plate {
+    height: 80px;
+    width: 80px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    .burger {
+        // filter: url(#gooeyness);
+
+        .line1 {
+            stroke-dasharray: 21 109;
+        }
+        .line2 {
+            stroke-dasharray: 21 112;
+        }
+        .line3 {
+            stroke-dasharray: 21 102;
+        }
+        .line4 {
+            stroke-dasharray: 21 103;
+        }
+        .line5 {
+            stroke-dasharray: 21 110;
+        }
+        .line6 {
+            stroke-dasharray: 21 115;
+        }
+    }
+    .x {
+        transform: scale(0);
+        //   transition: transform 400ms;
+        transition: transform 400ms 50ms;
+
+        .line {
+            stroke-width: 5.5px;
+        }
+    }
+    .line {
+        fill: none;
+        stroke: #876344;
+        stroke-width: 6px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transform-origin: 50%;
+        //   transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
+        //     transform 500ms 200ms;
+        transition: stroke-dasharray 300ms 200ms, stroke-dashoffset 300ms 200ms,
+        transform 300ms 200ms;
+    }
+}
+
+.active{
+    .line {
+        transition: stroke-dasharray 400ms, stroke-dashoffset 400ms, transform 400ms;
+    }
+    .line1 {
+        stroke-dasharray: 5 109;
+        stroke-dashoffset: -95px;
+    }
+    .line2 {
+        stroke-dasharray: 5 112;
+        stroke-dashoffset: -96px;
+    }
+    .line3 {
+        stroke-dasharray: 5 102;
+        stroke-dashoffset: -79px;
+    }
+    .line4 {
+        stroke-dasharray: 5 103;
+        stroke-dashoffset: -78px;
+    }
+    .line5 {
+        stroke-dasharray: 5 110;
+        stroke-dashoffset: -63px;
+    }
+    .line6 {
+        stroke-dasharray: 5 115;
+        stroke-dashoffset: -64px;
+    }
+    .x {
+        transition: transform 400ms 100ms;
+        transform: scale(1);
+    }
+}

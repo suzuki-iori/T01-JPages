@@ -1,0 +1,131 @@
+.listArea {
+    width: 100%;
+    height: 100%;
+    /* background: #ffadad; */
+    overflow: hidden;
+}
+.pageTitle{
+    width: calc(100% - 40px);
+    height: 5%;
+    margin: 40px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.pageTitle h2{
+    color: #596a83;
+}
+.pageTitle span{
+    color: #7b90af;
+    font-size: small;
+}
+
+.processingArea{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.innerProcessing{
+    flex: 80%;
+}
+
+.buttonArea{
+    flex: 20%;
+    display: flex;
+}
+.buttonArea button{
+    height: 40px;
+    background: #37ab9d;
+}
+
+.csvButton{
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.addeStudentButton{
+    width: 5%;
+    height: 70px;
+    border-radius: 12px;
+    border: 1px solid #8f8f8f;
+}
+.addeStudentButton p{
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+
+.studentListArea{
+    width: 100%;
+    height: 85%;
+    overflow-y: scroll;
+}
+
+.listHeader{
+    height: 10%;
+    width: 98%;
+    padding: 0 1%;
+    text-align: center;
+    background: #0c835518;
+    /* border-top: 1px #333 solid; */
+    border-bottom: 1px #333 solid;
+}
+.listTitle{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+.listTitle li{
+    width: 15%;
+    font-size: 1.1rem;
+    /* margin: 0 auto; */
+}
+
+.columnBody{
+    text-align: center;
+    overflow-y: scroll;
+    height: 90%;
+
+}
+.columnBody::-webkit-scrollbar {
+    width: 16px; /* スクロールバーの幅 */
+}
+
+.columnBody::-webkit-scrollbar-thumb {
+    background: #87d1c8; /* スクロールバーのつまみの色 */
+    border-radius: 10px; /* つまみの角を丸くする */
+}
+
+.columnBody::-webkit-scrollbar-track {
+    border-radius: 10px; /* トラックの角を丸くする */
+}
+
+/* スクロールバーのホバー時のスタイル */
+.columnBody::-webkit-scrollbar-thumb:hover {
+    background: #2a8f7c; /* ホバー時のつまみの色 */
+}
+
+.studentsColumnWrapper{
+    width: 100%;
+}
+
+.studentsColumn{
+    height: 60px;
+    width: 98%;
+    margin: 0 1%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px rgba(126, 126, 126, 0.4) solid;
+    align-items: center;
+}
+
+.studentsColumn li{
+    width: 15%;
+    font-size: 1rem;
+}

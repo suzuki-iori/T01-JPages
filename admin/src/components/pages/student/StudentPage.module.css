@@ -1,0 +1,7 @@
+.flex{
+  height: calc(100% - 70px);
+  max-height:calc(100% - 70px) ;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}

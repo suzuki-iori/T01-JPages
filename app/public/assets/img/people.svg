@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="748pt"
+    height="846pt"
+    viewBox="0 0 748 846">
+<defs/>
+<path id="shape0" transform="translate(157.543596328967, 89.5368116595802)" fill="none" stroke="#876344" stroke-width="40" stroke-linecap="round" stroke-linejoin="bevel" d="M3.6713 662.285C48.0352 484.375 123.648 421.589 114.822 407.886C-94.4888 301.972 7.12128 -7.61949 221.195 0.143385C427.112 6.89412 524.502 293.604 319.656 407.886C312.316 422.873 385.28 478.365 429.57 666.926" sodipodi:nodetypes="ccccc"/><circle id="shape1" transform="matrix(0.999995017989041 -0.00315657997195573 0.00315657997195573 0.999995017989041 316.307036418326 346.449913750717)" r="10.4999999999999" cx="10.4999999999999" cy="10.4999999999999" fill="#876344" fill-rule="evenodd" stroke="#876344" stroke-width="30" stroke-linecap="round" stroke-linejoin="bevel"/><circle id="shape01" transform="matrix(0.999995017989041 -0.00315657997195423 0.00315657997195423 0.999995017989041 410.868996451104 347.479463691504)" r="10.4999999999999" cx="10.4999999999999" cy="10.4999999999999" fill="#876344" fill-rule="evenodd" stroke="#876344" stroke-width="30" stroke-linecap="round" stroke-linejoin="bevel"/><path id="shape2" transform="translate(345.136723649667, 420.804941116554)" fill="none" stroke="#876344" stroke-width="35" stroke-linecap="round" stroke-linejoin="bevel" d="M0 0.921545C25.6233 10.7706 35.4941 8.33176 54.1233 0" sodipodi:nodetypes="cc"/>
+</svg>

@@ -1,0 +1,12 @@
+
+  .teamButton {
+    width: 65px;
+    height: 65px;
+    border: none;
+    padding: 0;
+    margin: 5px; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5%; 
+  }

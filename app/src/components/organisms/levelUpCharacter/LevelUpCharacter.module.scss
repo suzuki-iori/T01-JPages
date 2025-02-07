@@ -1,0 +1,39 @@
+.characterWrap {
+  width: 100%;
+  margin: 40px 0 0;
+  min-height: 260px;
+  .characterInner {
+    margin: 0 auto;
+    width: 230px;
+    height: 210px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.levelInfo {
+  min-width: 300px;
+  width: 60%;
+  max-width: 430px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 30px 0 15px;
+}
+
+.level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 35px;
+  background: #70D1D1;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}

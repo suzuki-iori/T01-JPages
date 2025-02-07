@@ -1,0 +1,6 @@
+.flex{
+  height: calc(100% - 70px);
+  min-height:calc(100% - 70px) ;
+  width: 100%;
+  display: flex;
+}
