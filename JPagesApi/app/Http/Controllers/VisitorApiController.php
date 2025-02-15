@@ -66,7 +66,6 @@ class VisitorApiController extends Controller
         // データの更新
         $req = $request->all();
         $visitor->affiliation = $req['affiliation'];
-        $visitor->employment_target_id = $req['employment_target_id'];
         $visitor->name = $req['name'];
         $visitor->email = $req['email'];
         $visitor->update();

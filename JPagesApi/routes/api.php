@@ -107,10 +107,6 @@ Route::get('/team/{id}', [TeamApiController::class, 'show']);
 Route::get('/team/top/{id}', [TeamApiController::class, 'showTop']);
 // 来場者登録
 Route::post('/visitor', [VisitorApiController::class, 'store']);
-// 発表情報取得
-Route::get('/crowd', [TeamApiController::class, 'isPresentationGet']);
-// チーム発表情報取得
-Route::get('/crowd/{id}', [TeamApiController::class, 'isPresentationGetDetail']);
 // キャラクター一覧
 Route::get('/character', [CharacterApiController::class, 'index']);
 // キャラクター詳細
@@ -126,7 +122,7 @@ Route::get('/ranking', [TeamApiController::class, 'getRanking']);
 
 
 // チーム一覧
-Route::get('/showTeam/student', [TeamApiController::class, 'index']);
+Route::get('showTeam/app', [TeamApiController::class, 'app']);
 
 
 
@@ -136,8 +132,6 @@ Route::get('/showTeam/student', [TeamApiController::class, 'index']);
  * 認証あり来場者向け
  */
 Route::middleware([VisitorTokenAuth::class])->group(function() {
-  //チーム一覧取得（来場者向け
-  Route::get('/showTeam/visitor', [TeamApiController::class, 'forVisitorIndex']);
   // 来場者編集
   Route::put('/visitor', [VisitorApiController::class, 'update']);
   // 回答追加 
@@ -155,13 +149,6 @@ Route::middleware([VisitorStudentTokenAuth::class])->group(function() {
   // 評価登録
   Route::post('/rating', [RatingApiController::class, 'store']);
 });
-
-
-/**
- * ラスパイ
- */
-// 発表情報更新
-Route::put('crowd/{id}', [TeamApiController::class, 'isPresentationEdit']);
 
 
 // 管理者ログイン 

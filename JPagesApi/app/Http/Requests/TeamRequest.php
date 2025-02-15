@@ -28,7 +28,7 @@ class TeamRequest extends FormRequest
             'name' => 'max:255',
             'detail' => 'max:255',
             'grade' => 'required|in:2,3',
-            // 'logo' => 'image'
+            'logo' => 'image'
         ];
     }
     /**

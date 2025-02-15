@@ -13,6 +13,8 @@
   .dialog {
     width: 350px;
     min-height: 560px;
+    max-height: 80vh;
+    overflow: scroll;
     height: fit-content;
     background: #F7F2DF;
     border-radius: 15px;

@@ -26,6 +26,7 @@ class Character extends Model
      * @var array<int, string>
      */
     protected $hidden = [
+        'team_id',
         'updated_at'
     ];
 

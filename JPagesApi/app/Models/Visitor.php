@@ -17,7 +17,6 @@ class Visitor extends Model
      */
     protected $fillable = [
         'affiliation',
-        'employment_target_id',
         'name',
         'email',
         'division',
@@ -31,7 +30,7 @@ class Visitor extends Model
      */
     protected $hidden = [
         'token',
-       'updated_at'
+        'updated_at'
     ];
 
     /**

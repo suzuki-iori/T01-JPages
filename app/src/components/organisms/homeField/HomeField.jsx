@@ -31,7 +31,7 @@ function HomeField() {
   // チーム一覧取得
   useEffect(() => {
     setLoading(true);
-    Ajax(loginToken, `showTeam/${loginType}`)
+    Ajax(null, `showTeam/app`)
     .then((data) => {
       if(data.status === 'failure') {
         // 失敗

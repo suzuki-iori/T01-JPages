@@ -29,7 +29,7 @@ function ReviewCompleteDialog(props) {
 	<div className={styles.dialogBg}>
 		<div className={styles.dialog}>
 			<p>{message}</p>
-			{status && <figure><img src="https://placehold.jp/150x150.png" alt="投稿完了"/></figure>}
+			{status && <figure><img src="/assets/img/thanks.gif" alt="投稿完了"/></figure>}
 			<button type="button" className={styles.btnClose} onClick={() => redirect()}>閉じる</button>
 		</div>
 	</div>

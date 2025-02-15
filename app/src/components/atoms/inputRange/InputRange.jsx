@@ -25,5 +25,4 @@ function InputRange(props) {
 
 	) 
 }
-
 export default InputRange;

@@ -81,7 +81,7 @@ class StudentApiController extends Controller
         }
 
         // 学生の場合、自分のアカウントしか変更不可
-        if($request['login_student_visitor']->type == 'student') {
+        if($request['login_admin_student']->type == 'student') {
             $studentId = $request['login_student_visitor']->id;
             if($id != $studentId) {
                 return response(['status' => 'Unauthorized', 'message' => '編集権限がありません'], 401);

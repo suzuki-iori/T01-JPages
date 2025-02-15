@@ -6,26 +6,29 @@ const LevelAndPoints = (props) => {
 	// data
 	const {character, count} = props;
 	const [progress, setProgress] = useState(0);
+	console.log(character);
 
 	// ポイントバーの長さを決める
 	useEffect(() => {
 		const calculateProgress = (point) => { // returnはprogressのwidth
-			if (point >= 18000) {
+		console.log(point);
+
+			if (point >= 10000 ) {
 				return 100;
 			}
-			else if (point >= 11000) {
-				return ((point - 11000) / 7000) * 100;
+			else if (point >= 6500 ) {
+				return ((point - 6500 ) / 3500) * 100; 
 			}
-			else if (point >= 7000) {
-				return ((point - 7000) / 4000) * 100;
+			else if (point >= 4000 ) {
+				return ((point - 3800 ) / 2500) * 100; 
 			}
-			else if (point >= 3500) {
-				return ((point - 3500) / 3500) * 100;
+			else if (point >= 2000 ) {
+				return ((point - 2000 ) / 2000) * 100; 
 			}
-			else if (point >= 1000) {
-				return ((point - 1000) / 2500) * 100;
+			else if (point >= 600 ) {
+				return ((point - 600 ) / 1400) * 100; 
 			}
-			return (point / 1000) * 100;
+			return (point / 600 ) * 100;
 		};
 		setProgress(calculateProgress(character.point))
 	}, [character]);

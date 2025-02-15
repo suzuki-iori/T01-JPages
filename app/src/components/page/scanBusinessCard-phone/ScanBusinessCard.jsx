@@ -5,7 +5,6 @@ import Ajax from '../../../lib/Ajax';
 import Camera from '../../atoms/camera/Camera'
 import ScanBusinessCardForm from '../../organisms/scanbusinesscardform/ScanBusinessCardForm'
 import LoadingMessage from '../../atoms/loadingmessage/LoadingMessage';
-import HelpButton from '../../atoms/helpButton/HelpButton';
 import { AppContext } from '../../AppContextProvider';
 
 const ScanBusinessCardMobile = () => {
@@ -95,7 +94,7 @@ const ScanBusinessCardMobile = () => {
 		};
 
 		try {
-			const response = await fetch('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBIMyKU-0GPuNkVM23NjqhqUUuwgn-3OsE', {
+			const response = await fetch(`https://vision.googleapis.com/v1/images:annotate?key=${process.env.REACT_APP_GOOGLE_VISION_API_KEY}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(requestBody),
@@ -119,7 +118,7 @@ const ScanBusinessCardMobile = () => {
 		fillFormWithEntities(entities); 
 	};
 
-	const genAI = new GoogleGenerativeAI('AIzaSyAs_AY9dtqdyK9E0-xtyMbh0j7W57h-9CY');
+	const genAI = new GoogleGenerativeAI(`${process.env.REACT_APP_GOOGLE_GEMINI_API_KEY}`);
 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 	const analyzeWithGemini = async (inputText) => {
@@ -143,6 +142,7 @@ const ScanBusinessCardMobile = () => {
 		
 		テキスト: ${inputText}
 `;
+		console.log(prompt);
 		try {
 			const result = await model.generateContent(prompt);
 			const textResponse = result.response.text();
@@ -155,6 +155,7 @@ const ScanBusinessCardMobile = () => {
 	};
 
 	const cleanResponse = (generatedResponse) => {
+		console.log(generatedResponse);
 		return generatedResponse
 		.replace(/```json/, '') 
 		.replace(/```/, '') 
@@ -243,6 +244,7 @@ const ScanBusinessCardMobile = () => {
 				setErrorMessage('入力されたパラメーターが違います');
 				setToast({toast: true, state: 'visitorLogin', message: 'エラーが発生しました。もう一度お願いします。'})
 			} else {
+				//  console.log('登録成功, data : ', data)
 				setLoginToken(data.token);
 				setLoginType('visitor');
 			}
@@ -261,7 +263,6 @@ const ScanBusinessCardMobile = () => {
 	
 	return (
 		<div className={Styles.container}>
-			<HelpButton />
 			{!isImageCaptured ? (
 				<Camera
 					videoRef={videoRef}

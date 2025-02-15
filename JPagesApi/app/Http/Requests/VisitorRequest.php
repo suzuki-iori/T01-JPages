@@ -25,7 +25,6 @@ class VisitorRequest extends FormRequest
     {
         return [
             'affiliation' => 'required|max:255',
-            'employment_target_id' => 'max:255',
             'name' => 'required|min:1|max:255',
             'email' => 'required|min:1|max:255',
             'division' => 'required|int|min:1|max:5',

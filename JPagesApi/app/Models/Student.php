@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Team;
+use App\Models\Rating;
 
 class Student extends Model
 {
@@ -36,6 +37,14 @@ class Student extends Model
      */
     public function team() {
         return $this->belongsTo(Team::class);
+    }
+
+    /**
+     * 投稿した評価
+     */
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 
      /**

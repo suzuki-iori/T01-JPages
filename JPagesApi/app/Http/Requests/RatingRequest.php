@@ -31,7 +31,7 @@ class RatingRequest extends FormRequest
             'present' => 'required|int|min:0|max:100',
             'negative' => 'max:255',
             'positive' => 'max:255',
-	    'other' => 'max:255'
+	        'other' => 'max:255'
         ];
     }
     

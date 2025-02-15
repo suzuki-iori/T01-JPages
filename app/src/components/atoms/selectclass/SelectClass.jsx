@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./selectClass.module.css";
 
 const  ScanBUsinessCardFormSelect = (props) =>  {
-	const {visitorType, setVisitorType, setErrorMessage } = props;
+	console.log('--ScanBUsinessCardFormSelect');
+	const {visitorType, setVisitorType, setErrorMessage, loading } = props;
 	return (
 		<>
 			<select 
@@ -23,6 +24,8 @@ const  ScanBUsinessCardFormSelect = (props) =>  {
 				<option value="4">卒業生</option>
 				<option value="5">その他の方</option>
 			</select>
+
+			{!loading && visitorType === '0' && <div className={styles["warning"]}>来場者区分を選択してください</div>}
 		</>
 	)
 };

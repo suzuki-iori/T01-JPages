@@ -20,7 +20,6 @@ class Team extends Model
         'num',
         'name',
         'detail',
-        'ispresent',
         'grade'
     ];
 

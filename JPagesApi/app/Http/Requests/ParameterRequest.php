@@ -26,7 +26,7 @@ class ParameterRequest extends FormRequest
         return [
             // 'team_id' => 'required|max:255',
             'name' => 'required|max:7',
-            'score' => 'required|int|max:120',
+            'score' => 'required|int|min:0|max:120',
         ];
     }
 

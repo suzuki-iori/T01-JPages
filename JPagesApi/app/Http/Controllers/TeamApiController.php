@@ -16,7 +16,7 @@ class TeamApiController extends Controller
      */
     public function index()
     {
-        $list = Team::with(['character'])->get();
+        $list = Team::get()->makeHidden(['detail']);
         $res = [
             'status' => 'success',
             'team' => $list
@@ -25,33 +25,11 @@ class TeamApiController extends Controller
     }
 
     /**
-     * 来場者向けチーム一覧
+     * アプリ用学生一覧
      */
-    public function forVisitorIndex(Request $request)
+    public function app(Request $request)
     {
-        // 来場者情報を取得
-        $visitor = $request['login_visitor']->employment_target_id ? $request['login_visitor']->employment_target_id : null;
-        $list = Team::with(['students', 'character'])->get();
-
-        // 来場者と'employment_target_id'が同じならtrue
-        foreach($list as $team) {
-            $isOffered = false;
-            if(!$visitor) {
-                foreach($team->students as $student) {
-                    if($student->employment_target_id === $visitor) {
-                        $isOffered = true;
-                        break;
-                    }
-                }
-            }
-            $team->isOffered = $isOffered;
-
-            // characterの不要な情報を隠す
-            if ($team->character) {
-                $team->character->makeHidden(['team_id', 'point']);
-            }
-        }
-        $list->makeHidden(['detail', 'students']);
+        $list = Team::with(['character'])->get()->makeHidden(['detail']);
 
         // レスポンスの準備
         $res = [
@@ -122,7 +100,7 @@ class TeamApiController extends Controller
             return response(['status' => 'failure', 'message' => 'チームが存在しません'], 404);
         }
         // responseの編集
-        $team['students']->makeHidden(['team_id', 'employment_target_id', 'number', 'token', 'created_at']);
+        $team['students']->makeHidden(['team_id', 'number', 'token', 'created_at']);
 
         return response([
             'status' => 'success',
@@ -166,7 +144,7 @@ class TeamApiController extends Controller
             "type" => $team->character->type,
             "nextLevelBorder" => $nextLevelBorder
         ];
-        $team->makeHidden(['ratings', 'character']);
+        $team->makeHidden(['ratings', 'character', 'detail']);
 
         return response([
             'status' => 'success',

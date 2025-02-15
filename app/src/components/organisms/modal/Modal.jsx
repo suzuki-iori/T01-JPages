@@ -7,6 +7,7 @@ import { AppContext } from '../../AppContextProvider';
 ReactModal.setAppElement('#root');
 
 const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
+	console.log('--TeamModal');
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [parameters, setParameters] = useState([]);
@@ -42,6 +43,12 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 					newErrors[index] = 'パラメーターは7文字以内で入力してください';
 					return newErrors;
 				});
+			} else if (newValue.length === 0){
+				setErrorMessages(prev => {
+					const newErrors = [...prev];
+					newErrors[index] = 'パラメーター名を入力してください';
+					return newErrors;
+				})
 			} else {
 				setErrorMessages(prev => {
 					const newErrors = [...prev];
@@ -55,6 +62,12 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 				setErrorMessages(prev => {
 					const newErrors = [...prev];
 					newErrors[index] = '値は120以内にしてください';
+					return newErrors;
+				})
+			} else if (newValue < 0) {
+				setErrorMessages(prev => {
+					const newErrors = [...prev];
+					newErrors[index] = '値は0以上にしてください';
 					return newErrors;
 				})
 			} else if (!newValue) {
@@ -101,17 +114,25 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		const nonValueParam = parameters.filter((parameter) => parameter.name.length === 0);
 		const overLengthParam = parameters.filter((parameter) => parameter.name.length > 7);
 		const unenteredParam = parameters.filter((parameter) => parameter.score === '' || parameter.score === null);
 		const overValueParam = parameters.filter((parameter) => parameter.score > 120);
+		const notEnoughValueParam = parameters.filter((parameter) => parameter.score < 0);
 		if (overLengthParam.length > 0) {
 			setSubmitError('パラメーター名は7文字以内で入力してください');
+			return;
+		} else if (nonValueParam.length > 0) {
+			setSubmitError('パラメーター名を入力してください');	
 			return;
 		} else if (unenteredParam.length > 0) {
 			setSubmitError('パラメーターの値を入力してください');
 			return;
 		} else if (overValueParam.length > 0) {
 			setSubmitError('パラメーターの値は120以内にしてください');
+			return;
+		} else if (notEnoughValueParam.length > 0) {
+			setSubmitError('パラメーターの値は0以上にしてください');
 			return;
 		} else if (name.length > 255) {
 			setSubmitError('システム名は255文字以内で入力してください');
@@ -202,6 +223,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 						/>
 						<input 
 							type="number" 
+							pattern="^[0-9]+$"
 							value={param.score} 
 							onChange={(e) => handleParameterChange(index, 'score', e.target.value)} 
 							className={Styles.paramNum}

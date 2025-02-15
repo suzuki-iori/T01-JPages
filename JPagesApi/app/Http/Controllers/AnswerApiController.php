@@ -34,7 +34,7 @@ class AnswerApiController extends Controller
     }
 
     /**
-     * 回答詳細
+     * 回答詳細 アンケートのidを取得し、一覧で表示する
      */
     public function show(int $id)
     {
