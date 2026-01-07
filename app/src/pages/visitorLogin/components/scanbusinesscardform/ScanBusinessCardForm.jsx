@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScanBUsinessCardFormSelect from "../../../../components-old/atoms/selectclass/SelectClass";
 import SubmitButton from "../../../../components-old/atoms/submitbutton/SubmitButton";
-import RescanButton from "../../../../components-old/atoms/rescanButton/RescanButton";
+import RescanButton from "../rescanButton/RescanButton";
 import styles from "./scanBusinessCardForm.module.css";
 
 const  ScanBusinessCardForm =(props) =>  {
