@@ -1,0 +1,14 @@
+.button {
+    background-color: #876344;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px 0 auto; 
+    display: block;
+    width: 55px; 
+    align-self: center; /* ボタンを中央に配置 */
+    text-align: center;
+}

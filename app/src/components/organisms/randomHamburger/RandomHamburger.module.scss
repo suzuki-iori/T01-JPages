@@ -1,0 +1,111 @@
+.activeMenu {
+    // display: block;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    height: 80px;
+    width: 80px;
+    z-index: 99;
+    .menu {
+        position: absolute;
+        height: 66px;
+        width: 66px;
+        top: 7px;
+        left: 7px;
+        background: #fff;
+        border-radius: 99px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        figure {
+            border-radius: 99px;
+            overflow: hidden;
+            text-align: center;
+        }
+        img {
+            display: inline;
+            width: 55%;
+        }
+        figcaption {
+            font-size: 12px;
+        }
+    }
+    .menu1 {
+        left: 100px;
+        animation: moveReverseMenu1 .5s ease-out forwards;
+        @keyframes moveReverseMenu1 {
+            0% {
+                left: 100px;
+                // display: block;
+            }
+            100% {
+                left: 0;
+                // display: none;
+            }
+        }
+    }
+    .menu2 {
+        left: 185px;
+        animation: moveReverseMenu2 .5s ease-out forwards;
+        @keyframes moveReverseMenu2 {
+            0% {
+                left: 185px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+    }
+    .menu3 {
+        left: 270px;
+        animation: moveReverseMenu3 .5s ease-out forwards;
+        @keyframes moveReverseMenu3 {
+            0% {
+                left: 270px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+    }
+
+}
+.active {
+    .menu1 {
+        left: 0;
+        animation: moveMenu1 .5s ease-out forwards;
+        @keyframes moveMenu1 {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 100px;
+            }
+        }
+    }
+    .menu2 {
+        left: 0;
+        animation: moveMenu2 .5s ease-out forwards;
+        @keyframes moveMenu2 {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 185px;
+            }
+        }
+    }
+    .menu3 {
+        left: 0;
+        animation: moveMenu3 .5s ease-out forwards;
+        @keyframes moveMenu3 {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 270px;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.select-box {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none; /* グレー */
+    text-align: center;
+    background-color: white; /* 黄緑 */
+}
+
+.warning {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
+}

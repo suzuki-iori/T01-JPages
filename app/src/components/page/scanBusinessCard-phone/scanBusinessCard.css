@@ -1,0 +1,9 @@
+/* コンテナ全体のスタイル */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #F7F2DF; /* 薄めの青 */
+}

@@ -1,0 +1,156 @@
+/* modal.module.css */
+.modal {
+    width: 90%;
+    max-width: 500px;
+    z-index: 1001;
+    position: absolute; /* モーダルの位置を指定 */
+    top: 50%;           /* 縦中央 */
+    left: 50%;          /* 横中央 */
+    transform: translate(-50%, -50%); /* 中央に配置 */
+    padding: 20px;     /* 内側の余白 */
+    background: #F7F2DF; /* 背景色 */
+    border-radius: 8px;/* 角を丸くする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* 影の効果 */
+}
+
+.inputContainer {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto 20px  
+}
+
+.paramContainer {
+    display: flex;
+    justify-content: start;
+    margin: 10px;
+    width: 100%;
+}
+
+.index {
+    margin-right: 10px;
+    align-self: center;
+}
+
+.paramName, .paramNum {
+    background-color: #F2ECD4;
+    border-radius: 5px;
+    border: solid 1px #876344;
+    margin: 0 5px;
+    padding: 2px;
+}
+
+.paramName {
+    width: 60%;
+}
+
+.paramNum {
+    width: 15%;
+    text-align: center;
+}
+
+.percentage {
+    font-size: 0.5em;
+    align-self: self-end;
+}
+
+.example {
+    margin-left: 5%;
+    width: 90%;
+}
+
+.teaminfoContainer {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto 20px
+}
+
+.nameContainer {
+    /* text-align: center; */
+}
+
+.nameLabel {
+    font-size: 0.8em;
+}
+
+.teamName {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #F2ECD4;
+    border: solid 1px #876344;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.descContainer {
+    /* text-align: center; */
+    margin-top: 10px;
+}
+
+.descLabel {
+    font-size: 0.8em;
+}
+
+.teamDesc {
+    width: 100%;
+    height: 10em;
+    background-color: #F2ECD4;
+    border: solid 1px #876344;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.buttonContainer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cancelButton, .submitButton {
+    font-size: 0.8em;
+    padding: 5px;
+    text-align: center;
+    width: 40%;
+    align-self: center;
+}
+
+.cancelButton {
+    border: none;
+    border-radius: 5px;
+    background-color: #F2ECD4;
+}
+
+.submitButton {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #876344;
+}
+
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.errorMessage {
+    font-size: 12px;
+    color: red;
+    text-align: end;
+}
+
+.teamError {
+    margin-top: 5px;
+    font-size: 14px;
+    color: red;
+    text-align: end;
+}
+
+.submitError {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}

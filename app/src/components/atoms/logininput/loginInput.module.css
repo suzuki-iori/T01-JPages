@@ -1,0 +1,24 @@
+/* ラベル */
+.label {
+    font-size: 1em;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* 入力フィールド */
+.input-field {
+    background-color: #f7f2df;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.input-field:focus {
+    border-bottom-color: #876344;
+}

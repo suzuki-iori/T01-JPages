@@ -1,0 +1,26 @@
+.content {
+    background: #F7F2DF;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    // padding-bottom: 50px;
+    height: fit-content;
+    padding: 20px 20px 80px;
+
+    .rankingList {
+        padding: 20px;
+        position: sticky;
+        top: 110px;
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 7px 0;
+    
+            .no {
+                font-weight: bold;
+                font-size: 20px;
+            }
+        }
+    }
+}

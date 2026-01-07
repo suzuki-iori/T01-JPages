@@ -1,0 +1,14 @@
+/* 入力フィールドのスタイル */
+.answer-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #876344; /* 薄緑 */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.valueError {
+    margin-top: 5px;
+    color: red;
+    text-align: center;
+}

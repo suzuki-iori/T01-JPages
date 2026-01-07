@@ -1,0 +1,53 @@
+.dialogBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background:  rgba(60, 60, 60, 0.8);
+    z-index: 9999;
+    
+    .dialog {
+        width: 350px;
+        height: 560px;
+        background: #F7F2DF;
+        border-radius: 15px;
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 60px 0;
+        }
+        figure {
+            width: 250px;
+            margin: 60px auto;
+        }
+        .btnClose {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 80px;
+            padding: 8px 20px;
+            background: #F2ECD4;
+            color: #876344;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+
+            &::before {
+                content: "×";
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-color: #F2ECD4;
+                // background-image: url('https://placehold.jp/150x150.png');
+                background-position: center;
+                background-size: contain;
+            }
+        }
+    }
+}

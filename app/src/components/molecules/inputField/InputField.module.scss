@@ -1,0 +1,65 @@
+.inputField {
+    position: relative;
+    width: 100%;
+
+    label {
+        display: block;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    .labelItem {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+}
+/* input 吹きだし */
+.valueWrap {
+    display: inline-block;
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96%;
+    height: 20px;
+}
+.speechBubble {
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background-color: #70d1d1;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+  
+  .speechBubble::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    border-style: solid;
+    border-width: 20px 10px 0 10px;
+    border-color: #70d1d1 transparent transparent;
+    translate: -50% 100%;
+  }
+.value {
+    position: absolute;
+    display: none;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 20px;
+    border-radius: 5px;
+    background: #fff;
+    opacity: .8;
+    color: #876344;
+    font-weight: bold;
+}

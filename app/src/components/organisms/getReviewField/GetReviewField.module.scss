@@ -1,0 +1,42 @@
+.showReviews {
+    background: #F7F2DF;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding-left: 10px;
+    min-height: calc(100vh - 80px - 340px);
+
+    .btn {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-right: 10px;
+        .rankingBtn {
+            background: #F2ECD4;
+            border-radius: 5px;
+            padding: 8px 12px;
+        }
+        .editBtn {
+            background: #F2ECD4;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 8px 12px;
+        }
+    }
+    .nullMsg {
+        font-weight: bold;
+        border: 3px solid #876344;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 15px 0 5px;
+    }
+    .getReviews {
+        // width: calc(100vw - 70px);
+        // width: 100%;
+        padding-bottom: 110px;
+
+        & > li {
+            padding: 40px 15px 0 25px;
+            width: 100%;
+        }
+    }
+}

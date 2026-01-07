@@ -1,0 +1,38 @@
+.reviewComment {
+    max-width: 440px;
+    // margin-bottom: 110px;
+    margin: 0 auto 100px;
+    padding: 20px 10px 0;
+
+    .nullMsg {
+        font-weight: bold;
+        border: 3px solid #876344;
+        border-radius: 15px;
+        padding: 20px;
+    }
+    
+    .commentField {
+        padding: 20px 20px 10px;
+        border: 3px solid #876344;
+        border-radius: 15px;
+        // width: 100%;
+        // margin: 0;
+        li {
+            margin: 10px 0;
+            // width: 100%;
+            .name {
+                font-size: 12px;
+                margin-left: 60px;
+                margin-bottom: 5px;
+    
+                .division {
+                    background: #876344;
+                    color: #fff;
+                    padding: 4px 8px;
+                    border-radius: 5px;
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+}

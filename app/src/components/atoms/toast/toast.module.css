@@ -1,0 +1,36 @@
+.toastContainer {
+    min-height: 15px;
+    width: fit-content;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF; 
+    border: solid 2px #f2b885;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 99000000000000;
+}
+
+.message {
+    color: black;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: pre;
+}
+
+.progressVar {
+    animation: toShort 10s linear;
+    height: 4px;
+    background-color: #f2b885; 
+    opacity: 0.9;
+}
+@keyframes toShort {
+    0%{
+      width: 100%;
+    }
+    100%{
+      width: 0%;
+    }
+}

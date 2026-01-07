@@ -1,0 +1,39 @@
+/* フォームのコンテナ */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #F7F2DF; /* 薄めの青 */
+    border-radius: 10px;
+}
+
+.input-box {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none; /* グレー */
+    text-align: center;
+    background-color: white; /* 黄緑 */
+}
+
+.error-message {
+    color: red; /* 赤字 */
+    margin-top: 10px; /* 上の余白 */
+}
+
+/* 警告メッセージのスタイル */
+.warning {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* ボタンを左右に配置 */
+    margin-top: 20px; /* 上部の入力フィールドとの間にスペースを追加 */
+}
+

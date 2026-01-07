@@ -1,0 +1,33 @@
+/* 全画面に背景色を適用 */
+body {
+    background-color: #F7F2DF; /* 薄いベージュ */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* アンケート全体のコンテナ */
+.questionnaire-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 20px 60px; /* 下部パディングを追加して、ボタンを上げる */
+    text-align: center;
+    background-color: #F7F2DF; /* 薄いベージュ */
+}
+
+/* タイトルのスタイリング */
+.title {
+    color: #876344; /* ブラウン */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* モバイル対応 */
+@media (max-width: 600px) {
+    .question-label {
+        font-size: 16px;
+    }
+}
+
+
+
+

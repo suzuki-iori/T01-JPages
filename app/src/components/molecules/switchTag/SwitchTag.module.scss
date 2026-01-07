@@ -1,0 +1,52 @@
+.switchTagField {
+    width: 100%;
+    // margin: 30px 20px 0;
+    margin-top: 30px;
+    padding: 0 20px;
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+
+    background: #CDE9B9;
+    .switchTag {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        // gap: 3px;
+        border-bottom: 3px solid #F7F2DF;
+        color: #fff;
+        // padding-top: 30px;
+        margin: 0 auto;
+        max-width: 500px;
+        // width: 100%;
+        // position: sticky;
+        // top: 0;
+        transform: translateY(3px);
+
+        li {
+            padding: 5px 8px 0;
+            width: 80px;
+            text-align: center;
+        }
+        .active {
+            color: #876344;
+            background: #F7F2DF;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            font-weight: bold;
+            transition: background .3s ease-in;
+        }
+        .plan.active {
+            background: #facccc;
+        }
+        .design.active {
+            background: #e7c9f1;
+        }
+        .skill.active {
+            background: #c6d8ff;
+        }
+        .present.active {
+            background: #C6F8F8;
+        }
+    }
+}

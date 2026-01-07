@@ -1,0 +1,31 @@
+/* 全体の背景色とフォント設定 */
+/* body {
+    background-color: #f7f2df;
+    font-family:'メイリオ', 'Meiryo','ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    margin: 0;
+    padding: 0;
+} */
+
+/* ログインフォームのコンテナ */
+.login-form-container {
+    width: 80%;
+    max-width: 360px;
+    margin: 50px auto;
+    padding: 15px;
+}
+
+/* タイトル */
+.title {
+    font-size: 1.5em;
+    color: #876344;
+    text-align: start;
+    margin-bottom: 40px;
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    margin-top: 10px;
+    text-align: center;
+}

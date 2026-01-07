@@ -1,0 +1,93 @@
+.container {
+    align-self: flex-start;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.58);
+    padding: 12px;
+    border-radius: 8px;
+    width: fit-content;
+}
+    
+.level {
+    font-size: 0.7em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.levelText {
+    padding-top: 12px;
+    padding-right: 1px;
+}
+
+.levelNumber {
+    /* background-image: url('/public/assets/img/hexagon.png'); */
+    background-color:#876344 ;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);  
+    width: 24px;
+    height: 28px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px; 
+    padding-top: 1px;
+}
+    
+.bar {
+    background-color: rgba(255, 255, 255, 0);
+    height: 20px;
+    width: 120px;
+    border: solid 3px #876344; /* ボーダーが必要な場合はこのままで */
+    border-inline: solid 3px #876344;
+    border-radius: 12px;
+    margin-left: 8px;
+    position: relative;
+}
+
+.progress {
+    position: absolute;
+    left: -2px;
+    background-color: #876344;
+    height: 100%;
+    border-radius: 12px;
+    width: 0; /* 動的に設定 */   
+}
+
+
+    
+.points {
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+    
+.pointContainer {
+    height: 1.25em;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-left: 1em;
+}
+    
+.png {
+    width: 1em;
+    margin-right: 5px;
+}
+
+.countContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 1em;
+}
+
+.countImg {
+    width: 1em;
+    height: 1em;
+    margin-right: 5px;
+}
+
