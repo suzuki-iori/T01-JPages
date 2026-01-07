@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styles from './GetOneReview.module.scss';
-import PointBar from '../../atoms/pointBar/PointBar';
-import GetComment from '../../atoms/getComment/GetComment';
-import {AppContext} from '../../../context/AppContextProvider';
+import PointBar from '../../../../components-old/atoms/pointBar/PointBar';
+import GetComment from '../../../../components-old/atoms/getComment/GetComment';
+import {AppContext} from '../../../../context/AppContextProvider';
 function GetOneReview(props) {
 	const {getReviewOneData, divisionName} = props;
 	const {

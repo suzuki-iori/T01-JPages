@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './GetReviewField.module.scss';
-import GetOneReview from '../../../../components-old/molecules/getOneReview/GetOneReview';
+import GetOneReview from '../getOneReview/GetOneReview';
 import GetReviewSortDialog from '../getReviewSortDialog/GetReviewSortDialog';
 import GetReviewComment from '../../../../components-old/molecules/getReviewComment/GetReviewComment';
 import { useContext } from 'react';
