@@ -1,10 +1,10 @@
 import React, {useEffect, useState, useContext} from 'react';
 import styles from './HomeField.module.scss';
-import SpeechBubble from '../../atoms/speechBubble/SpeechBubble.jsx';
-import Character from '../../atoms/character/Character.jsx';
-import { AppContext } from "../../../context/AppContextProvider.jsx";
-import Ajax from "../../../lib/Ajax";
-import filterData from '../../../lib/filterData.js';
+import SpeechBubble from '../../../../components-old/atoms/speechBubble/SpeechBubble.jsx';
+import Character from '../../../../components-old/atoms/character/Character.jsx';
+import { AppContext } from "../../../../context/AppContextProvider.jsx";
+import Ajax from "../../../../lib/Ajax.js";
+import filterData from '../../../../lib/filterData.js';
 
 
 function HomeField() {
