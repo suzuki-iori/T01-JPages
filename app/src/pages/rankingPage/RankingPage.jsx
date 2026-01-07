@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import Ranking from '../../organisms/ranking/Ranking';
-import RandomHamburger from '../../organisms/randomHamburger/RandomHamburger';
+import RandomHamburger from '../../components/randomHamburger/RandomHamburger';
 function RankingPage() {
 	return (
 		<>

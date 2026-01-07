@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/header/Header";
 import HomeField from "./components/homeField/HomeField";
-import RandomHamburger from "../../components-old/organisms/randomHamburger/RandomHamburger";
+import RandomHamburger from "../../components/randomHamburger/RandomHamburger";
 function HomePage() {
   return (
     <>
