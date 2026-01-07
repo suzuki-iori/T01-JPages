@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './GetReviewField.module.scss';
 import GetOneReview from '../getOneReview/GetOneReview';
 import GetReviewSortDialog from '../getReviewSortDialog/GetReviewSortDialog';
-import GetReviewComment from '../../../../components-old/molecules/getReviewComment/GetReviewComment';
+import GetReviewComment from '../getReviewComment/GetReviewComment';
 import { useContext } from 'react';
 import { AppContext } from '../../../../context/AppContextProvider';
 
