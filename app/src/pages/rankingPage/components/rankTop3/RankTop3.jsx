@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RankTop3.module.scss';
-import RankTopIcon from '../../molecules/rankTopIcon/RankTopIcon';
+import RankTopIcon from '../../../../components-old/molecules/rankTopIcon/RankTopIcon';
 
 function RankTop3(props) {
 	const {topRankingData, handleClick} = props;

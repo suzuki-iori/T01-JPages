@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../../../context/AppContextProvider';
 import styles from './Ranking.module.scss';
 import SwitchTag from '../../../../components-old/molecules/switchTag/SwitchTag';
-import RankTop3 from '../../../../components-old/organisms/rankTop3/RankTop3';
+import RankTop3 from '../rankTop3/RankTop3';
 import RankTeamField from '../../../../components-old/molecules/rankTeamField/RankTeamField';
 import Ajax from '../../../../lib/Ajax'
 import filterData from '../../../../lib/filterData';
