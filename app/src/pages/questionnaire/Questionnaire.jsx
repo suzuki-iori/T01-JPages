@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Ajax from '../../lib/Ajax';
 import Styles from './questionnaire.module.css';
-import NumberInput from './components/numberinput/NumberInput';
-import TextInput from '../../components-old/molecules/textinput/TextInput'
 import QuestionnaireForm from './components/questionnaireform/QuestionnaireForm';
 import BackButton from '../../components-old/atoms/backButton/BackButton'
 import HelpButton from '../../components-old/atoms/helpButton/HelpButton';
@@ -125,9 +123,7 @@ const Questionnaire = () => {
 			<QuestionnaireForm
 				handleSubmit={handleSubmit}
 				questions={questions}
-				TextInput={TextInput}
 				handleAnswerChange={handleAnswerChange}
-				NumberInput={NumberInput}
 				answers={answers}
 				errorMessage={errorMessage}
 			/>

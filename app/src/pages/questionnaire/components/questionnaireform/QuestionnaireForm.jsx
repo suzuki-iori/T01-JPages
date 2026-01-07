@@ -1,7 +1,9 @@
 import SubmitButton from "../../../../components-old/atoms/submitbutton/SubmitButton";
+import TextInput from "../textinput/TextInput";
+import NumberInput from "../numberinput/NumberInput"
 import styles from "./questionnaireForm.module.css"
 
-function QuestionnaireForm({handleSubmit, questions, TextInput, handleAnswerChange, NumberInput, answers}) {
+function QuestionnaireForm({handleSubmit, questions, handleAnswerChange, answers}) {
 	return (
 		<>
 			<form className={styles["questionnaire-form"]} onSubmit={handleSubmit}>
