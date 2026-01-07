@@ -6,7 +6,7 @@ import Header from "../../components/header/Header";
 import Navigation from "../../components/navigation/Navigation";
 import Character from "../../components-old/atoms/character/Character";
 import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
-import TeamAbout from "../../components-old/molecules/teamAbout/TeamAbout";
+import TeamAbout from "./components/teamAbout/TeamAbout";
 import TeamStudents from "../../components-old/molecules/teamStudents/TeamStudents";
 import EditButton from "../../components-old/atoms/editButton/EditButton";
 import TeamModal from "./components/teamModal/TeamModal";
