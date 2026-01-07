@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
-// import Styles from "./teamProfile.module.css";差分でファイル消したかもだから取っておく
+import Styles from "./ProfilePage.module.css";
 import Ajax from "../../lib/Ajax";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/navigation/Navigation";

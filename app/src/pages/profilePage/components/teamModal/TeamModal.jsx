@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ReactModal from 'react-modal';
 import Ajax from '../../../../lib/Ajax';
-// import Styles from './modal.module.css'; 差分でファイル消したかもだから取っておく
+import Styles from './TeamModal.module.css'; 
 import { AppContext } from '../../../../context/AppContextProvider';
 
 ReactModal.setAppElement('#root');
