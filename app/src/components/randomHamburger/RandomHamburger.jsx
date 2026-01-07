@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../../../context/AppContextProvider';
-import Hamburger1 from '../../atoms/hamburger_1/Hamburger1';
-import Hamburger2 from '../../atoms/hamburger_2/Hamburger2';
-import Hamburger3 from '../../atoms/hamburger_3/Hamburger3';
-import Hamburger4 from '../../atoms/hamburger_4/Hamburger4';
-import Hamburger5 from '../../atoms/hamburger_5/Hamburger5';
-import Hamburger6 from '../../atoms/hamburger_6/Hamburger6';
+import Hamburger1 from './components/hamburger_1/Hamburger1';
+import Hamburger2 from './components/hamburger_2/Hamburger2';
+import Hamburger3 from './components/hamburger_3/Hamburger3';
+import Hamburger4 from './components/hamburger_4/Hamburger4';
+import Hamburger5 from './components/hamburger_5/Hamburger5';
+import Hamburger6 from './components/hamburger_6/Hamburger6';
 import styles from './RandomHamburger.module.scss';
 
 // ハンバーガーを取得
