@@ -5,7 +5,7 @@ import Ajax from "../../lib/Ajax";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/navigation/Navigation";
 import Character from "../../components/character/Character";
-import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
+import RaderChart from "./components/raderChart/RaderChart";
 import TeamAbout from "./components/teamAbout/TeamAbout";
 import TeamStudents from "./components/teamStudents/TeamStudents";
 import EditButton from "./components/editButton/EditButton";
