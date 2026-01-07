@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState, useRef } from "react";
 import style from './Items.module.scss';
-import Ajax from "../../../lib/Ajax";
-import { AppContext } from "../../../context/AppContextProvider";
-import Item from '../../atoms/item/Item';
+import Ajax from "../../../../lib/Ajax";
+import { AppContext } from "../../../../context/AppContextProvider";
+import Item from '../../../../components-old/atoms/item/Item';
 
 function Items(props) {
   // props
