@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ScanBUsinessCardFormSelect from "../../../../components-old/atoms/selectclass/SelectClass";
+import SelectClass from "../selectclass/SelectClass";
 import SubmitButton from "../../../../components-old/atoms/submitbutton/SubmitButton";
 import RescanButton from "../rescanButton/RescanButton";
 import styles from "./scanBusinessCardForm.module.css";
 
 const  ScanBusinessCardForm =(props) =>  {
 const { handleSubmit, visitorType, setVisitorType, setErrorMessage, errorMessage, text, setText, loading, handleRescan } = props;
-console.log('--ScanBusinessCardForm');
 const [inputErrors, setInputErrors] = useState({ name: '', email: '', companyName: ''});
 
 
@@ -39,7 +38,7 @@ const handleInputChange = (field, value) => {
 
 return (
 	<form onSubmit={handleSubmit} className={styles["input-container"]}>
-		<ScanBUsinessCardFormSelect
+		<SelectClass
 			visitorType={visitorType}
 			setVisitorType={setVisitorType}
 			setErrorMessage={setErrorMessage}

@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./selectClass.module.css";
 
-const  ScanBUsinessCardFormSelect = (props) =>  {
-	console.log('--ScanBUsinessCardFormSelect');
+const SelectClass = (props) =>  {
 	const {visitorType, setVisitorType, setErrorMessage, loading } = props;
 	return (
 		<>
@@ -29,4 +28,4 @@ const  ScanBUsinessCardFormSelect = (props) =>  {
 		</>
 	)
 };
-export default ScanBUsinessCardFormSelect;
+export default SelectClass;
