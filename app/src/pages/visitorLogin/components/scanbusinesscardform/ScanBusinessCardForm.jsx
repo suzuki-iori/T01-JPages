@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SelectClass from "../selectclass/SelectClass";
-import SubmitButton from "../../../../components-old/atoms/submitbutton/SubmitButton";
+import SubmitButton from "../../../../components/submitbutton/SubmitButton";
 import RescanButton from "../rescanButton/RescanButton";
 import styles from "./scanBusinessCardForm.module.css";
 

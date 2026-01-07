@@ -1,4 +1,4 @@
-import SubmitButton from "../../../../components-old/atoms/submitbutton/SubmitButton";
+import SubmitButton from "../../../../components/submitbutton/SubmitButton";
 import TextInput from "../textinput/TextInput";
 import NumberInput from "../numberinput/NumberInput"
 import styles from "./questionnaireForm.module.css"
