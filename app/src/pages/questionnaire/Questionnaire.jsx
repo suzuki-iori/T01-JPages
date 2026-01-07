@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Ajax from '../../lib/Ajax';
 import Styles from './questionnaire.module.css';
-import NumberInput from '../../components-old/molecules/numberinput/NumberInput';
+import NumberInput from './components/numberinput/NumberInput';
 import TextInput from '../../components-old/molecules/textinput/TextInput'
 import QuestionnaireForm from './components/questionnaireform/QuestionnaireForm';
 import BackButton from '../../components-old/atoms/backButton/BackButton'
