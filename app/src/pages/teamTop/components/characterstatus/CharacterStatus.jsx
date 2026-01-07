@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./characterStatus.module.css";
-import Progress from "../../atoms/progress/Progress";
+import Progress from "../../../../components-old/atoms/progress/Progress";
 
-const LevelAndPoints = (props) => {
+const CharacterStatus = (props) => {
 	// data
 	const {character, count} = props;
 	const [progress, setProgress] = useState(0);
-	console.log(character);
 
 	// ポイントバーの長さを決める
 	useEffect(() => {
@@ -54,4 +53,4 @@ const LevelAndPoints = (props) => {
 	);
 };
 
-export default LevelAndPoints;
+export default CharacterStatus;
