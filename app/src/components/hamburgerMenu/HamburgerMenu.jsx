@@ -2,6 +2,8 @@
 import styles from './HamburgerMenu.module.scss';
 
 function HamburgerMenu() {
+  console.log("もし思い出したらここにきて components/hanburgerMenu");
+  
   return (
     <>
       <div className={styles.msNavContainer}>
