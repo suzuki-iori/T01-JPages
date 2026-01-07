@@ -4,7 +4,7 @@ import Styles from "./teamProfile.module.css";
 import Ajax from "../../lib/Ajax";
 import Header from "../../components/header/Header";
 import Navigation from "../../components/navigation/Navigation";
-import Character from "../../components-old/atoms/character/Character";
+import Character from "../../components/character/Character";
 import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
 import TeamAbout from "./components/teamAbout/TeamAbout";
 import TeamStudents from "./components/teamStudents/TeamStudents";
