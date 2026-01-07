@@ -1,6 +1,6 @@
 import styles from './ReviewForm.module.scss'
-import InputField from '../../molecules/inputField/InputField.jsx';
-import Comment from '../../molecules/comment/Comment.jsx';
+import InputField from '../../../../components-old/molecules/inputField/InputField.jsx';
+import Comment from '../../../../components-old/molecules/comment/Comment.jsx';
 
 function ReviewForm(props) {
 	const {
