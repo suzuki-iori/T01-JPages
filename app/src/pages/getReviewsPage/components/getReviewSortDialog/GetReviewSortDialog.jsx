@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './GetReviewSortDialog.module.scss'
-import SortToggleBtn from '../../../../components-old/atoms/sortToggleBtn/SortToggleBtn.jsx';
+import SortToggleBtn from '../sortToggleBtn/SortToggleBtn.jsx';
 function GetReviewSortDialog(props) {
 	const {
 		setDialog, //ダイアログの表示
