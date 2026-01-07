@@ -5,7 +5,7 @@ import Header from '../../components/header/Header';
 import Navigation from '../../components/navigation/Navigation';
 import GetReviewField from './components/getReviewField/GetReviewField';
 import Ajax from '../../../lib/Ajax'
-import PointGraph from '../../molecules/pointGraph/PointGraph';
+import PointGraph from './components/pointGraph/PointGraph';
 
 function GetReviewsPage() {
   // context
