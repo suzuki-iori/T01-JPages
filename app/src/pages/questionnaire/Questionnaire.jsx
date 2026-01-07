@@ -3,7 +3,7 @@ import Ajax from '../../lib/Ajax';
 import Styles from './questionnaire.module.css';
 import NumberInput from '../../components-old/molecules/numberinput/NumberInput';
 import TextInput from '../../components-old/molecules/textinput/TextInput'
-import QuestionnaireForm from '../../components-old/organisms/questionnaireform/QuestionnaireForm';
+import QuestionnaireForm from './components/questionnaireform/QuestionnaireForm';
 import BackButton from '../../components-old/atoms/backButton/BackButton'
 import HelpButton from '../../components-old/atoms/helpButton/HelpButton';
 import { AppContext } from '../../context/AppContextProvider';

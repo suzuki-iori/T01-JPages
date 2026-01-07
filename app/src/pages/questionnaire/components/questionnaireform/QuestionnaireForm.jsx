@@ -1,4 +1,4 @@
-import SubmitButton from "../../atoms/submitbutton/SubmitButton";
+import SubmitButton from "../../../../components-old/atoms/submitbutton/SubmitButton";
 import styles from "./questionnaireForm.module.css"
 
 function QuestionnaireForm({handleSubmit, questions, TextInput, handleAnswerChange, NumberInput, answers}) {
