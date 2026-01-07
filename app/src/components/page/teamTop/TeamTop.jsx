@@ -4,7 +4,7 @@ import styles from "./teamTop.module.css";
 import Header from "../../organisms/header/Header";
 import Navigation from "../../organisms/navigation/Navigation";
 import CharacterStatus from "../../molecules/characterstatus/CharacterStatus";
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider";
 
 const TeamTop = () => {
 	// data

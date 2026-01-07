@@ -5,7 +5,7 @@ import Ajax from '../../../lib/Ajax';
 import Camera from '../../atoms/camera/Camera'
 import ScanBusinessCardForm from '../../organisms/scanbusinesscardform/ScanBusinessCardForm'
 import LoadingMessage from '../../atoms/loadingmessage/LoadingMessage';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 
 const ScanBusinessCardMobile = () => {
 	const [text, setText] = useState({name: '',	companyName: '', email: ''});

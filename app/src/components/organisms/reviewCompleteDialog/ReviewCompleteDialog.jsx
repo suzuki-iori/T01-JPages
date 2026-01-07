@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './ReviewCompleteDialog.module.scss';
-import { AppContext } from '../../AppContextProvider.jsx';
+import { AppContext } from '../../../context/AppContextProvider.jsx';
 function ReviewCompleteDialog(props) {
 	const {status} = props;
 	const [message, setMessage] = useState(status ? '評価ありがとうございます！' : 'すでに投票されています');

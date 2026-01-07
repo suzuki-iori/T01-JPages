@@ -4,7 +4,7 @@ import Styles from './studentLogin.module.css'
 import LoginInput from '../../atoms/logininput/LoginInput';
 import SubmitButton from '../../atoms/submitbutton/SubmitButton';
 import HelpButton from '../../atoms/helpButton/HelpButton';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 
 const StudentLogin = () => {
   const [number, setNumber] = useState('');

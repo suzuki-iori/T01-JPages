@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 import Hamburger1 from '../../atoms/hamburger_1/Hamburger1';
 import Hamburger2 from '../../atoms/hamburger_2/Hamburger2';
 import Hamburger3 from '../../atoms/hamburger_3/Hamburger3';

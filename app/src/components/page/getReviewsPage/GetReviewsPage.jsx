@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 import styles from './GetReviewsPage.module.scss'
 import Header from '../../organisms/header/Header';
 import Navigation from '../../organisms/navigation/Navigation';

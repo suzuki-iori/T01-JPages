@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Navigation.module.scss';
 import { useContext } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 
 function Navigation() {
 	const {

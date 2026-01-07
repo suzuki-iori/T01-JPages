@@ -4,7 +4,7 @@ import ReviewForm from '../../organisms/reviewForm/ReviewForm.jsx';
 import ReviewCompleteDialog from '../../organisms/reviewCompleteDialog/ReviewCompleteDialog.jsx';
 import ReviewComfirmDialog from '../../organisms/reviewComfirmDialog/ReviewComfirmDialog.jsx';
 import Navigation from '../../organisms/navigation/Navigation.jsx';
-import { AppContext } from '../../AppContextProvider.jsx';
+import { AppContext } from '../../../context/AppContextProvider.jsx';
 import Ajax from '../../../lib/Ajax.js';
 function ReviewPage() {
     // data

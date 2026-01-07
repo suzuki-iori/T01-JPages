@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState, useRef } from "react";
 import style from './Items.module.scss';
 import Ajax from "../../../lib/Ajax";
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider";
 import Item from '../../atoms/item/Item';
 
 function Items(props) {

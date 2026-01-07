@@ -6,7 +6,7 @@ import TextInput from '../../molecules/textinput/TextInput'
 import QuestionnaireForm from '../../organisms/questionnaireform/QuestionnaireForm';
 import BackButton from '../../atoms/backButton/BackButton'
 import HelpButton from '../../atoms/helpButton/HelpButton';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 
 const Questionnaire = () => {
 	const [questions, setQuestions] = useState([]);

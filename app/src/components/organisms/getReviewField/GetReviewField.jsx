@@ -4,7 +4,7 @@ import GetOneReview from '../../molecules/getOneReview/GetOneReview';
 import GetReviewSortDialog from '../getReviewSortDialog/GetReviewSortDialog';
 import GetReviewComment from '../../molecules/getReviewComment/GetReviewComment';
 import { useContext } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 
 function GetReviewField(props) {
 	const {

@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import styles from './HomeField.module.scss';
 import SpeechBubble from '../../atoms/speechBubble/SpeechBubble.jsx';
 import Character from '../../atoms/character/Character.jsx';
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider.jsx";
 import Ajax from "../../../lib/Ajax";
 import filterData from '../../../lib/filterData.js';
 

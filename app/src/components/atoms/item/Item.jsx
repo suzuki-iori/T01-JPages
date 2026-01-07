@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import style from './Item.module.scss';
 import Draggable from 'react-draggable';
 import Ajax from "../../../lib/Ajax";
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider";
 function Item(props) {
   // props
   const { data, wrapTop, init, characterGet } = props;

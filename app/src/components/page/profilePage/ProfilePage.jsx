@@ -10,7 +10,7 @@ import TeamAbout from "../../molecules/teamAbout/TeamAbout";
 import TeamStudents from "../../molecules/teamStudents/TeamStudents";
 import EditButton from "../../atoms/editButton/EditButton";
 import Modal from "../../organisms/modal/Modal";
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider";
 
 const ProfilePage = () => {
 	// data

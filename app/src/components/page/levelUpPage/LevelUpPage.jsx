@@ -4,7 +4,7 @@ import LevelUpCharacter from "../../organisms/levelUpCharacter/LevelUpCharacter"
 import Items from "../../organisms/Items/Items";
 import Navigation from "../../organisms/navigation/Navigation";
 import style from "./LevelUpPage.module.scss";
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider";
 import Ajax from "../../../lib/Ajax";
 
 function LevelUpPage() {

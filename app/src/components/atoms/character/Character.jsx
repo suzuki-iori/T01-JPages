@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import style from "./Character.module.scss";
-import { AppContext } from "../../AppContextProvider";
+import { AppContext } from "../../../context/AppContextProvider";
 function Character(props) {
   // context
   const {

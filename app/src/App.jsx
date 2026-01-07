@@ -1,6 +1,6 @@
 import './App.scss';
 import { useContext, useEffect, useState } from 'react';
-import { AppContext } from './components/AppContextProvider';
+import { AppContext } from './context/AppContextProvider';
 import StudentLogin from './components/page/studentLogin/StudentLogin';
 import ScanBusinessCardMobile from './components/page/scanBusinessCard-phone/ScanBusinessCard';
 import HomePage from './components/page/homePage/HomePage';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styles from './GetReviewComment.module.scss';
 import GetComment from '../../atoms/getComment/GetComment';
-import {AppContext} from '../../AppContextProvider';
+import {AppContext} from '../../../context/AppContextProvider';
 function GetReviewComment(props) {
 	const {
 		GetReviewEditData,

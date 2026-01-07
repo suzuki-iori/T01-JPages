@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 import Styles from './toast.module.css';
 
 function Toast() {

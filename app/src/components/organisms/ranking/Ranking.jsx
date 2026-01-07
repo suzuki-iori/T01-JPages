@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 import styles from './Ranking.module.scss';
 import SwitchTag from '../../molecules/switchTag/SwitchTag';
 import RankTop3 from '../rankTop3/RankTop3';

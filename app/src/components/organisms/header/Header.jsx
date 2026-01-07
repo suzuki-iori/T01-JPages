@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../../AppContextProvider';
+import { AppContext } from '../../../context/AppContextProvider';
 import styles from './Header.module.scss';
 import  HelpButton  from '../../atoms/helpButton/HelpButton';
 
