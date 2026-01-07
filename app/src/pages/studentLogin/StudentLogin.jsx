@@ -3,7 +3,7 @@ import Ajax from '../../../lib/Ajax';
 import Styles from './studentLogin.module.css'
 import LoginInput from '../../atoms/logininput/LoginInput';
 import SubmitButton from '../../atoms/submitbutton/SubmitButton';
-import HelpButton from '../../atoms/helpButton/HelpButton';
+import HelpButton from '../../components/helpButton/HelpButton';
 import { AppContext } from '../../../context/AppContextProvider';
 
 const StudentLogin = () => {

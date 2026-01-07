@@ -3,7 +3,7 @@ import Ajax from '../../lib/Ajax';
 import Styles from './questionnaire.module.css';
 import QuestionnaireForm from './components/questionnaireform/QuestionnaireForm';
 import BackButton from './components/backButton/BackButton'
-import HelpButton from '../../components-old/atoms/helpButton/HelpButton';
+import HelpButton from '../../components/helpButton/HelpButton';
 import { AppContext } from '../../context/AppContextProvider';
 
 const Questionnaire = () => {

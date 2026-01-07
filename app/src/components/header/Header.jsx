@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContextProvider';
 import styles from './Header.module.scss';
-import  HelpButton  from '../../components-old/atoms/helpButton/HelpButton';
+import  HelpButton  from '../helpButton/HelpButton';
 
 function Header() {
 	const {

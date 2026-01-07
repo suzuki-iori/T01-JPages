@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './HelpButton.module.scss';
-import { AppContext } from '../../../context/AppContextProvider';
+import { AppContext } from '../../context/AppContextProvider';
 const HelpButton = () => {
   const {
     setHelpModalIsOpen
