@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../organisms/header/Header';
+import Header from '../../components/header/Header';
 import Ranking from '../../organisms/ranking/Ranking';
 import RandomHamburger from '../../organisms/randomHamburger/RandomHamburger';
 function RankingPage() {

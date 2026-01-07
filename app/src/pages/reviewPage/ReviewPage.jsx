@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Header from '../../organisms/header/Header.jsx';
+import Header from '../../components/header/Header.jsx';
 import ReviewForm from '../../organisms/reviewForm/ReviewForm.jsx';
 import ReviewCompleteDialog from '../../organisms/reviewCompleteDialog/ReviewCompleteDialog.jsx';
 import ReviewComfirmDialog from '../../organisms/reviewComfirmDialog/ReviewComfirmDialog.jsx';

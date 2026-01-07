@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components-old/organisms/header/Header";
+import Header from "../../components/header/Header";
 import HomeField from "../../components-old/organisms/homeField/HomeField";
 import RandomHamburger from "../../components-old/organisms/randomHamburger/RandomHamburger";
 function HomePage() {

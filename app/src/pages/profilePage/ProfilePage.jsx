@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import Styles from "./teamProfile.module.css";
 import Ajax from "../../lib/Ajax";
-import Header from "../../components-old/organisms/header/Header";
+import Header from "../../components/header/Header";
 import Navigation from "../../components-old/organisms/navigation/Navigation";
 import Character from "../../components-old/atoms/character/Character";
 import RaderChart from "../../components-old/atoms/raderChart/RaderChart";

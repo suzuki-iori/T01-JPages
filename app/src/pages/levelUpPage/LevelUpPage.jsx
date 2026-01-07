@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import Header from "../../organisms/header/Header";
+import Header from "../../components/header/Header";
 import LevelUpCharacter from "../../organisms/levelUpCharacter/LevelUpCharacter"
 import Items from "../../organisms/Items/Items";
 import Navigation from "../../organisms/navigation/Navigation";
