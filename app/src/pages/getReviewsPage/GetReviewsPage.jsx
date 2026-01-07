@@ -3,7 +3,7 @@ import { AppContext } from '../../../context/AppContextProvider';
 import styles from './GetReviewsPage.module.scss'
 import Header from '../../organisms/header/Header';
 import Navigation from '../../organisms/navigation/Navigation';
-import GetReviewField from '../../organisms/getReviewField/GetReviewField';
+import GetReviewField from './components/getReviewField/GetReviewField';
 import Ajax from '../../../lib/Ajax'
 import PointGraph from '../../molecules/pointGraph/PointGraph';
 
