@@ -7,7 +7,7 @@ import HomePage from './pages/homePage/HomePage';
 import RankingPage from './pages/rankingPage/RankingPage';
 import ReviewPage from './pages/reviewPage/ReviewPage';
 import GetReviewsPage from './pages/getReviewsPage/GetReviewsPage';
-import LevelUpPage from './components-old/page/levelUpPage/LevelUpPage';
+import LevelUpPage from './pages/levelUpPage/LevelUpPage';
 import ProfilePage from './components-old/page/profilePage/ProfilePage';
 import Questionnaire from './components-old/page/questionnaire/Questionnaire';
 import TeamTop from './components-old/page/teamTop/TeamTop';
