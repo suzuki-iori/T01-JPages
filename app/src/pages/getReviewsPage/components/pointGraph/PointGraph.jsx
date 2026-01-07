@@ -26,7 +26,6 @@ ChartJS.register(
 );
 
 function PointGraph({ getReviewData }) {
-	// const [sumTotal, setSumTotal] = useState(0);
   const [sumPlan, setSumPlan] = useState(0);
   const [sumDesign, setSumDesign] = useState(0);
   const [sumSkill, setSumSkill] = useState(0);
@@ -46,13 +45,11 @@ function PointGraph({ getReviewData }) {
     });
 		if(plan === 0 && design === 0 && skill === 0 && present === 0 )
 		{
-			// setSumTotal(0);
 			setSumPlan(1);
 			setSumDesign(1);
 			setSumSkill(1);
 			setSumPresent(1);
 		} else {
-			// setSumTotal(plan + design + skill + present);
 			setSumPlan(plan);
 			setSumDesign(design);
 			setSumSkill(skill);

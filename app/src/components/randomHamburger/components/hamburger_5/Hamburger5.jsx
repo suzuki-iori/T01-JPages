@@ -3,7 +3,7 @@ import styles from './Hamburger5.module.scss';
 
 function Hamburger5({onActivate, isActive}) {
 	const toggleActive = () => {
-		onActivate(!isActive); //active状態をトグル
+		onActivate(!isActive);
 	};
 
 	return (

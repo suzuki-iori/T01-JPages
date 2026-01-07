@@ -157,47 +157,47 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 			Ajax(loginToken, `team/${team.id}`, 'PUT', { num: team.num, grade: team.grade, name: name, detail: description })
 			.then((data) => {
 				if(data.status === 'ParameterError') {
-          setToast({toast: true, state: 'profile', message: '入力情報にエラーがあります。もう一度入力してください。'})
-        }
+					setToast({toast: true, state: 'profile', message: '入力情報にエラーがあります。もう一度入力してください。'})
+				}
 				else if(data.status === 'Unauthorized') {
 					setToast({toast: true, state: 'visitorLogin', message: '変更権限がありません。ログインしなおしてください。'})
 				}
 				else if(data.status === 'failure') {
-          // 失敗
-          setToast({toast: true, state: 'teamTop', message: 'チームが存在しません。'})
-        }
-				else if(data.status === 'TokenError') {
-          // 失敗
-          setToast({toast: true, state: 'visitorLogin', message: '認証エラーです。もう一度ログインしてください。'})
-        }
-				setLoading(false);
-			});
-		}
-		// 変更された分だけパラメータを更新
-		for (const paramUpdate of parameterUpdates) {
-			setLoading(true);
-			Ajax(loginToken, `parameter/${paramUpdate.id}`, 'PUT', { name: paramUpdate.name, score: paramUpdate.score })
-			.then((data) => {
-				if(data.status === 'ParameterError') {
-          setToast({toast: true, state: 'profile', message: '入力情報にエラーがあります。もう一度入力してください。'})
-        }
-				else if(data.status === 'Unauthorized') {
-					setToast({toast: true, state: 'visitorLogin', message: '変更権限がありません。ログインしなおしてください。'})
+					// 失敗
+					setToast({toast: true, state: 'teamTop', message: 'チームが存在しません。'})
 				}
-				else if(data.status === 'failure') {
-          // 失敗
-          setToast({toast: true, state: 'teamTop', message: 'チームが存在しません。'})
-        }
 				else if(data.status === 'TokenError') {
-          // 失敗
-          setToast({toast: true, state: 'visitorLogin', message: '認証エラーです。もう一度ログインしてください。'})
-        }
+					// 失敗
+					setToast({toast: true, state: 'visitorLogin', message: '認証エラーです。もう一度ログインしてください。'})
+				}
 				setLoading(false);
 			});
-		}
-		onSave({ ...team, name, detail: description, parameters });
-		handleCloseModal();
-	};
+			}
+			// 変更された分だけパラメータを更新
+			for (const paramUpdate of parameterUpdates) {
+				setLoading(true);
+				Ajax(loginToken, `parameter/${paramUpdate.id}`, 'PUT', { name: paramUpdate.name, score: paramUpdate.score })
+				.then((data) => {
+					if(data.status === 'ParameterError') {
+						setToast({toast: true, state: 'profile', message: '入力情報にエラーがあります。もう一度入力してください。'})
+					}
+					else if(data.status === 'Unauthorized') {
+						setToast({toast: true, state: 'visitorLogin', message: '変更権限がありません。ログインしなおしてください。'})
+					}
+					else if(data.status === 'failure') {
+						// 失敗
+						setToast({toast: true, state: 'teamTop', message: 'チームが存在しません。'})
+					}
+					else if(data.status === 'TokenError') {
+						// 失敗
+						setToast({toast: true, state: 'visitorLogin', message: '認証エラーです。もう一度ログインしてください。'})
+					}
+						setLoading(false);
+				});
+			}
+			onSave({ ...team, name, detail: description, parameters });
+			handleCloseModal();
+		};
 
 	const handleCancel = () => {
 		// 元のデータにリセット

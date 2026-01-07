@@ -2,7 +2,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    // display: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +33,6 @@
             gap: 6px;
             text-align: center;
             li {
-                // padding: 2px;
                 input {
                     display: none;
                 }
@@ -120,7 +118,6 @@
                 width: 20px;
                 height: 20px;
                 background-color: #F2ECD4;
-                // background-image: url('https://placehold.jp/150x150.png');
                 background-position: center;
                 background-size: contain;
             }

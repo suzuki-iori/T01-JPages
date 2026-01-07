@@ -3,7 +3,6 @@ svg {
     position: absolute;
     width: 80px;
     cursor: pointer;
-    /*   border: 1px solid black; */
     background-color: #fff;
 }
 .plate {
@@ -14,8 +13,6 @@ svg {
     left: 20px;
     z-index: 999;
     .burger {
-        // filter: url(#gooeyness);
-        
         .line1 {
             stroke-dasharray: 21 185.62753295898438;
             transition-delay: 0;

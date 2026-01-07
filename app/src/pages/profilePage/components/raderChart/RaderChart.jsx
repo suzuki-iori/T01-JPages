@@ -50,12 +50,6 @@ const RaderChart = ({ data }) => {
 					datalabels: {
 						display: false, // デフォルトのデータラベルを無効化（カスタムで実装）
 					},
-					// centerTextPlugin: {
-					// 	display: false
-					// },
-					// percentageLabelPlugin: {
-					// 	display: false
-					// }
 				},
 				maintainAspectRatio: false // アスペクト比を維持しない
 			}

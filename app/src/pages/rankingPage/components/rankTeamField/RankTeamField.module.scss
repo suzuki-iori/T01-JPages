@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    // gap: 10px;
     align-items: center;
     border: 3px solid #876344;
     max-width: 360px;
@@ -34,8 +33,6 @@
     }
     .teamText {
         margin-top: 8px;
-        // margin-left: 10px;
-        // max-width: 140px;
         overflow: hidden;
 
         .teamName {
@@ -44,7 +41,6 @@
             min-width: 100px;
             max-width: 180px;
 
-            // width: 250px;
             .teamName_item {
                 font-size: 18px;
                 white-space: nowrap;
@@ -59,22 +55,20 @@
 
                 @keyframes MoveLeft {
                     from {
-                      transform: translateX(100%);
+                        transform: translateX(100%);
                     }
                     to {
-                      transform: translateX(-100%);
+                        transform: translateX(-100%);
                     }
-                  }
-                  
-                  @keyframes MoveLeft2 {
+                }
+                @keyframes MoveLeft2 {
                     from {
-                      transform: translateX(0);
+                        transform: translateX(0);
                     }
                     to {
-                      transform: translateX(-200%);
+                        transform: translateX(-200%);
                     }
-                  }
-                  
+                }
             }
         }
         .count {

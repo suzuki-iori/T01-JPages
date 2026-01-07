@@ -1,10 +1,7 @@
 .getCommentField {
     display: flex;
     align-items: center;
-    // gap: 10px;
     justify-content: start;
-    // margin-top: 12px;
-    // margin-bottom: 12px;
     .icon {
         min-width: 60px;
         display: flex;
@@ -27,7 +24,6 @@
     .commentBox {
         background: #fff;
         border-radius: 5px;
-        // max-width: 350px;
         padding: 12px;
         font-size: 12px;
     }

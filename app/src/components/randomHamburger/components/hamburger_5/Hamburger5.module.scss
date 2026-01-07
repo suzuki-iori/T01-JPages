@@ -3,7 +3,6 @@ svg {
     position: absolute;
     width: 80px;
     cursor: pointer;
-    /*   border: 1px solid black; */
     background-color: #fff;
 }
 
@@ -15,8 +14,6 @@ svg {
     left: 20px;
     z-index: 999;
     .burger {
-        // filter: url(#gooeyness);
-
         .line1 {
             stroke-dasharray: 40 40;
         }
@@ -32,7 +29,6 @@ svg {
     }
     .x {
         transform: scale(0);
-        // transition: transform 400ms;
         transition: transform 400ms 50ms;
 
         .line {
@@ -46,8 +42,6 @@ svg {
         stroke-linecap: round;
         stroke-linejoin: round;
         transform-origin: 50%;
-        // transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
-        // transform 500ms 200ms;
         transition: stroke-dasharray 400ms 100ms, stroke-dashoffset 400ms 100ms,
         transform 400ms 100ms;
     }

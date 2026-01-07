@@ -1,9 +1,8 @@
-import React from 'react';
 import styles from './Hamburger1.module.scss';
 
 function Hamburger1({onActivate, isActive}) {
 	const toggleActive = () => {
-			onActivate(!isActive); //active状態をトグル
+		onActivate(!isActive);
 	};
 
 	return (

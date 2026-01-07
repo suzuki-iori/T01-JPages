@@ -1,5 +1,4 @@
 .activeMenu {
-    // display: block;
     position: fixed;
     bottom: 20px;
     left: 20px;
@@ -37,11 +36,9 @@
         @keyframes moveReverseMenu1 {
             0% {
                 left: 100px;
-                // display: block;
             }
             100% {
                 left: 0;
-                // display: none;
             }
         }
     }

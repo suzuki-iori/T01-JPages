@@ -9,11 +9,7 @@ import filterData from '../../../../lib/filterData.js';
 
 function HomeField() {
   // data
-  // const homeHeight = (window.innerHeight - 220); // heder80px 画面に余裕を持たせる20px
-  // const homeWidth = (window.innerWidth);
-  // const imgHeight = 160;
-  // const imgWidth = 100;
-  // const  [positions, setPositions] = useState([]); 
+
   const [getCharacter, setGetCharacter] = useState([]);
   const [showCharacters, setShowCharacters] = useState([]);
   // context
@@ -70,29 +66,6 @@ function HomeField() {
     filterCharacters();
   }, [grade])
 
-  //ランダムな位置に表示する
-  // useEffect(() => {
-  //   const newPositions = [];
-  //   showCharacters.forEach((e, index) => {
-  //     let isLoop = true;
-  //     let randomTop;
-  //     let randomLeft;
-  //     let loopCount = 0;
-  //     while (isLoop) {
-  //       randomTop = Math.floor(Math.random() * (homeHeight - imgHeight));
-  //       randomLeft = Math.floor(Math.random() * (homeWidth - imgWidth));
-  //       isLoop = newPositions.some((elm) => Math.abs(randomTop - elm.top) <= 90 && Math.abs(randomLeft - elm.left) <= 90);
-  //       if(++loopCount > 20) {
-  //         // 無限ループを解除するためにこのuseEffectをやり直す
-  //         loopCount = 0;
-  //         setShowCharacters(showCharacters);
-  //       }
-  //     }
-  //     newPositions[index] = {top:randomTop, left:randomLeft};
-  //   });
-  //   setPositions(newPositions);
-  // }, [showCharacters])
-
   return (
     <div className={styles.homeField} >
       {showCharacters.length > 0 && 
@@ -101,11 +74,6 @@ function HomeField() {
           <li
             key={index}
             id={`image-${index}`}
-            // style={{
-            // position: "absolute",
-            // top: positions[index]?.top || 0,
-            // left: positions[index]?.left || 0,
-            // }}
           >
             <SpeechBubble num={data.num}/>
             <Character id={data.id} num={data.num} data={data.character}/>

@@ -1,6 +1,5 @@
 .switchTagField {
     width: 100%;
-    // margin: 30px 20px 0;
     margin-top: 30px;
     padding: 0 20px;
     position: sticky;
@@ -12,15 +11,10 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        // gap: 3px;
         border-bottom: 3px solid #F7F2DF;
         color: #fff;
-        // padding-top: 30px;
         margin: 0 auto;
         max-width: 500px;
-        // width: 100%;
-        // position: sticky;
-        // top: 0;
         transform: translateY(3px);
 
         li {

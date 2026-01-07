@@ -244,7 +244,6 @@ const VisitorLogin = () => {
 				setErrorMessage('入力されたパラメーターが違います');
 				setToast({toast: true, state: 'visitorLogin', message: 'エラーが発生しました。もう一度お願いします。'})
 			} else {
-				//  console.log('登録成功, data : ', data)
 				setLoginToken(data.token);
 				setLoginType('visitor');
 			}

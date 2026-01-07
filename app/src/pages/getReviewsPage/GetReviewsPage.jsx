@@ -19,13 +19,9 @@ function GetReviewsPage() {
   } = useContext(AppContext);
 
   // data
-  // const [activeItem, setActiveItem] = useState('total');
   const [getReviewData, setGetReviewData] = useState([]); //くちこみ全データ
+	const [GetReviewEditData, setGetReviewEditData] = useState([]);//編集済み表示データ
 
-  	//編集済み表示データ
-	const [GetReviewEditData, setGetReviewEditData] = useState([]);
-
-  // 
   useEffect(() => {
     setLoading(true);
     Ajax(null, `rating/${activeTeam.id}`)

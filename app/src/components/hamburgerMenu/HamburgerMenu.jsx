@@ -1,8 +1,7 @@
-// import React, { useState } from 'react';
 import styles from './HamburgerMenu.module.scss';
 
 function HamburgerMenu() {
-  console.log("もし思い出したらここにきて components/hanburgerMenu");
+  console.log("もし思い出したらここにきて components/hanburgerMenu"); //TODO:呼び出し元がわからない / iori / 2026-01-08
   
   return (
     <>
