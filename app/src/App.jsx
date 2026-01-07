@@ -36,20 +36,20 @@ function App() {
     // 来場者でログイン、未ログイン
     
     // ログイン中ならhomeへ
-    if(loginToken && loginToken !== '') {
-      setAppState('home');
-    }
-    else {
-      // 未ログイン学生
-      let url = new URL(window.location.href);
-      let params = url.searchParams;
-      if((loginType === 'student') ||  params.get('login') === 'student')  {
-        setAppState('studentLogin');
-      }
-      else {
-        setAppState('visitorLogin');
-      }
-    }
+    // if(loginToken && loginToken !== '') {
+    //   setAppState('home');
+    // }
+    // else {
+    //   // 未ログイン学生
+    //   let url = new URL(window.location.href);
+    //   let params = url.searchParams;
+    //   if((loginType === 'student') ||  params.get('login') === 'student')  {
+    //     setAppState('studentLogin');
+    //   }
+    //   else {
+    //     setAppState('visitorLogin');
+    //   }
+    // }
 
 
     

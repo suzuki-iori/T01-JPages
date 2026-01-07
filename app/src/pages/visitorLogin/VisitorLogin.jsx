@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import Styles from './VisitorLogin.module.css'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Ajax from '../../lib/Ajax';
-import Camera from '../../components-old/atoms/camera/Camera'
-import ScanBusinessCardForm from '../../components-old/organisms/scanbusinesscardform/ScanBusinessCardForm'
-import LoadingMessage from '../../components-old/atoms/loadingmessage/LoadingMessage';
+import Camera from './components/camera/Camera'
+import ScanBusinessCardForm from './components/scanbusinesscardform/ScanBusinessCardForm'
+import LoadingMessage from './components/loadingmessage/LoadingMessage';
 import { AppContext } from '../../context/AppContextProvider';
 
 const VisitorLogin = () => {
