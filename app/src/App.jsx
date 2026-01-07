@@ -5,7 +5,7 @@ import StudentLogin from './pages/studentLogin/StudentLogin';
 import VisitorLogin from './pages/visitorLogin/VisitorLogin';
 import HomePage from './pages/homePage/HomePage';
 import RankingPage from './pages/rankingPage/RankingPage';
-import ReviewPage from './components-old/page/reviewPage/ReviewPage';
+import ReviewPage from './pages/reviewPage/ReviewPage';
 import GetReviewsPage from './components-old/page/getReviewsPage/GetReviewsPage';
 import LevelUpPage from './components-old/page/levelUpPage/LevelUpPage';
 import ProfilePage from './components-old/page/profilePage/ProfilePage';
