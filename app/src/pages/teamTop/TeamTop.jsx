@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Ajax from "../../../lib/Ajax";
 import styles from "./teamTop.module.css";
 import Header from "../../components/header/Header";
-import Navigation from "../../organisms/navigation/Navigation";
+import Navigation from "../../components/navigation/Navigation";
 import CharacterStatus from "../../molecules/characterstatus/CharacterStatus";
 import { AppContext } from "../../../context/AppContextProvider";
 

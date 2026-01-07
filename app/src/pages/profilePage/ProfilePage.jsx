@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import Styles from "./teamProfile.module.css";
 import Ajax from "../../lib/Ajax";
 import Header from "../../components/header/Header";
-import Navigation from "../../components-old/organisms/navigation/Navigation";
+import Navigation from "../../components/navigation/Navigation";
 import Character from "../../components-old/atoms/character/Character";
 import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
 import TeamAbout from "../../components-old/molecules/teamAbout/TeamAbout";

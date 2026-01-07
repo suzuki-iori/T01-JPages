@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../../context/AppContextProvider';
 import styles from './GetReviewsPage.module.scss'
 import Header from '../../components/header/Header';
-import Navigation from '../../organisms/navigation/Navigation';
+import Navigation from '../../components/navigation/Navigation';
 import GetReviewField from './components/getReviewField/GetReviewField';
 import Ajax from '../../../lib/Ajax'
 import PointGraph from '../../molecules/pointGraph/PointGraph';

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import LevelUpCharacter from "./components/levelUpCharacter/LevelUpCharacter"
 import Items from "./components/Items/Items";
-import Navigation from "../../organisms/navigation/Navigation";
+import Navigation from "../../components/navigation/Navigation";
 import style from "./LevelUpPage.module.scss";
 import { AppContext } from "../../../context/AppContextProvider";
 import Ajax from "../../../lib/Ajax";
