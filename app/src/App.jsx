@@ -1,10 +1,10 @@
 import './App.scss';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from './context/AppContextProvider';
-import StudentLogin from './components-old/page/studentLogin/StudentLogin';
+import StudentLogin from './pages/studentLogin/StudentLogin';
 import VisitorLogin from './pages/visitorLogin/VisitorLogin';
 import HomePage from './pages/homePage/HomePage';
-import RankingPage from './components-old/page/rankingPage/RankingPage';
+import RankingPage from './pages/rankingPage/RankingPage';
 import ReviewPage from './components-old/page/reviewPage/ReviewPage';
 import GetReviewsPage from './components-old/page/getReviewsPage/GetReviewsPage';
 import LevelUpPage from './components-old/page/levelUpPage/LevelUpPage';
