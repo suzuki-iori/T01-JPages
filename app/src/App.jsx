@@ -8,7 +8,7 @@ import RankingPage from './pages/rankingPage/RankingPage';
 import ReviewPage from './pages/reviewPage/ReviewPage';
 import GetReviewsPage from './pages/getReviewsPage/GetReviewsPage';
 import LevelUpPage from './pages/levelUpPage/LevelUpPage';
-import ProfilePage from './components-old/page/profilePage/ProfilePage';
+import ProfilePage from './pages/profilePage/ProfilePage';
 import Questionnaire from './components-old/page/questionnaire/Questionnaire';
 import TeamTop from './components-old/page/teamTop/TeamTop';
 import Loading from './components-old/organisms/loading/Loading';

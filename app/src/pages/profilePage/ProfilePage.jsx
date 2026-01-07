@@ -1,16 +1,16 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import Styles from "./teamProfile.module.css";
-import Ajax from "../../../lib/Ajax";
-import Header from "../../organisms/header/Header";
-import Navigation from "../../organisms/navigation/Navigation";
-import Character from "../../atoms/character/Character";
-import RaderChart from "../../atoms/raderChart/RaderChart";
-import TeamAbout from "../../molecules/teamAbout/TeamAbout";
-import TeamStudents from "../../molecules/teamStudents/TeamStudents";
-import EditButton from "../../atoms/editButton/EditButton";
-import Modal from "../../organisms/modal/Modal";
-import { AppContext } from "../../../context/AppContextProvider";
+import Ajax from "../../lib/Ajax";
+import Header from "../../components-old/organisms/header/Header";
+import Navigation from "../../components-old/organisms/navigation/Navigation";
+import Character from "../../components-old/atoms/character/Character";
+import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
+import TeamAbout from "../../components-old/molecules/teamAbout/TeamAbout";
+import TeamStudents from "../../components-old/molecules/teamStudents/TeamStudents";
+import EditButton from "../../components-old/atoms/editButton/EditButton";
+import Modal from "../../components-old/organisms/modal/Modal";
+import { AppContext } from "../../context/AppContextProvider";
 
 const ProfilePage = () => {
 	// data
