@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './InputField.module.scss'
-import InputRange from '../../atoms/inputRange/InputRange.jsx';
+import InputRange from '../../../../components-old/atoms/inputRange/InputRange.jsx';
 
 function InputField(props) {
 	const {category, kana, data, seter} = props;
