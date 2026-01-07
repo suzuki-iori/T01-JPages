@@ -13,7 +13,7 @@ import Questionnaire from './pages/questionnaire/Questionnaire';
 import TeamTop from './pages/teamTop/TeamTop';
 import Loading from './components/loading/Loading';
 import HelpModal from './components/heplModal/HelpModal';
-import Toast from './components-old/atoms/toast/Toast';
+import Toast from './components/toast/Toast';
 
 function App() {
   // data
