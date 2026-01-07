@@ -9,7 +9,7 @@ import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
 import TeamAbout from "../../components-old/molecules/teamAbout/TeamAbout";
 import TeamStudents from "../../components-old/molecules/teamStudents/TeamStudents";
 import EditButton from "../../components-old/atoms/editButton/EditButton";
-import Modal from "../../components-old/organisms/modal/Modal";
+import TeamModal from "./components/teamModal/TeamModal";
 import { AppContext } from "../../context/AppContextProvider";
 
 const ProfilePage = () => {
@@ -82,7 +82,7 @@ const ProfilePage = () => {
 				/>
 			</div>                
 			<Navigation />
-			<Modal 
+			<TeamModal 
 				isOpen={isModalOpen}
 				handleCloseModal={handleCloseModal}
 				team={team}
