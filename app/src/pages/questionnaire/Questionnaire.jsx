@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Ajax from '../../lib/Ajax';
 import Styles from './questionnaire.module.css';
 import QuestionnaireForm from './components/questionnaireform/QuestionnaireForm';
-import BackButton from '../../components-old/atoms/backButton/BackButton'
+import BackButton from './components/backButton/BackButton'
 import HelpButton from '../../components-old/atoms/helpButton/HelpButton';
 import { AppContext } from '../../context/AppContextProvider';
 
