@@ -9,7 +9,7 @@ import ReviewPage from './pages/reviewPage/ReviewPage';
 import GetReviewsPage from './pages/getReviewsPage/GetReviewsPage';
 import LevelUpPage from './pages/levelUpPage/LevelUpPage';
 import ProfilePage from './pages/profilePage/ProfilePage';
-import Questionnaire from './components-old/page/questionnaire/Questionnaire';
+import Questionnaire from './pages/questionnaire/Questionnaire';
 import TeamTop from './components-old/page/teamTop/TeamTop';
 import Loading from './components-old/organisms/loading/Loading';
 import HelpModal from './components-old/molecules/heplModal/HelpModal';
