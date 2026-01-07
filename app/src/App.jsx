@@ -1,19 +1,19 @@
 import './App.scss';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from './context/AppContextProvider';
-import StudentLogin from './components/page/studentLogin/StudentLogin';
-import ScanBusinessCardMobile from './components/page/scanBusinessCard-phone/ScanBusinessCard';
-import HomePage from './components/page/homePage/HomePage';
-import RankingPage from './components/page/rankingPage/RankingPage';
-import ReviewPage from './components/page/reviewPage/ReviewPage';
-import GetReviewsPage from './components/page/getReviewsPage/GetReviewsPage';
-import LevelUpPage from './components/page/levelUpPage/LevelUpPage';
-import ProfilePage from './components/page/profilePage/ProfilePage';
-import Questionnaire from './components/page/questionnaire/Questionnaire';
-import TeamTop from './components/page/teamTop/TeamTop';
-import Loading from './components/organisms/loading/Loading';
-import HelpModal from './components/molecules/heplModal/HelpModal';
-import Toast from './components/atoms/toast/Toast';
+import StudentLogin from './components-old/page/studentLogin/StudentLogin';
+import VisitorLogin from './pages/visitorLogin/VisitorLogin';
+import HomePage from './components-old/page/homePage/HomePage';
+import RankingPage from './components-old/page/rankingPage/RankingPage';
+import ReviewPage from './components-old/page/reviewPage/ReviewPage';
+import GetReviewsPage from './components-old/page/getReviewsPage/GetReviewsPage';
+import LevelUpPage from './components-old/page/levelUpPage/LevelUpPage';
+import ProfilePage from './components-old/page/profilePage/ProfilePage';
+import Questionnaire from './components-old/page/questionnaire/Questionnaire';
+import TeamTop from './components-old/page/teamTop/TeamTop';
+import Loading from './components-old/organisms/loading/Loading';
+import HelpModal from './components-old/molecules/heplModal/HelpModal';
+import Toast from './components-old/atoms/toast/Toast';
 
 function App() {
   // data
@@ -80,7 +80,7 @@ function App() {
     <div className='appBackground' style={{background: `#${backGroudColor}`}}>
       {(toast.toast) && <Toast/>}
       {(appState === 'studentLogin') && <StudentLogin/ >}
-      {(appState === 'visitorLogin') && <ScanBusinessCardMobile/ >}
+      {(appState === 'visitorLogin') && <VisitorLogin/ >}
       {(appState === 'home') && <HomePage/ >}
       {(appState === 'ranking') && <RankingPage/ >}
       {(appState === 'review') && <ReviewPage/ >}

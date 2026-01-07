@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'; 
-import Styles from './scanBusinessCard.module.css'
+import Styles from './VisitorLogin.module.css'
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import Ajax from '../../../lib/Ajax';
-import Camera from '../../atoms/camera/Camera'
-import ScanBusinessCardForm from '../../organisms/scanbusinesscardform/ScanBusinessCardForm'
-import LoadingMessage from '../../atoms/loadingmessage/LoadingMessage';
-import { AppContext } from '../../../context/AppContextProvider';
+import Ajax from '../../lib/Ajax';
+import Camera from '../../components-old/atoms/camera/Camera'
+import ScanBusinessCardForm from '../../components-old/organisms/scanbusinesscardform/ScanBusinessCardForm'
+import LoadingMessage from '../../components-old/atoms/loadingmessage/LoadingMessage';
+import { AppContext } from '../../context/AppContextProvider';
 
-const ScanBusinessCardMobile = () => {
+const VisitorLogin = () => {
 	const [text, setText] = useState({name: '',	companyName: '', email: ''});
 	const [visitorType, setVisitorType] = useState('0');
 	const [isImageCaptured, setIsImageCaptured] = useState(false); 
@@ -290,4 +290,4 @@ const ScanBusinessCardMobile = () => {
 	);
 };
 
-export default ScanBusinessCardMobile;
+export default VisitorLogin;
