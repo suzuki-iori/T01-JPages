@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import styles from "./characterStatus.module.css";
-import Progress from "../../../../components-old/atoms/progress/Progress";
+import styles from "./characterStatus.module.css"
 
-const CharacterStatus = (props) => {
+const CharacterStatus = ({ level, point, count }) => {
 	// data
-	const {character, count} = props;
 	const [progress, setProgress] = useState(0);
 
 	// ポイントバーの長さを決める
 	useEffect(() => {
 		const calculateProgress = (point) => { // returnはprogressのwidth
-		console.log(point);
-
 			if (point >= 10000 ) {
 				return 100;
 			}
@@ -29,21 +25,21 @@ const CharacterStatus = (props) => {
 			}
 			return (point / 600 ) * 100;
 		};
-		setProgress(calculateProgress(character.point))
-	}, [character]);
+		setProgress(calculateProgress(point))
+	}, [point]);
+
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.level}>
 				<span className={styles.levelText}>Lv.</span>
-				<span className={styles.levelNumber}><span>{character.level}</span></span>
-				<Progress value={progress} barColor={'rgb(135, 99, 68)'} backGroundColor={'rgba(255,255,255,0.5)'}/>
+				<span className={styles.levelNumber}><span>{level}</span></span>
+				<div className={styles.bar}>
+						<div className={styles.progress} style={{ width: `calc(${progress}% + 4px)` }} />
+				</div>
 			</div>
 			<div className={styles.points}>
-				<p className={styles.pointContainer}>
-					<img src='/assets/img/point.png' className={styles.png} alt="ポイント"/>
-					{character.point ? character.point.toLocaleString() : 0} <span>/ {character.nextLevelBorder ? character.nextLevelBorder.toLocaleString() : 0}</span> 
-				</p>
+				<p className={styles.pointContainer}><img src='/assets/img/point.png' className={styles.png}/>{point ? point.toLocaleString() : 0}</p>
 				<div className={styles.countContainer}>
 					<img src={`/assets/img/people.svg`} alt="" className={styles.countImg}/>
 					<p>{count}</p>
