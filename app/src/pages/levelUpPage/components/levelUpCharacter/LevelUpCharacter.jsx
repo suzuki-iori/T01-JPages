@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Progress from "../../../../components-old/atoms/progress/Progress";
+import Progress from "../../../../components/progress/Progress";
 import style from "./LevelUpCharacter.module.scss";
 function LevelUpCharacter(props) {
   const {character, progress} = props;

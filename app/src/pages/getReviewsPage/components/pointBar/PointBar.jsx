@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PointBar.module.scss';
-import Progress from '../../../../components-old/atoms/progress/Progress';
+import Progress from '../../../../components/progress/Progress';
 function PointBar(props) {
 	const {name, value} = props;
 	let berColor = '';
