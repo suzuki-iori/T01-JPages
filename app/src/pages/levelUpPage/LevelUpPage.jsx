@@ -4,8 +4,8 @@ import LevelUpCharacter from "./components/levelUpCharacter/LevelUpCharacter"
 import Items from "./components/Items/Items";
 import Navigation from "../../components/navigation/Navigation";
 import style from "./LevelUpPage.module.scss";
-import { AppContext } from "../../../context/AppContextProvider";
-import Ajax from "../../../lib/Ajax";
+import { AppContext } from "../../context/AppContextProvider";
+import Ajax from "../../lib/Ajax";
 
 function LevelUpPage() {
   // data

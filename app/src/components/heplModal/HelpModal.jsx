@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './HelpModal.module.scss';
-import { AppContext } from '../../../context/AppContextProvider';
+import { AppContext } from '../../context/AppContextProvider';
 import { useContext } from 'react';
 
 const HelpModal = () => {

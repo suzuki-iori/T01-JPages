@@ -4,8 +4,8 @@ import ReviewForm from './components/reviewForm/ReviewForm.jsx';
 import ReviewCompleteDialog from './components/reviewCompleteDialog/ReviewCompleteDialog.jsx';
 import ReviewComfirmDialog from './components/reviewComfirmDialog/ReviewComfirmDialog.jsx';
 import Navigation from '../../components/navigation/Navigation.jsx';
-import { AppContext } from '../../../context/AppContextProvider.jsx';
-import Ajax from '../../../lib/Ajax.js';
+import { AppContext } from '../../context/AppContextProvider.jsx';
+import Ajax from '../../lib/Ajax.js';
 function ReviewPage() {
     // data
     // 評価系

@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ReactModal from 'react-modal';
 import Ajax from '../../../../lib/Ajax';
-import Styles from './modal.module.css';
+// import Styles from './modal.module.css'; 差分でファイル消したかもだから取っておく
 import { AppContext } from '../../../../context/AppContextProvider';
 
 ReactModal.setAppElement('#root');
 
 const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
-	console.log('--TeamModal');
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [parameters, setParameters] = useState([]);

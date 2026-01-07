@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import Ajax from '../../../lib/Ajax';
+import Ajax from '../../lib/Ajax';
 import Styles from './studentLogin.module.css'
 import LoginInput from './components/logininput/LoginInput';
 import SubmitButton from '../../components/submitbutton/SubmitButton';
 import HelpButton from '../../components/helpButton/HelpButton';
-import { AppContext } from '../../../context/AppContextProvider';
+import { AppContext } from '../../context/AppContextProvider';
 
 const StudentLogin = () => {
   const [number, setNumber] = useState('');
