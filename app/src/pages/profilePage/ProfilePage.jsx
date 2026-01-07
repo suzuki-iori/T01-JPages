@@ -7,7 +7,7 @@ import Navigation from "../../components/navigation/Navigation";
 import Character from "../../components-old/atoms/character/Character";
 import RaderChart from "../../components-old/atoms/raderChart/RaderChart";
 import TeamAbout from "./components/teamAbout/TeamAbout";
-import TeamStudents from "../../components-old/molecules/teamStudents/TeamStudents";
+import TeamStudents from "./components/teamStudents/TeamStudents";
 import EditButton from "../../components-old/atoms/editButton/EditButton";
 import TeamModal from "./components/teamModal/TeamModal";
 import { AppContext } from "../../context/AppContextProvider";
