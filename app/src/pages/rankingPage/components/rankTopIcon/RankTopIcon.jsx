@@ -17,7 +17,7 @@ function RankTopIcon(props) {
 		<figure className={styles.teamIcon}>
 			<img 
 					src={`/assets/img/logo/${year}/${teamNum}.png`} alt={`${teamNum}logo`} 
-					onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/150x150.png?text=logo'}
+					onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/150x150.png?text=NoImage'}
 				/>
 			<figcaption>{teamNum}</figcaption>
 		</figure>
