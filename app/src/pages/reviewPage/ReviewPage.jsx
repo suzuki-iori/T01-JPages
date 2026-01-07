@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Header from '../../components/header/Header.jsx';
 import ReviewForm from '../../organisms/reviewForm/ReviewForm.jsx';
-import ReviewCompleteDialog from '../../organisms/reviewCompleteDialog/ReviewCompleteDialog.jsx';
+import ReviewCompleteDialog from './components/reviewCompleteDialog/ReviewCompleteDialog.jsx';
 import ReviewComfirmDialog from './components/reviewComfirmDialog/ReviewComfirmDialog.jsx';
 import Navigation from '../../components/navigation/Navigation.jsx';
 import { AppContext } from '../../../context/AppContextProvider.jsx';
