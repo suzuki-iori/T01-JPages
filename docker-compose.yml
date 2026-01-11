@@ -18,17 +18,22 @@ services:
     working_dir: /var/www/api
 
   react:
-    image: node:20
-    working_dir: /app
-    volumes:
-      - ./app:/app
-    ports:
-      - "3000:3000"
-    environment:
-      HOST: 0.0.0.0
-      PORT: 3000
-      CHOKIDAR_USEPOLLING: "true"
-    command: sh -c "npm install && npm start"
+      image: node:20
+      working_dir: /app
+      volumes:
+        - ./app:/app
+        - /app/node_modules
+      ports:
+        - "3000:3000"
+      environment:
+        - HOST=0.0.0.0
+        - PORT=3000
+        - CHOKIDAR_USEPOLLING=true
+        - WATCHPACK_POLLING=true
+        - WDS_SOCKET_PORT=0
+      stdin_open: true
+      tty: true
+      command: sh -c "npm install && npm start"
 
   react-admin:
     image: node:20
