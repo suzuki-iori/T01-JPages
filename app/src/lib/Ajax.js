@@ -15,7 +15,7 @@ async function Ajax(token, url = "", method = 'GET', data) {
     }
 
     // const response = await fetch(`https://jpages.jp/JPagesApi/public/api/${url}`, opt);
-    const response = await fetch(`https://jpages.mydns.jp/api/${url}`, opt);
+    const response = await fetch(`http://localhost:8080/api/${url}`, opt);
     return response.json();
 }
   
