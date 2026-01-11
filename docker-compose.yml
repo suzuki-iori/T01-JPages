@@ -1,0 +1,53 @@
+services:
+  nginx:
+    image: nginx:1.25
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./JPagesApi:/var/www/api
+    depends_on:
+      - php
+      - react
+      - react-admin
+
+  php:
+    build: ./docker/php
+    volumes:
+      - ./JPagesApi:/var/www/api
+    working_dir: /var/www/api
+
+  react:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      CHOKIDAR_USEPOLLING: "true"
+    command: sh -c "npm install && npm start"
+
+  react-admin:
+    image: node:20
+    working_dir: /admin
+    volumes:
+      - ./admin:/admin
+    ports:
+      - "5174:5173"
+    command: sh -c "npm install && npm run dev -- --host"
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
