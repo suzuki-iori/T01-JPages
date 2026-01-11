@@ -1,0 +1,60 @@
+.HelpModalBack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 33, 33, .8);
+  z-index: 9999999;
+
+  .HelpModal {
+    min-width: 350px;
+    max-width: 375px;
+    min-height: 560px;
+    max-height: 600px;
+    border-radius: 15px;
+    background: #F7F2DF;
+    padding: 15px 30px;
+    
+    .image {
+      width: 60%;
+      height: 60%;
+      margin: 0 auto;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .body {
+      border-top: 1px solid #876344;
+      padding: 15px 0;
+      margin-top: 15px;
+    }
+    .btnClose {
+      display: flex;
+      align-items: center;
+      margin: 10px auto;
+      padding: 8px 20px;
+      background: #F2ECD4;
+      color: #876344;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+
+      &::before {
+          content: "×";
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background-color: #F2ECD4;
+          background-position: center;
+          background-size: contain;
+      }
+  }
+  }
+}
+
+
