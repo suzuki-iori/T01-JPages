@@ -85,16 +85,16 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 			return 'システム名は255文字以内で入力してください';
 		}
 		return '';
-};
+	};
 
-const validateDescription = (value) => {
-	// nullチェックを追加
-	if (!value) return '';
-	if (value.length > 255) {
-		return '説明は255文字以内で入力してください';
-	}
-	return '';
-};
+	const validateDescription = (value) => {
+		// nullチェックを追加
+		if (!value) return '';
+		if (value.length > 255) {
+			return '説明は255文字以内で入力してください';
+		}
+		return '';
+	};
 
 	// パラメータ変更（リアルタイムバリデーションなし）
 	const handleParameterChange = (index, field, value) => {
