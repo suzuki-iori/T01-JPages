@@ -45,8 +45,6 @@ return (
 			loading={loading}
 		/>
 
-		{errorMessage && <div className={styles["error-message"]} style={{ color: 'red' }}>{errorMessage}</div>}
-
 		<input
 			className={styles["input-box"]}
 			type="text"
@@ -55,7 +53,6 @@ return (
 			placeholder="氏名"
 		/>
 		{inputErrors.name && <div className={styles["warning"]}>{inputErrors.name}</div>}
-		{!loading && text.name === '' && <div className={styles["warning"]}>手入力をお願いします</div>}
 
 		<input
 			className={styles["input-box"]}
@@ -65,7 +62,6 @@ return (
 			placeholder="e-mail"
 		/>
 		{inputErrors.email && <div className={styles["warning"]}>{inputErrors.email}</div>}
-		{!loading && text.email === '' && <div className={styles["warning"]}>手入力をお願いします</div>}
 
 		<input
 			className={styles["input-box"]}
@@ -75,12 +71,12 @@ return (
 			placeholder="所属"
 		/>
 		{inputErrors.companyName && <div className={styles["warning"]}>{inputErrors.companyName}</div>}
-		{!loading && text.companyName === '' && <div className={styles["warning"]}>手入力をお願いします</div>}
 
 		{(visitorType === '2' || visitorType === '3') && (<div>※所属には学科名を入力してください。<br />例：高度情報処理科</div>)}
 
-
 		{(visitorType === '5') && (<div>※所属には在籍中の組織名を入力してください。</div>)}
+
+		{errorMessage && <div className={styles["error-message"]} style={{ color: 'red' }}>{errorMessage}</div>}
 
 		{!loading && (
 			<div className={styles["button-container"]}>
