@@ -15,7 +15,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 		description: '',
 		parameters: [],
 	});
-	
+
 	// エラー状態を統一
 	const [errors, setErrors] = useState({
 		name: '',
@@ -40,7 +40,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 			description: team.detail || '',
 			parameters: clonedParams,
 		});
-		
+
 		// エラーもリセット
 		setErrors({
 			name: '',
@@ -99,7 +99,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 	// パラメータ変更（リアルタイムバリデーションなし）
 	const handleParameterChange = (index, field, value) => {
 		setErrors(prev => ({ ...prev, submit: '' }));
-		
+
 		setParameters(prev => {
 			const updated = [...prev];
 			updated[index] = { ...updated[index], [field]: value };
@@ -155,7 +155,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 			'PUT',
 			{ num: team.num, grade: team.grade, name, detail: description }
 		);
-		
+
 		if (response.status !== 'success') {
 			throw new Error(response.status);
 		}
@@ -168,7 +168,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 				score: param.score
 			})
 		);
-		
+
 		const results = await Promise.all(promises);
 		const failed = results.find(r => r.status !== 'success');
 		if (failed) {
@@ -179,7 +179,7 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 	// エラーハンドリングを統一
 	const handleApiError = (error) => {
 		const errorStatus = error.message;
-		
+
 		const errorMap = {
 			'ParameterError': {
 				state: 'profile',
@@ -217,9 +217,9 @@ const TeamModal = ({ isOpen, handleCloseModal, team, parameter, onSave }) => {
 		}
 
 		const isTeamUpdated = name !== team.name || description !== team.detail;
-		
+
 		const updatedParameters = parameters
-			.filter((param, index) => 
+			.filter((param, index) =>
 				param.name !== parameter[index].name ||
 				param.score !== parameter[index].score
 			)
