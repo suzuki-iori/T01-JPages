@@ -22,8 +22,11 @@
 .paramContainer {
     display: flex;
     justify-content: start;
-    margin: 10px;
-    width: 100%;
+    width: 100%;   
+}
+
+.paramContainer + .paramContainer {
+    padding-top: 12px;
 }
 
 .index {
@@ -34,9 +37,15 @@
 .paramName, .paramNum {
     background-color: #F2ECD4;
     border-radius: 5px;
-    border: solid 1px #876344;
+    border: none;
+    outline: solid 1px #876344;
     margin: 0 5px;
-    padding: 2px;
+    padding: 2px 8px;
+}
+
+.paramName:focus-visible,
+.paramNum:focus-visible {
+    outline: solid 2px #876344;
 }
 
 .paramName {
@@ -49,7 +58,7 @@
 }
 
 .percentage {
-    font-size: 0.5em;
+    font-size: 14px;
     align-self: self-end;
 }
 
@@ -76,9 +85,14 @@
     width: 100%;
     margin: 0 auto;
     background-color: #F2ECD4;
-    border: solid 1px #876344;
+    border: none;
+    outline: solid 1px #876344;
     border-radius: 5px;
-    padding: 2px;
+    padding: 2px 8px;
+}
+
+.teamName:focus-visible {
+    outline: solid 2px #876344;
 }
 
 .descContainer {
@@ -94,9 +108,13 @@
     width: 100%;
     height: 10em;
     background-color: #F2ECD4;
-    border: solid 1px #876344;
+    border: none;
+    outline: solid 1px #876344;
     border-radius: 5px;
-    padding: 2px;
+    padding: 2px 8px;
+}
+.teamDesc:focus-visible {
+    outline: solid 2px #876344;
 }
 
 .buttonContainer {
@@ -106,6 +124,7 @@
 }
 
 .cancelButton, .submitButton {
+    max-width: 120px;
     font-size: 0.8em;
     padding: 5px;
     text-align: center;
@@ -114,9 +133,24 @@
 }
 
 .cancelButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
     border: none;
     border-radius: 5px;
     background-color: #F2ECD4;
+    padding: 8px 16px;  
+    cursor: pointer;
+}
+
+.cancelButton .cross {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.cancelButton .cancel {
+    line-height: 1;
 }
 
 .submitButton {
