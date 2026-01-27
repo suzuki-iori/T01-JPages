@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from 'react'; 
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Styles from './VisitorLogin.module.css'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Ajax from '../../lib/Ajax';
@@ -10,13 +10,13 @@ import { AppContext } from '../../context/AppContextProvider';
 const VisitorLogin = () => {
 	const [text, setText] = useState({name: '',	companyName: '', email: ''});
 	const [visitorType, setVisitorType] = useState('0');
-	const [isImageCaptured, setIsImageCaptured] = useState(false); 
+	const [isImageCaptured, setIsImageCaptured] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 
 	const {setLoginToken,  setLoginType, loading, setLoading, setToast } = useContext(AppContext);
 
-	const videoRef = useRef(null); 
-	const canvasRef = useRef(null); 
+	const videoRef = useRef(null);
+	const canvasRef = useRef(null);
 
 	const startCamera = async () => {
 			try {
@@ -26,7 +26,7 @@ const VisitorLogin = () => {
 						videoRef.current.srcObject = null;
 					}
 					const newStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-					
+
 					if (videoRef.current) {
 						videoRef.current.srcObject = newStream;
 						videoRef.current.onloadedmetadata = async () => {
@@ -59,26 +59,26 @@ const VisitorLogin = () => {
 		if (!isImageCaptured) {
 			if (canvas && video) {
 				const context = canvas.getContext('2d');
-				context.drawImage(video, 0, 0, canvas.width, canvas.height); 
+				context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
 				canvas.toBlob(async (blob) => {
 					if (blob) {
-						setLoading(true); 
-						await recognizeText(blob); 
+						setLoading(true);
+						await recognizeText(blob);
 						setLoading(false);
 					}
-				}, 'image/png'); 
-				setIsImageCaptured(true); 
+				}, 'image/png');
+				setIsImageCaptured(true);
 			}
 		} else {
-			setIsImageCaptured(false); 
+			setIsImageCaptured(false);
 		}
 	};
 
 	const handleNoCardButtonClick = () => {
 		setIsImageCaptured(true);
-		setText({ name: '', companyName: '', email: '' }); 
-        setVisitorType('0'); 
+		setText({ name: '', companyName: '', email: '' });
+        setVisitorType('0');
         setErrorMessage('');
 	}
 
@@ -115,7 +115,7 @@ const VisitorLogin = () => {
 
 	const handleAnalyzeAndFill = async (text) => {
 		const entities = await analyzeWithGemini(text);
-		fillFormWithEntities(entities); 
+		fillFormWithEntities(entities);
 	};
 
 	const genAI = new GoogleGenerativeAI(`${process.env.REACT_APP_GOOGLE_GEMINI_API_KEY}`);
@@ -129,9 +129,9 @@ const VisitorLogin = () => {
 		- 会社名は最も妥当なもので、株式会社という文字列がある場合はそれを含むものを優先して選んでください。
 		- 会社名に当てはまるものがなく、学校名だと思われるものと学科名だと思われるものがある場合は、学校名ではなく学科名をORGANIZATIONに出力してください。
 		- 極力各要素を埋めるようにしてください。
-		
+
 		もしエンティティが見つからない場合は、絶対にnullは返さず、空文字列""を返してください。
-		
+
 		最終応答は、"{"で始まり"}"で終わるJSONのみを出力し、JSON以外の文字は一切応答に含めないでください。
 		出力は次のような形式にしてください（この例のフォーマットは必ず守ってください）:
 		{
@@ -139,7 +139,7 @@ const VisitorLogin = () => {
 			"MAIL": "<メールアドレス>",
 			"ORGANIZATION": "<会社名>"
 		}
-		
+
 		テキスト: ${inputText}
 `;
 		console.log(prompt);
@@ -157,9 +157,9 @@ const VisitorLogin = () => {
 	const cleanResponse = (generatedResponse) => {
 		console.log(generatedResponse);
 		return generatedResponse
-		.replace(/```json/, '') 
-		.replace(/```/, '') 
-		.trim(); 
+		.replace(/```json/, '')
+		.replace(/```/, '')
+		.trim();
 	}
 
 	const fillFormWithEntities = (entities) => {
@@ -172,7 +172,7 @@ const VisitorLogin = () => {
 
 		setText({ name, email, companyName });
 	};
-	
+
 
 	const blobToBase64 = (blob) => {
 		return new Promise((resolve, reject) => {
@@ -202,28 +202,6 @@ const VisitorLogin = () => {
 		} else {
 				setErrorMessage(''); // エラーメッセージをリセット
 		}
-		
-		// 訪問者区分に基づいてdivisionを決定
-		let division = 0; // デフォルト値
-		switch (visitorType) {
-			case "1":
-				division = 1; // 企業の方
-				break;
-			case "2":
-				division = 2; // 教員
-				break;
-			case "3":
-				division = 3; // 日本電子専門学校生
-				break;
-			case "4":
-				division = 4; // 卒業生
-				break;
-			case "5":
-				division = 5; // その他
-				break;
-			default:
-				break;
-		}
 
 		setLoading(true);
 
@@ -232,7 +210,7 @@ const VisitorLogin = () => {
 			// employment_target_id: '8011105000934', // 法人番号を仮で設定
 			name: text.name,
 			email: text.email,
-			division: division // リクエストボディにdivisionを追加
+			division: Number(visitorType) // リクエストボディにdivisionを追加
 		};
 
 		Ajax(null, 'visitor', 'POST', req)
@@ -259,7 +237,7 @@ const VisitorLogin = () => {
 		setText({ name: '', companyName: '', email: '' }); // テキストもリセット
 		await startCamera(); // カメラを再起動
 	};
-	
+
 	return (
 		<div className={Styles.container}>
 			{!isImageCaptured ? (

@@ -22,6 +22,7 @@
 .error-message {
     color: red; /* 赤字 */
     margin-top: 10px; /* 上の余白 */
+    text-align: center;
 }
 
 /* 警告メッセージのスタイル */
@@ -36,4 +37,3 @@
     justify-content: space-between; /* ボタンを左右に配置 */
     margin-top: 20px; /* 上部の入力フィールドとの間にスペースを追加 */
 }
-

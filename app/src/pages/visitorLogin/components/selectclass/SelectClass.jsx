@@ -5,9 +5,9 @@ const SelectClass = (props) =>  {
 	const {visitorType, setVisitorType, setErrorMessage, loading } = props;
 	return (
 		<>
-			<select 
+			<select
 				className={styles["select-box"]}
-				value={visitorType} 
+				value={visitorType}
 				onChange={e => {
 					setVisitorType(e.target.value);
 					// エラーメッセージをリセット
@@ -24,7 +24,6 @@ const SelectClass = (props) =>  {
 				<option value="5">その他の方</option>
 			</select>
 
-			{!loading && visitorType === '0' && <div className={styles["warning"]}>来場者区分を選択してください</div>}
 		</>
 	)
 };
