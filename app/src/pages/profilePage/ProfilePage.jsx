@@ -64,7 +64,7 @@ const ProfilePage = () => {
 			<div className={Styles.container}>
 				{loginType === 'student' && activeTeam.id === loginTeamId && (
 					<EditButton handleEditClick={handleEditClick}/>
-				)}      
+				)}
 				<div className={Styles.teamStatus}>
 					{team && <div className={Styles.characterContainer}>
 						<Character data={team.character}/>
@@ -73,16 +73,16 @@ const ProfilePage = () => {
 						{parameter && <RaderChart data={parameter}/>}
 					</div>
 				</div>
-				<TeamAbout 
+				<TeamAbout
 					name={team ? team.name : "チーム名を取得中"}
 					description={team ? team.detail : "詳細を取得中"}
 				/>
-				<TeamStudents 
+				<TeamStudents
 					students={team ? team.students : "学生情報を取得中"}
 				/>
-			</div>                
+			</div>
 			<Navigation />
-			<TeamModal 
+			<TeamModal
 				isOpen={isModalOpen}
 				handleCloseModal={handleCloseModal}
 				team={team}
@@ -91,6 +91,6 @@ const ProfilePage = () => {
 			/>
 		</>
 	)
-}   
+}
 
 export default ProfilePage;
