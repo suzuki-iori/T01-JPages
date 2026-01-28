@@ -22,19 +22,23 @@
 }
 
 .levelNumber {
-    /* background-image: url('/public/assets/img/hexagon.png'); */
-    background-color:#876344 ;
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);  
-    width: 24px;
-    height: 28px; 
     display: flex;
     justify-content: center;
     align-items: center;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);  
+    width: 24px;
+    height: 28px; 
+    padding-top: 1px;
     color: white;
+    background-color:#876344 ;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 8px; 
-    padding-top: 1px;
+    border-radius: 8px;
+}
+.levelNumber > span {
+    padding-right: 1px;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
 }
     
 .bar {
