@@ -10,6 +10,12 @@
     scrollbar-width: none;
 }
 
+*:focus-visible {
+    border: none;
+    outline: none;
+    box-shadow:none;
+}
+
 .contents_box::-webkit-scrollbar{
     display: none;
 }
