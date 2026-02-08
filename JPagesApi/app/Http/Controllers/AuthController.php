@@ -38,7 +38,7 @@ class AuthController extends Controller
     /**
      * ログアウトする
      */
-    public function logout(Request $request) 
+    public function logout(Request $request)
     {
         $userId = $request['login_user']->id;
         $user = User::find($userId);
@@ -66,9 +66,6 @@ class AuthController extends Controller
         if (!$student) {
             return response(["status" => "failure", "message" => "学籍番号と氏名が一致しません"], 401);
         }
-        // if($student->token) {
-        //     return response(["status" => "failure", "message" => "このアカウントは既にログインしています。管理者に問い合わせてください。"], 401);
-        // }
         $student->token = md5(uniqid(rand(), true));
         $student->update();
         return response(["status" => "success", "token" => $student->token, "team_id" => $student['team_id']], 200);

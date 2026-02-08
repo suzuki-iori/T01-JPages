@@ -16,7 +16,7 @@ class StudentApiController extends Controller
     {
         $list = Student::with('team')->get()->makeHidden('token');
         foreach($list as $student) {
-            $student->teamNum = $student->team->name ?  $student->team->name : $student->team->num; 
+            $student->teamNum = $student->team->name ?  $student->team->name : $student->team->num;
         }
         $res = [
             'status' => 'success',
@@ -63,7 +63,7 @@ class StudentApiController extends Controller
         }
         $res = [
             'status' => 'success',
-            'student' => $student->makeHidden('token')  
+            'student' => $student->makeHidden('token')
         ];
         return response($res, 200);
     }

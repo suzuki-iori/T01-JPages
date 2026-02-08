@@ -108,10 +108,6 @@ class RatingApiController extends Controller
         }
 
         $ratings = Rating::where('team_id', $id)->with(['Visitor'])->get();
-        // 空だったらエラー
-        // if ($ratings->isEmpty()) {
-        //     return response(['status' => 'failure', 'message' => '一度も投票されていません'], 404);
-        // }
 
         // 各ratingのデータを加工する
         $ratings->transform(function ($rating) {

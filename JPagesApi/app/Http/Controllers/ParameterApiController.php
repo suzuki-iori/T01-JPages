@@ -38,7 +38,7 @@ class ParameterApiController extends Controller
         ];
         return response($res, 200);
     }
-    
+
     /**
      * パラメーター編集
      */

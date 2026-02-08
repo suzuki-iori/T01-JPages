@@ -67,8 +67,7 @@ class QuestionApiController extends Controller
         if($question->numberAnswers->isEmpty() || $question->textAnswers->isEmpty()) {
             return response(['status' => 'failure', 'message' => 'すでに回答がある質問です'], 400);
         }
-        dd($question);
-        
+
         $question->delete();
         return response(['status' => 'success', 'id' => $id], 200);
     }

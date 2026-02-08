@@ -19,7 +19,6 @@ async function Ajax(signal, token, url = "", method = 'GET', data) {
     }
 
     const response = await fetch(`https:///jpages.mydns.jp/JPagesApi/api/${url}`, opt);
-
     return response.json();
 }
 
