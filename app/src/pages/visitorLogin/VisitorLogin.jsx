@@ -7,6 +7,9 @@ import ScanBusinessCardForm from './components/scanbusinesscardform/ScanBusiness
 import LoadingMessage from './components/loadingmessage/LoadingMessage';
 import { AppContext } from '../../context/AppContextProvider';
 
+
+
+
 const VisitorLogin = () => {
 	const [text, setText] = useState({name: '',	companyName: '', email: ''});
 	const [visitorType, setVisitorType] = useState('0');
@@ -121,7 +124,7 @@ const VisitorLogin = () => {
 		fillFormWithEntities(entities);
 	};
 
-	const genAI = new GoogleGenerativeAI(`${process.env.REACT_APP_GOOGLE_GEMINI_API_KEY}`);
+	const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 	const analyzeWithGemini = async (inputText) => {
@@ -144,8 +147,10 @@ const VisitorLogin = () => {
 		}
 
 		テキスト: ${inputText}
-`;
+		`;
+
 		console.log(prompt);
+
 		try {
 			const result = await model.generateContent(prompt);
 			const textResponse = result.response.text();
@@ -153,7 +158,7 @@ const VisitorLogin = () => {
 			const entities = JSON.parse(cleanedResponse);
 			fillFormWithEntities(entities);
 		} catch (error) {
-			// console.error('レスポンス解析エラー:', error);
+			console.error('Gemini API エラー:', error);
 		}
 	};
 
