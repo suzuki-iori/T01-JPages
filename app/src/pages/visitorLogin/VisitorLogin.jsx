@@ -94,9 +94,12 @@ const VisitorLogin = () => {
 		};
 
 		try {
-			const response = await fetch(`https://vision.googleapis.com/v1/images:annotate?key=${process.env.REACT_APP_GOOGLE_VISION_API_KEY}`, {
+			const response = await fetch('https://vision.googleapis.com/v1/images:annotate', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Goog-Api-Key': process.env.REACT_APP_GOOGLE_VISION_API_KEY
+				},
 				body: JSON.stringify(requestBody),
 			});
 
