@@ -52,16 +52,9 @@ const TeamTop = () => {
 			<section className={styles.container}>
 				{character && (
 					<>
-						<CharacterStatus 
-							level={character.level}
-							point={character.point}
-							count={count}
-						/>
+						<CharacterStatus character={character} count={count}/>
 						<figure className={styles.character}>
-							<img 
-								src={`/assets/img/character/${character.type}/${character.type}_${character.level}.svg`}
-								alt={`${character.type}のレベル${character.level}のキャラクター`} 
-							/>
+							<img src={`/assets/img/character/${character.type}/${character.type}_${character.level}.svg`} alt={`${character.type}のレベル${character.level}のキャラクター`} />
 						</figure>
 					</>
 				)}
