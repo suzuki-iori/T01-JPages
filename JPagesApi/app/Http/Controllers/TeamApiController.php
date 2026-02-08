@@ -66,7 +66,7 @@ class TeamApiController extends Controller
         }
         $team = Team::create($request->only(['num', 'name', 'detail', 'grade']));
         // キャラクターの追加
-        $characterType = ['cat', 'dog']; // 'Rabbits', 'squirrel', 'horse', 'sheep', 'hamsters', 'bear', 'penguin', 'mouse', 'pig', 'lion'
+        $characterType = ['cat', 'dog', 'Rabbits', 'squirrel', 'horse', 'sheep', 'hamsters', 'bear', 'penguin', 'mouse', 'pig', 'lion'];
         Character::create([
             'team_id' => $team->id,
             'level' => 1,
