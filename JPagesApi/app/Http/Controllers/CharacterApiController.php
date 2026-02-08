@@ -49,7 +49,7 @@ class CharacterApiController extends Controller
         if(! $character) {
             return response(['status' => 'failure', 'message' => 'キャラクターが存在しません'], 404);
         }
-        
+
         // リクエスト取得
         $req = $request->all();
         $rating = Rating::find($req['rating_id']);
@@ -64,7 +64,7 @@ class CharacterApiController extends Controller
         $point = $character->point + $req['point'];
         $level = $character->level;
 
-        $levelBorder = [10000, 6500, 4000, 2000, 600]; //TeamApiController
+        $levelBorder = [10000, 6500, 4000, 2000, 600];
 
         // レベルアップの計算
         if($point >= $levelBorder[0]) {
@@ -85,15 +85,12 @@ class CharacterApiController extends Controller
         $character->level = $level;
         $character->point = $point;
 
-
-        // レベルに応じて画像を変える？？
-        // -----変更してレスポンスを返す
         $character->save();
         $res = [
             'status'  => 'success',
             'character' => $character
         ];
         return response($res, 200);
-        
+
     }
 }

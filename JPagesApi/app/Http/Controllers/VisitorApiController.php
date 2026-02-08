@@ -17,7 +17,7 @@ class VisitorApiController extends Controller
         $list = Visitor::get();
         $res = [
             'status' => 'success',
-            'visitor' => $list  
+            'visitor' => $list
         ];
         return response($res, 200);
     }
@@ -47,7 +47,7 @@ class VisitorApiController extends Controller
         $visitor->makeHidden('token');
         $res = [
             'status' => 'success',
-            'visitor' => $visitor  
+            'visitor' => $visitor
         ];
         return response($res, 200);
     }
@@ -62,14 +62,14 @@ class VisitorApiController extends Controller
         if(!$visitor) {
             return response(['status' => 'failure', 'message' => '来場者が存在しません'], 404);
         }
-    
+
         // データの更新
         $req = $request->all();
         $visitor->affiliation = $req['affiliation'];
         $visitor->name = $req['name'];
         $visitor->email = $req['email'];
         $visitor->update();
-    
+
         return response(["status" => "success"], 200);
     }
 

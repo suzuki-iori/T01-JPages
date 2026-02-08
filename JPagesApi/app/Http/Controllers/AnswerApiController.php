@@ -17,7 +17,7 @@ class AnswerApiController extends Controller
             'answera' => $list
         ];
         return response($res, 200);
-    }        
+    }
 
     /**
      * 回答登録
@@ -47,26 +47,26 @@ class AnswerApiController extends Controller
         }
 
 
-        $answers = []; 
+        $answers = [];
 
-        // numberAnswers 
+        // numberAnswers
         foreach ($answer->numberAnswers as $item) {
             $answers[] = [
                 'id' => $item->id,
                 'answer' => $item->answer,
-                'order' => $item->question->order, 
-                'question_text' => $item->question->question, 
+                'order' => $item->question->order,
+                'question_text' => $item->question->question,
                 'created_at' => $item->created_at,
             ];
         }
 
-        // textAnswers 
+        // textAnswers
         foreach ($answer->textAnswers as $item) {
             $answers[] = [
                 'id' => $item->id,
                 'answer' => $item->answer,
-                'order' => $item->question->order, 
-                'question_text' => $item->question->question, 
+                'order' => $item->question->order,
+                'question_text' => $item->question->question,
                 'created_at' => $item->created_at,
             ];
         }

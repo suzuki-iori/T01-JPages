@@ -43,7 +43,7 @@ class QuestionnaireApiController extends Controller
         $questionnaire = $questionnaire->questions()
             ->with(['numberAnswers.answerInfo.visitor', 'textAnswers.answerInfo.visitor'])
             ->orderBy('order', 'asc')->get();
-        
+
         $res = [
             'status' => 'success',
             'questionnaire' => $questionnaire
