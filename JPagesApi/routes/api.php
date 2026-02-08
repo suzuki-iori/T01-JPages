@@ -14,7 +14,6 @@ use App\Http\Controllers\TextAnswerApiController;
 use App\Http\Controllers\NumberAnswerApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ParameterApiController;
-use App\Http\Controllers\CorporationController;
 
 
 use App\Http\Middleware\VisitorTokenAuth;
@@ -134,7 +133,7 @@ Route::get('showTeam/app', [TeamApiController::class, 'app']);
 Route::middleware([VisitorTokenAuth::class])->group(function() {
   // 来場者編集
   Route::put('/visitor', [VisitorApiController::class, 'update']);
-  // 回答追加 
+  // 回答追加
   Route::post('/survey/answer', [AnswerApiController::class, 'store']);
   // テキスト回答追加
   Route::post('/survey/answer/text', [TextAnswerApiController::class, 'store']);
@@ -151,11 +150,7 @@ Route::middleware([VisitorStudentTokenAuth::class])->group(function() {
 });
 
 
-// 管理者ログイン 
+// 管理者ログイン
 Route::post('/login', [AuthController::class, 'login']);
 //学生ログイン
 Route::post('/studentlogin', [AuthController::class, 'studentAuth']);
-
-
-// 法人番号取得
-Route::post('/get-corporation-number', [CorporationController::class, 'getCorporationNumber']);
