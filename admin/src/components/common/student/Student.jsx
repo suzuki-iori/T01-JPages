@@ -26,8 +26,6 @@ export default function Student() {
       .then((data) => {
         if (data.status === "success") {
           setTeamData(data.team);
-        } else {
-          console.log(data.status);
         }
         setShowModal(true);
       })
@@ -42,9 +40,7 @@ export default function Student() {
       .then((data) => {
         if (data.status === "success") {
           setTeamData(data.team);
-        } else {
-          console.log(data.status);
-        }
+        } 
         setShowCSVModal(true);
       })
       .finally(() => {
@@ -58,10 +54,7 @@ export default function Student() {
       .then((data) => {
         if (data.status === "success") {
           setStudentData(data.student);
-          console.log(data.student);
-        } else {
-          console.log(data.status);
-        }
+        } 
       })
       .finally(() => {
         setLoading(false);

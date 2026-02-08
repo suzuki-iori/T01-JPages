@@ -26,8 +26,6 @@ const VisitorDetail = () => {
       .then((data) => {
         if (data.status === "success") {
           setVisitorDetail(data);
-        } else {
-          console.log(data.status);
         }
       });
   };
@@ -37,8 +35,6 @@ const VisitorDetail = () => {
       .then((data) => {
         if (data.status === "success") {
           setTeamData(data);
-        } else {
-          console.log(data.status);
         }
       });
   };

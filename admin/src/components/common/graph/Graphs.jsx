@@ -21,10 +21,7 @@ export const Graphs = () => {
           setVisitorData(data);
           
           // console.log(data);
-        } else {
-          // fetchVisitorData();
-          console.log("データ取得失敗");
-        }
+        } 
       });
   };
 

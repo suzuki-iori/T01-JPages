@@ -17,7 +17,6 @@ const EditTeamModal = (props) => {
     const [detailError, setDetailError] = useState("");
     const [teamGrade, setTeamGrade] = useState('');
 
-    console.log(props);
     
     const closeModal = () => {
         props.setShowModal(false);
@@ -61,8 +60,7 @@ const EditTeamModal = (props) => {
         const file = e.target.files[0];
         if (file) {
             setLogoFile(file);
-            console.log(file);
-            console.log(logoFile);
+
         }
     };
 
@@ -98,18 +96,9 @@ const EditTeamModal = (props) => {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     });
-
-                    console.log(data.status);
-                    console.log(formData);
-                } else {
-                    console.log(data.status);
-                    console.log(data.message);
-                    console.log(token.token);
-                    console.log(formData);
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
                 swal.fire({
                     title: 'エラー',
                     text: 'エラーが発生しました。時間をおいてもう一度やり直してください',
