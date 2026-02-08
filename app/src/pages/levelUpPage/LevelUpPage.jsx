@@ -38,7 +38,7 @@ function LevelUpPage() {
         setCharacter(data.character);
         // バーの長さを取得
         setProgress(calculateProgress(data.character.point));
-      }  
+      }
       setLoading(false);
     })
     .catch((error) => {
@@ -60,20 +60,20 @@ function LevelUpPage() {
       return 100;
     }
     else if (point >= 6500 ) {
-      return ((point - 6500 ) / 3500) * 100; 
+      return ((point - 6500 ) / 3500) * 100;
     }
     else if (point >= 4000 ) {
-      return ((point - 3800 ) / 2500) * 100; 
+      return ((point - 3800 ) / 2500) * 100;
     }
     else if (point >= 2000 ) {
-      return ((point - 2000 ) / 2000) * 100; 
+      return ((point - 2000 ) / 2000) * 100;
     }
     else if (point >= 600 ) {
-      return ((point - 600 ) / 1400) * 100; 
+      return ((point - 600 ) / 1400) * 100;
     }
     return (point / 600 ) * 100;
   };
-  
+
   // useEffect
   useEffect(() => {
     characterGet();
