@@ -17,6 +17,10 @@
         align-items: center;
         flex-direction: column;
 
+        .img-2 img {
+            margin-top: 3px;
+            width: 35%;
+        }
         figure {
             border-radius: 99px;
             overflow: hidden;
@@ -28,6 +32,10 @@
         }
         figcaption {
             font-size: 12px;
+        }
+        .img-gohome img {
+            margin-top: 5px;
+            width: 45%;
         }
     }
     .menu1 {
