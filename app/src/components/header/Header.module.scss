@@ -25,13 +25,17 @@ header {
             width: 40px;
             margin: 10px;
         }
+        .logoImg2 {
+            margin-top: 5px;
+            scale: 120%;
+        }
     }
     h2 {
         display: flex;
         align-items: center;
         margin-bottom: 18px;
         margin-left: 12px;
-        
+
         .number {
             font-size: 16px;
             padding: 3px 10px 0;
@@ -43,10 +47,10 @@ header {
         .title {
             margin-top: 6px;
             font-size: 22px;
-    
+
         }
     }
-    
+
 }
 .headerGreen {
     background: #CDE9B9;
@@ -54,4 +58,4 @@ header {
 }
 .headerBeige {
     background: #F7F2DF;
-}    
+}
