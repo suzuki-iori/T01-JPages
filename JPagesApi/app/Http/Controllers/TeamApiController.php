@@ -36,7 +36,7 @@ class TeamApiController extends Controller
             'status' => 'success',
             'team' => $list
         ];
-        
+
         return response($res, 200);
     }
 
@@ -59,7 +59,7 @@ class TeamApiController extends Controller
                 $year++;
             }
             // 画像の名前を定義
-            $path = '/var/www/htmls/public/assets/img/logo/' . $year;
+            $path = '/var/www/app/assets/img/logo' . $year;
 
             $fileName = $num . '.png';
             $request->file('logo')->move($path, $fileName);
@@ -87,7 +87,7 @@ class TeamApiController extends Controller
         }
         return response(['status' => 'success', 'id' => $team->id], 201);
     }
-    
+
 
     /**
      * チーム詳細表示
@@ -124,19 +124,19 @@ class TeamApiController extends Controller
         // 評価数
         $count = $team->ratings->isEmpty() ? 0 : count($team->ratings);
         $team->count = $count;
-        
+
         // キャラクターの次のレベル
         $levelBorder = [10000, 6500, 4000, 2000, 600];
         $level = $team->character->level;
-        
+
         if ($level < 1 || $level > 6) {
             return response(['status' => 'failure', 'message' => 'キャラクターレベルが不正です'], 400);
         }
-        
-        $nextLevelBorder = $level >= 6 
-            ? $levelBorder[0] 
+
+        $nextLevelBorder = $level >= 6
+            ? $levelBorder[0]
             : $levelBorder[5 - $level];
-        
+
         $team->characterInfo = [
             "id" => $team->character->id,
             "level" => $team->character->level,
@@ -264,7 +264,7 @@ class TeamApiController extends Controller
         // チーム削除
         $team->delete();
         return response(['status' => 'success', 'id' => $id], 200);
-        
+
     }
 
     /**
