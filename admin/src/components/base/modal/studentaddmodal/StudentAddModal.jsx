@@ -75,10 +75,7 @@ const StudentAddModal = (props) => {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     });                      
-                } else {
-                    console.log(data.status);
-                    console.log(data.message);
-                }
+                } 
             });
     };
 

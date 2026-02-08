@@ -37,9 +37,7 @@ const QeDetail = () => {
         if (data.status === "success") {
           const filt = data.questionnaire.find(item => item.id === parseInt(getId.id, 10));
           setQueTitle(filt.title);
-        } else {
-          console.log(data.status);
-        }
+        } 
       });
   }, [token.token, getId.id]); 
 
@@ -49,8 +47,6 @@ const QeDetail = () => {
       .then((data) => {
         if (data.status === "success") {
           setItems(data.questionnaire);
-        } else {
-          console.log(data.status);
         }
       })
       .finally(() => {

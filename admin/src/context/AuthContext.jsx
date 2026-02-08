@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
     const login = (token) => {
         setToken(token);
         setIsLoggedIn(true);
-        // console.log(token);
     };
 
     const logout = () => {

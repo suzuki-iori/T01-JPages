@@ -37,10 +37,8 @@ const AddTeamModal = (props) => {
         const file = e.target.files[0];
         if (file) {
             setLogoFileName(file);
-            console.log(file);
         }
     };
-    console.log(props);
     
 
     const handleAddTeam = (event) => {
@@ -65,7 +63,6 @@ const AddTeamModal = (props) => {
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    console.log( formData);
                     closeModal();
                     swal.fire({
                         title: '完了',

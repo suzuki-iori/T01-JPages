@@ -8,7 +8,7 @@ import useRequireAuth from '../../../hooks/useRequireAuth';
 import { Graphs } from '../../common/graph/Graphs';
 
 const dashboard = () => {
-    useRequireAuth();
+    // useRequireAuth();
     const {checkbool,toggleSidebar} = useSetSidebar();
     const mypath = useSetUrlPath();
     return (

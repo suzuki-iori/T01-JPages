@@ -13,7 +13,6 @@ const DeleteTeamModal = (props) => {
     const queId = useParams();
     const navigate = useNavigate();
 
-    console.log(props);
     const closeModal = () =>{
         props.setShowDeleteModal(false);
     }
@@ -21,7 +20,6 @@ const DeleteTeamModal = (props) => {
         Ajax(null, token.token, `team/${props.propsId}`, 'delete')
         .then((data) => {
             if(data.status === "success") {
-                console.log("dekita");
                 closeModal();
                 swal.fire({
                     title: '完了',
@@ -31,9 +29,7 @@ const DeleteTeamModal = (props) => {
                 });
                 navigate('/admin/team');
             } else {
-                console.log(data.status);
-                console.log(data.message);
-                console.log(token.token);
+
                 swal.fire({
                     title: 'エラー',
                     text: 'すでに評価されているため削除できません',

@@ -28,9 +28,6 @@ export const Team = () => {
       .then((data) => {
         if (data.status === "success") {
           setTeam(data.team || []);
-          console.log("データ取得成功");
-        } else {
-          console.log(data.status);
         }
       });
   };

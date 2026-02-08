@@ -26,17 +26,13 @@ const Detail = () => {
       .then((data) => {
         if (data.status === "success") {
           setData(data.team || []);
-          console.log("データ取得成功");
-
           const arrayLast = data.team.slice(-1)[0]; // 修正: data.teamを使う
           setLastTeamId(arrayLast ? arrayLast.id : null); // lastTeamIdを設定
           setTeam_id(id);
           if (id > (arrayLast ? arrayLast.id : 0)) {
             navigate('/admin/NoTeam');
           }
-        } else {
-          console.log(data.status);
-        }
+        } 
       });
   }, [id, navigate, token]);
 

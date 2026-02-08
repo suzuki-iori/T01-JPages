@@ -18,10 +18,6 @@ const VisitorCounter = () => {
             if (data.status === "success") {
                 setVisitorData(data.visitor.length); 
                 startCountAnimation(data.visitor.length);
-                console.log(data.visitor.length);
-                
-            } else {
-              console.log(data.status);
             }
           });
       };

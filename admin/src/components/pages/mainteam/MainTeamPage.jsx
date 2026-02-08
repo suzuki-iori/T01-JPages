@@ -10,7 +10,6 @@ import useRequireAuth from '../../../hooks/useRequireAuth';
 
 export default function MainTeamPage() {
   useRequireAuth();
-// console.log("ここはチーム一覧");
 const {checkbool,toggleSidebar} = useSetSidebar();
 const mypath = useSetUrlPath();
 return (
@@ -19,8 +18,7 @@ return (
       <div className={styles.flex}>
         <RoutingSidebar checkbool={checkbool}/>
         <Team/>
-      </div>
-      
+      </div> 
 </>
   )
 }

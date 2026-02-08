@@ -16,14 +16,8 @@ const TeanRanking = () => {
         Ajax(null, null, 'ranking', 'get')
             .then((data) => {
                 if (data) {
-                    // console.log(data);
-                    // console.log("dekite");
                     const sortedData = data.sort((a, b) => b.total - a.total);
                     setRatingItem(sortedData);
-                    // console.log(sortedData);
-                } else {
-                    console.log(data.status);
-                    console.log(data.message);
                 }
             });
     }, []);

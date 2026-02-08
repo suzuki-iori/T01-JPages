@@ -7,12 +7,10 @@ import swal from 'sweetalert2';
 
 
 const StudentDeleteModal = (props) => {
-    console.log(props);
     const token = useAuth();
     // const studentId = props.stID
     const navigate = useNavigate();
     const { id } = useParams();
-    console.log(props);
     const closeModal = () => {
         props.setShowDeleteModal(false);
     };
@@ -20,7 +18,6 @@ const StudentDeleteModal = (props) => {
         Ajax(null, token.token, `student/${id}`, 'DELETE')
         .then((data) => {
             if(data.status === "success") {
-                console.log("dekite");
                 closeModal();
                 swal.fire({
                     title: '削除完了',
@@ -30,7 +27,6 @@ const StudentDeleteModal = (props) => {
                 });                  
                 navigate('/admin/student');
             } else {
-                console.log(data.status);
                 swal.fire({
                     title: 'エラー',
                     text: 'エラーが発生しました。もう一度お試しください',
