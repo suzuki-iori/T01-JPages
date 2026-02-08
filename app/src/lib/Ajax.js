@@ -14,9 +14,8 @@ async function Ajax(token, url = "", method = 'GET', data) {
         opt.body = JSON.stringify(data);
     }
 
-    // const response = await fetch(`https://jpages.jp/JPagesApi/public/api/${url}`, opt);
-    const response = await fetch(`http://localhost:8080/api/${url}`, opt);
+    const response = await fetch(`http://3.27.212.213/JPagesApi/api/${url}`, opt);
     return response.json();
 }
-  
+
 export default Ajax;
