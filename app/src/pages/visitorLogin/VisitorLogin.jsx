@@ -152,7 +152,7 @@ const VisitorLogin = () => {
 		console.log("prompt1:", prompt);
 
 		try {
-			log("Gemini API 呼び出し開始");
+			console.log("Gemini API 呼び出し開始");
 			if(!process.env.REACT_APP_GEMINI_API_KEY) {
 				throw new Error("Gemini API Keyが設定されていません");
 			}
