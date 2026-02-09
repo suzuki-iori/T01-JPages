@@ -124,9 +124,6 @@ const VisitorLogin = () => {
 		fillFormWithEntities(entities);
 	};
 
-	// const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
-	// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
 	const analyzeWithGemini = async (inputText) => {
 		const prompt = `以下のテキストから名前、メールアドレス、会社名をそれぞれ抽出してください。形式はPERSON（名前）、MAIL（メールアドレス）、ORGANIZATION（会社名）で、それぞれの値を対応するプロパティに出力してください。
 
@@ -149,13 +146,8 @@ const VisitorLogin = () => {
 		テキスト: ${inputText}
 		`;
 
-		console.log("prompt1:", prompt);
 
 		try {
-			console.log("Gemini API 呼び出し開始");
-			if(!process.env.REACT_APP_GEMINI_API_KEY) {
-				throw new Error("Gemini API Keyが設定されていません");
-			}
 			const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 			const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
@@ -170,7 +162,6 @@ const VisitorLogin = () => {
 	};
 
 	const cleanResponse = (generatedResponse) => {
-		console.log(generatedResponse);
 		return generatedResponse
 		.replace(/```json/, '')
 		.replace(/```/, '')
