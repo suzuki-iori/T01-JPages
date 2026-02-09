@@ -149,9 +149,13 @@ const VisitorLogin = () => {
 		テキスト: ${inputText}
 		`;
 
-		console.log(prompt);
+		console.log("prompt1:", prompt);
 
 		try {
+			log("Gemini API 呼び出し開始");
+			if(!process.env.REACT_APP_GEMINI_API_KEY) {
+				throw new Error("Gemini API Keyが設定されていません");
+			}
 			const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
 			const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
