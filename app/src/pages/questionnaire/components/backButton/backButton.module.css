@@ -1,37 +1,26 @@
 .backButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #cde9b9;
-    color: #876344;
-    border: 2px solid #cde9b9;
+    background-color: #876344;
+    color: white;
+    border: none;
     padding: 10px 20px;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+    width: fit-content;
     margin-bottom: 24px;
     margin-left: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .backButton::before {
-    content: '←';
-    margin-right: 4px;
+    content: '← ';
 }
 
 .backButton:hover {
-    background: #b3d49c;
-    color: #876344;
-    transform: translateX(-2px);
-    box-shadow: 0 4px 12px rgba(135, 99, 68, 0.2);
-}
-
-.backButton:active {
-    transform: translateX(-1px);
+    background-color: #6d4f35;
 }
 
 @media (max-width: 600px) {
