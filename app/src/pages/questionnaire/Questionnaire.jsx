@@ -14,7 +14,7 @@ const Questionnaire = () => {
 
     useEffect(() => {
 		setLoading(true);
-		Ajax(null, 'questionnaire/1', 'GET')
+		Ajax(null, 'questionnaire/active', 'GET')
 		.then((data) => {
 			if(data.status === 'failure') {
 				// 失敗
