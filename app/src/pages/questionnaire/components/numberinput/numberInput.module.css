@@ -1,26 +1,65 @@
 .rating-container {
     display: flex;
-    justify-content: center; /* 中央揃え */
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 0;
+    flex-wrap: wrap;
 }
 
 .rating-button {
-    background-color: #ffffff; /* ボタンのデフォルトの背景色 */
-    width: 50px; /* 固定幅 */
-    height: 50px; /* 固定高さ */
-    border: none;
-    border-radius: 50%; /* 完全に円形にする */
-    padding: 0; /* 内側の余白をなくす */
+    background: linear-gradient(135deg, #f2ecd4 0%, #e8ddc8 100%);
+    width: 52px;
+    height: 52px;
+    border: 2px solid #876344;
+    border-radius: 50%;
+    padding: 0;
     cursor: pointer;
-    margin: 0 5px; /* 左右のマージン */
-    transition: background-color 0.3s;
+    transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s ease, transform 0.25s ease;
     display: flex;
-    align-items: center; /* 垂直中央揃え */
-    justify-content: center; /* 水平中央揃え */
-    font-size: 18px; /* ボタン内のテキストサイズ */
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #876344;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* 追加のスタイル */
+@media (hover: hover) {
+    .rating-button:hover {
+        background-color: #e8ddc8;
+        border-color: #876344;
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(135, 99, 68, 0.15);
+    }
+}
+
+.rating-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(135, 99, 68, 0.1);
+}
+
 .rating-button.selected {
-    background-color: #876344; /* 選択されたボタンの背景色 */
-    color: white; /* 選択されたボタンの文字色 */
+    background: linear-gradient(135deg, #876344 0%, #6d4f35 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 6px 16px rgba(135, 99, 68, 0.4), inset 0 0 0 2px #876344;
+}
+
+@media (hover: hover) {
+    .rating-button.selected:hover {
+        transform: scale(1.08);
+    }
+}
+
+@media (max-width: 600px) {
+    .rating-container {
+        gap: 12px;
+    }
+
+    .rating-button {
+        width: 48px;
+        height: 48px;
+        font-size: 14px;
+    }
 }

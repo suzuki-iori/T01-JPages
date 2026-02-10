@@ -1,14 +1,36 @@
 /* 入力フィールドのスタイル */
 .answer-input {
     width: 100%;
-    padding: 10px;
-    border: 2px solid #876344; /* 薄緑 */
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 12px 14px;
+    border: 2px solid #d4cfc4;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #876344;
+    background-color: white;
+    resize: vertical;
+    min-height: 90px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #876344;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(135, 99, 68, 0.1);
+}
+
+.answer-input::placeholder {
+    color: #b8a896;
 }
 
 .valueError {
-    margin-top: 5px;
-    color: red;
-    text-align: center;
+    margin-top: 8px;
+    color: #e74c3c;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0;
 }
