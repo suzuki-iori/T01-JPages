@@ -77,4 +77,24 @@ class QuestionnaireApiController extends Controller
         $questionnaire->delete();
         return response(['status' => 'success', 'id' => $id], 200);
     }
+
+    /**
+     * アクティブなアンケート取得（クライアント用）
+     */
+    public function getActive()
+    {
+        $questionnaire = Questionnaire::where('is_active', true)->first();
+        if(! $questionnaire) {
+            return response(['status' => 'failure', 'message' => 'アクティブなアンケートが存在しません'], 404);
+        }
+        $questionnaire = $questionnaire->questions()
+            ->with(['numberAnswers.answerInfo.visitor', 'textAnswers.answerInfo.visitor'])
+            ->orderBy('order', 'asc')->get();
+
+        $res = [
+            'status' => 'success',
+            'questionnaire' => $questionnaire
+        ];
+        return response($res, 200);
+    }
 }
