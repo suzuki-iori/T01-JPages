@@ -18,9 +18,7 @@ function TextInput({question, handleAnswerChange}) {
 
 	const handleBlur = (e) => {
 		const value = e.target.value;
-		if (!value) {
-			setValueError('必須の質問です');
-		} else if (value.length > 255) {
+		if (value.length > 255) {
 			setValueError('回答は255文字以内で入力してください')
 		} else {
 			setValueError('');

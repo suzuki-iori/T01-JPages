@@ -7,42 +7,14 @@
     overflow-y: auto;
 }
 
-/* エラーバナー */
-.error-banner {
-    background: #fff3cd;
-    border: 2px solid #876344;
-    border-radius: 10px;
-    padding: 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin: 0;
-    animation: slideDown 0.3s ease;
-}
-
-.error-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.error-text {
-    color: #876344;
-    font-size: 15px;
+/* エラーメッセージ */
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
     font-weight: 500;
-    margin: 0;
-    line-height: 1.5;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    text-align: center;
+    padding: 12px 0 0;
+    line-height: 1.4;
 }
 
 /* 質問ごとのスタイル */
