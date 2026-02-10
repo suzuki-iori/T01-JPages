@@ -27,7 +27,6 @@ class QuestionnaireApiController extends Controller
     public function store(QuestionnaireRequest $request)
     {
         $req = $request->all();
-        $req['is_active'] = false;
         $questionnaire = Questionnaire::create($req);
         return response(['status' => 'success', 'title' => $questionnaire->title]);
     }
