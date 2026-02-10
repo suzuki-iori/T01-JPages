@@ -61,6 +61,10 @@ class QuestionnaireApiController extends Controller
             return response(['status' => 'failure', 'message' => 'アンケートが存在しません'], 404);
         }
         $req = $request->all();
+        // is_activeがtrueなら他をfalseに
+        if (isset($req['is_active']) && $req['is_active']) {
+            \App\Models\Questionnaire::where('id', '!=', $id)->where('is_active', true)->update(['is_active' => false]);
+        }
         $questionnaire->update($req);
         return response(['status' => 'success', 'id' => $questionnaire->id], 200);
     }
