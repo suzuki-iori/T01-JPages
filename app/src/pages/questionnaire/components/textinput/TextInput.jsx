@@ -33,7 +33,7 @@ function TextInput({question, handleAnswerChange}) {
 			name={`answer-${question.id}`}
 			onChange={handleChange}
 			onBlur={handleBlur}
-			placeholder="ここに回答を入力してください..."
+			placeholder="回答を入力してください"
 			/>
 			{valueError && <p className={styles.valueError}>{valueError}</p>}
 		</>
