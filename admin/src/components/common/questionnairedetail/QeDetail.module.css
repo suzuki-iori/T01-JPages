@@ -8,6 +8,7 @@
 .chAreaWrapper{
     width: 98%;
     padding: 0 1%;
+    display: flex;
     min-height: 10%;
     max-height: 10%;
     border-bottom: 1px solid rgba(175, 175, 175, 0.5);
@@ -19,6 +20,13 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.makeChangesArea div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 .loadingArea,.noQuestions{
     display: flex;
     justify-content: space-around;

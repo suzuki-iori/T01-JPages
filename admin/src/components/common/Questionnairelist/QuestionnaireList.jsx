@@ -25,8 +25,8 @@ const QuestionnaireList = () => {
         setLoading(true);
         Ajax(null, token.token, 'questionnaire', 'get')
             .then((data) => {
-                if (data.status === "success") {
-                    setQueData(data.questionnaire);
+                if (data.status === "success") {                    
+                    setQueData(data.questionnaire || []);                    
                 } else {
                     console.log(data.status);
                 }
@@ -65,7 +65,7 @@ const QuestionnaireList = () => {
                 )}
 
                 {showDeleteModal && (
-                    <DeleteModal showFlag={showDeleteModal} setShowModal={setShowDeleteModal} queData={queData} />
+                    <DeleteModal showFlag={showDeleteModal} setShowModal={setShowDeleteModal} queData={queData || []} />
                 )}
 
                 <div className={styles.questionnaireListArea}>
@@ -92,7 +92,7 @@ const QuestionnaireList = () => {
                                         </TableCell>
                                     </TableRow>
                                 ) : (
-                                    queData.map((que) => (
+                                    queData.map((que) => (                  
                                         <TableRow key={que.id} component={Link} to={`/admin/questionnairedetail/${que.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                             <TableCell>{que.title}</TableCell>
                                             <TableCell>詳細</TableCell>
