@@ -35,24 +35,33 @@
 .addInnerForm {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    padding: 10px 20px;
 }
 
 .addTeamTitleForm {
-    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .addTeamTitleForm dt {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-weight: bold;
 }
 
+.addTeamTitleForm dd {
+    margin: 0;
+    margin-bottom: 4px;
+}
+
 .addTeamTitleForm input[type="text"] {
-    width: 90%;
-    padding: 10px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 .addTeamTitleForm input[type="text"]:focus {
@@ -60,16 +69,13 @@
     outline: none;
 }
 
-.selectArea dt{
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
 .checkText{
-    width: 90%;
+    width: 100%;
     height: 40px;
-    margin: 0 auto;
     font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .checkText:focus{
     border-color: #F8A100;
@@ -79,7 +85,7 @@
 .submitButton {
     width: 60%;
     padding: 10px 15px;
-    margin: 10px auto;
+    margin: 12px auto 10px;
     background-color: #e9c685;
     color: white;
     border: none;
@@ -92,7 +98,7 @@
 .disabled {
     width: 60%;
     padding: 10px 15px;
-    margin: 10px auto;
+    margin: 12px auto 10px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -119,9 +125,22 @@
 
 textarea{
     resize: none;
-    height: 100px;
+    height: 80px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 textarea:focus{
     border-color: #F8A100;
     outline: none;
+}
+
+/* 必須マーク */
+.required {
+    color: #e53935;
+    font-weight: bold;
+    margin-left: 2px;
 }

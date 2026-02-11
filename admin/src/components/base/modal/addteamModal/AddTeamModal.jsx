@@ -136,7 +136,7 @@ const AddTeamModal = ({ showFlag, setShowModal }) => {
                 />
               </dd>
 
-              <dt><label htmlFor="num">チーム番号</label></dt>
+              <dt><label htmlFor="num">チーム番号 <span className={styles.required}>*</span></label></dt>
               <dd>
                 <input
                   type="text"
@@ -171,10 +171,7 @@ const AddTeamModal = ({ showFlag, setShowModal }) => {
                   onChange={handleInputChange}
                 />
               </dd>
-            </div>
-
-            <div className={styles.selectArea}>
-              <dt><label htmlFor="grade">学年</label></dt>
+              <dt><label htmlFor="grade">学年 <span className={styles.required}>*</span></label></dt>
               <dd>
                 <select
                   id="grade"
@@ -190,7 +187,6 @@ const AddTeamModal = ({ showFlag, setShowModal }) => {
                 </select>
               </dd>
             </div>
-
             <button
               type="submit"
               className={!isFormValid || isSubmitting ? styles.disabled : styles.submitButton}
