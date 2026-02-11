@@ -1,78 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import Ajax from '../../../../hooks/Ajax';
 import { useAuth } from '../../../../context/AuthContext';
-import { useState } from 'react';
 import styles from './questionnaireModal.module.css';
-import { useNavigate } from "react-router-dom";
 
-
-const questionnaireModal = (props) => {
+const QuestionnaireModal = (props) => {
   const token = useAuth();
-  const [title, setTitle] = useState();
-  const [inputValue, setInputValue] = useState('');
+  const [title, setTitle] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  
   const navigate = useNavigate();
 
   const inputTitle = (e) => {
     setTitle(e.target.value);
-    setInputValue(e.target.value);
+  };
+
+  const handleCheck = (e) => {
+    setIsActive(e.target.checked);
   };
 
   const closeModal = () => {
-  props.setShowModal(false);
-  };  
+    props.setShowModal(false);
+    setTitle('');
+    setIsActive(false); 
+  };
+
   const handleAddQue = (ev) => {
     ev.preventDefault();
 
     const req = {
-      title : title
-    }
+      title: title,
+      is_active: isActive 
+    };
+
     Ajax(null, token.token, `questionnaire`, 'post', req)
-    .then((data) => {
-        if(data.status === "success") {
-            closeModal();
-            navigate('/admin/question');
+      .then((data) => {
+        if (data.status === "success") {
+          closeModal();
+          navigate('/admin/question');
+        } else {
+          console.error("作成に失敗しました");
         }
-        setShowModal(true);
-    });
-}
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
+  if (!props.showFlag) return null;
+
   return (
-    <>
-    {props.showFlag ? (
-        <div id={styles.overlay} style={overlay}>
-            <div id={styles.modalContent} style={modalContent}>
-              <div className={styles.addModalTitleArea}>
-                <h2>新しいアンケートを作成します</h2>
-                <button  className={styles.cancelButton} onClick={closeModal}><span>×</span></button>
-              </div>
-              <form action="">
-                <dl className={styles.addInnerForm}>
-                    <div className={styles.addQueTitleForm}>
-                      <dt><label htmlFor="text">タイトル</label></dt>
-                      <dd>
-                        <input type="text" id="QueTitle" maxLength={30} onChange={inputTitle} value={inputValue}  required >
-                        </input>
-                      </dd>
-                    </div>
-                    <button type="submit" className={!inputValue ? styles.disabled : styles.submitButton}   onClick={handleAddQue}  disabled={!inputValue}>OK</button>
-                </dl>
-              </form>
-            </div>
+    <div id={styles.overlay} style={overlayStyle}>
+      <div id={styles.modalContent} style={modalContentStyle}>
+        <div className={styles.addModalTitleArea}>
+          <h2>新しいアンケートを作成します</h2>
+          <button className={styles.cancelButton} onClick={closeModal} type="button">
+            <span>×</span>
+          </button>
         </div>
-    ) : null}
+        <form onSubmit={handleAddQue}>
+          <dl className={styles.addInnerForm}>
+            <div className={styles.addQueTitleForm}>
+              <dt><label htmlFor="QueTitle">タイトル</label></dt>
+              <dd>
+                <input
+                  type="text"
+                  id="QueTitle"
+                  maxLength={30}
+                  onChange={inputTitle}
+                  value={title}
+                  required
+                />
+              </dd>
+            </div>
 
-    </>
-    );
-}
-const modalContent = {
-  background: "white",
-  width:"500px",
-  height:"200px",
-  padding: "10px",
-  borderRadius: "10px",
+            <div style={{ marginTop: '10px', textAlign: 'left', paddingLeft: '5px' }}>
+              <label htmlFor="isActiveCheck" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  id="isActiveCheck"
+                  checked={isActive}
+                  onChange={handleCheck}
+                  style={{ marginRight: '8px', transform: 'scale(1.2)' }}
+                />
+                作成と同時に公開する
+              </label>
+            </div>
 
+            <button
+              type="submit"
+              className={!title ? styles.disabled : styles.submitButton}
+              disabled={!title}
+            >
+              OK
+            </button>
+          </dl>
+        </form>
+      </div>
+    </div>
+  );
 };
 
-const overlay = {
+const modalContentStyle = {
+  background: "white",
+  width: "500px",
+  height: "250px", 
+  padding: "10px",
+  borderRadius: "10px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center"
+};
+
+const overlayStyle = {
   position: "fixed",
   top: 0,
   left: 0,
@@ -82,7 +122,7 @@ const overlay = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  zIndex: 999,
 };
 
-
-export default questionnaireModal
+export default QuestionnaireModal;
