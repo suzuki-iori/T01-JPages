@@ -22,8 +22,9 @@ const GEMINI_PROMPT = `以下のテキストから名前、メールアドレス
 
 テキスト: `;
 
-const Camera = ({ onCapture, onNoCardButtonClick, canvasRef, setLoading }) => {
+const Camera = ({ onCapture, onNoCardButtonClick, setLoading }) => {
 	const videoRef = useRef(null);
+	const canvasRef = useRef(null);
 
 	// カメラを起動
 	const startCamera = useCallback(async () => {
@@ -164,6 +165,7 @@ const Camera = ({ onCapture, onNoCardButtonClick, canvasRef, setLoading }) => {
 	return (
 		<div className={Styles["camera"]}>
 			<video autoPlay muted playsInline ref={videoRef} className={Styles["video"]} />
+			<canvas ref={canvasRef} width="960" height="540" style={{ display: 'none' }} />
 			<div className={Styles.frame}></div>
 			<p className={Styles.message}>名刺を撮影してください</p>
 			<button type='button' className={Styles.noCardButton} onClick={onNoCardButtonClick}>

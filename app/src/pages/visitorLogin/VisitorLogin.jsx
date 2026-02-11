@@ -1,8 +1,7 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Styles from './VisitorLogin.module.css';
 import Camera from './components/camera/Camera';
 import ScanBusinessCardForm from './components/scanbusinesscardform/ScanBusinessCardForm';
-import LoadingMessage from './components/loadingmessage/LoadingMessage';
 import { AppContext } from '../../context/AppContextProvider';
 
 const INITIAL_FORM_STATE = { name: '', companyName: '', email: '' };
@@ -13,8 +12,7 @@ const VisitorLogin = () => {
 	const [isImageCaptured, setIsImageCaptured] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 
-	const { loading, setLoading } = useContext(AppContext);
-	const canvasRef = useRef(null);
+	const { setLoading } = useContext(AppContext);
 
 	// カメラで撮影完了時のコールバック
 	const handleCapture = (formData) => {
@@ -42,7 +40,6 @@ const VisitorLogin = () => {
 				<Camera
 					onCapture={handleCapture}
 					onNoCardButtonClick={handleNoCardButtonClick}
-					canvasRef={canvasRef}
 					setLoading={setLoading}
 				/>
 			) : (
@@ -56,7 +53,6 @@ const VisitorLogin = () => {
 					handleRescan={handleRescan}
 				/>
 			)}
-			<LoadingMessage loading={loading} canvasRef={canvasRef} />
 		</div>
 	);
 };

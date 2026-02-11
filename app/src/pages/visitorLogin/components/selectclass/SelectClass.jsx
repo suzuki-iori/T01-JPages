@@ -3,7 +3,7 @@ import styles from "./selectClass.module.css";
 
 const OPTIONS = [
 	{ value: '1', label: '企業の方' },
-	{ value: '2', label: '教員' },
+	{ value: '2', label: '教職員' },
 	{ value: '3', label: '日本電子専門学校生' },
 	{ value: '4', label: '卒業生' },
 	{ value: '5', label: 'その他の方' },
