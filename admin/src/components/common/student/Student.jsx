@@ -21,7 +21,7 @@ export default function Student() {
   const [selectedGrade, setSelectedGrade] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
   // 年度フィルター
-  const [selectedFiscalYear, setSelectedFiscalYear] = useState(getCurrentFiscalYear());
+  const [selectedFiscalYear, setSelectedFiscalYear] = useState();
 
   const ShowModal = () => {
     setLoading(true);

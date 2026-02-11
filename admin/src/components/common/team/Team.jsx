@@ -82,7 +82,7 @@ export const Team = () => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   // 年度フィルター
-  const [selectedFiscalYear, setSelectedFiscalYear] = useState(getCurrentFiscalYear());
+  const [selectedFiscalYear, setSelectedFiscalYear] = useState();
 
   const fetchTeamData = useCallback(() => {
     Ajax(null, token, 'team', 'get')

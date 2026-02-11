@@ -21,7 +21,7 @@ const Visitor = () => {
   const [loading, setLoading] = useState(false);
   const [selectedDivision, setSelectedDivision] = useState('');
   // 年度フィルター
-  const [selectedFiscalYear, setSelectedFiscalYear] = useState(getCurrentFiscalYear());
+  const [selectedFiscalYear, setSelectedFiscalYear] = useState();
 
   const fetchVisitorData = () => {
     setLoading(true);
