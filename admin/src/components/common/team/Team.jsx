@@ -38,7 +38,11 @@ const TeamItem = ({ team, isCardView }) => {
           <p>{team.num}</p>
         </div>
         <div className={imgAreaClass}>
-          <img src={imagePath} alt="ロゴ" />
+          <img
+            src={imagePath}
+            alt="ロゴ"
+            onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/250x150.png?text=NoImage'}
+          />
         </div>
         <div className={innerClass}>
           <h2>{team.name || '未設定'}</h2>
