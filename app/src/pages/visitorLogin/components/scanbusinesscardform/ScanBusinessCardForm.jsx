@@ -27,8 +27,6 @@ const PLACEHOLDER_MAP = {
 
 // 来場者区分に応じた注意書き
 const AFFILIATION_NOTES = {
-	[VISITOR_TYPE.TEACHER]: '※所属には学科名を入力してください。\n例：高度情報処理科',
-	[VISITOR_TYPE.STUDENT]: '※所属には学科名を入力してください。\n例：高度情報処理科',
 	[VISITOR_TYPE.GRADUATE]: '※学生時代の学科名を入力してください。\n例：23JZ',
 	[VISITOR_TYPE.OTHER]: '※所属には在籍中の組織名を入力してください。',
 };
