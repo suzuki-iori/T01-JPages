@@ -1,12 +1,67 @@
-.flexLegend{
+/* --- レイアウト全体 --- */
+.dashboardContainer {
+    width: 100%;
+    height: 45%;
     display: flex;
-    justify-content: space-around;
-    background: rgb(240, 240, 240);
-    padding-top: 10px;
-    font-size: large;
-    font-weight: bolder;
+    flex-direction: column;
 }
-.rankingArea{
+
+.controlPanel {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    height: 8%;
+}
+
+.graphWrapper {
+    flex: none;
+    height: 92%; 
+    min-height: 320px;
+    position: relative;
+    width: 100%;
+}
+
+.noDataOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #aaaaaa;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 5;
+    white-space: nowrap;
+}
+
+.filterButton {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filterButton:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+.toggleButton {
+    padding: 5px 15px;
+    cursor: pointer;
+    background: #37ab9d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.rankingArea {
     width: 33%;
     max-height: 100%;
     border: none;
@@ -14,62 +69,85 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow-y: scroll;
-}
-/* スクロールバーのスタイル */
-.rankingArea::-webkit-scrollbar {
-    width: 8px; /* スクロールバーの幅 */
+    overflow: hidden; 
 }
 
-.rankingArea::-webkit-scrollbar-thumb {
-    background: #87d1c8; /* スクロールバーのつまみの色 */
-    border-radius: 10px; /* つまみの角を丸くする */
-}
-
-.rankingArea::-webkit-scrollbar-track {
-    background: rgb(240, 240, 240); /* スクロールバーのトラックの色 */
-    border-radius: 10px; /* トラックの角を丸くする */
-}
-
-/* スクロールバーのホバー時のスタイル */
-.rankingArea::-webkit-scrollbar-thumb:hover {
-    background: #2a8f7c; /* ホバー時のつまみの色 */
-}
-
-.ranking{
-    width: 90%;
-    min-height: 20%;
-    margin: auto;
-    padding: 0 10px;
+.rankingHeader {
     display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    /* padding: 10px; */
-    border-bottom:1px #bdbdbd solid;
-}
-.ranking span{
-    flex: 20%;
+    padding: 12px 10px;
+    border-bottom: 2px solid #eee;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: bold;
     text-align: center;
-    height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
 }
-.rankingName{
-    flex: 50%;
-    font-size: 1.2rem;
+
+.rankingScroll {
+    overflow-y: auto;
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
-.rankingScore{
-    flex: 30%;
+
+.noDataInList {
+    width: 100%;
+    height: 100%; 
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9ca3af; 
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.rankingScroll::-webkit-scrollbar { width: 8px; }
+.rankingScroll::-webkit-scrollbar-thumb { background: #87d1c8; border-radius: 10px; }
+.rankingScroll::-webkit-scrollbar-track { background: rgb(240, 240, 240); }
+.rankingScroll::-webkit-scrollbar-thumb:hover { background: #2a8f7c; }
+
+.ranking {
+    width: 90%;
+    margin: auto;
+    padding: 15px 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    border-bottom: 1px #f0f0f0 solid;
+    transition: background 0.2s;
 }
-.VisitorCounter{
+
+
+/* 順位表示の幅を固定して見やすく */
+.rankValue {
+    flex: 0 0 50px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rankingName {
+    flex: 1;
+    font-size: 1.1rem;
+    padding-left: 10px;
+}
+
+.rankingScore {
+    flex: 0 0 80px;
+    text-align: right;
+    font-weight: bold;
+    color: #37ab9d;
+}
+
+.gold { color: #FFD700; }
+.silver { color: #C0C0C0; }
+.bronze { color: #CD7F32; }
+
+.VisitorCounter {
     width: 33%;
     height: 100%;
-    border: none;
     box-shadow: 0px 0px 15px -5px #777777;
     border-radius: 10px;
     display: flex;
@@ -78,18 +156,18 @@
     justify-content: center;
     gap: 30px;
 }
-.VisitorCounter span{
-    font-size: 1.4rem;
-    
+
+.VisitorCounter span { font-size: 1.4rem; }
+.VisitorCounter p {
+    font-size: 2.5rem; /* 数字をより強調 */
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    margin: 0;
 }
-.VisitorCounter p{
-    font-size: 2rem;
-    font-family: "Inter", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-.shadow{
+
+.shadow {
+    display: flex;
+    justify-content:space-around;
     box-shadow: 0px 0px 15px -5px #777777;
     border-radius: 10px;
 }
