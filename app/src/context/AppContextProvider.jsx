@@ -20,7 +20,7 @@ function AppContextProvider({children}) {
   // 学年
   const [grade, setGrade] = useState(3);
   // アンケート回答
-  const [isPosted, setIsPosted] = useState(false);
+  const [isPosted, setIsPosted] = useStateStorage('isPosted', false);
   // HelpModal
   const [helpModalIsOpen, setHelpModalIsOpen] = useState(false);
   const ctx = {

@@ -112,6 +112,8 @@ Route::get('/character', [CharacterApiController::class, 'index']);
 Route::get('/character/{id}', [CharacterApiController::class, 'show']);
 // チーム別評価
 Route::get('/rating/{id}', [RatingApiController::class, 'teamIndex']);
+// アクティブなアンケート取得
+Route::get('/questionnaire/active', [QuestionnaireApiController::class, 'getActive']);
 // アンケート詳細
 Route::get('/questionnaire/{id}', [QuestionnaireApiController::class, 'show']);
 // チームパラメーター

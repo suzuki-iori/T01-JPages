@@ -9,8 +9,8 @@ function NumberInput({ answers, question, handleAnswerChange }) {
             type="button"
             key={num}
             className={`${styles["rating-button"]} ${
-                answers.find((answer) => answer.question_id === question.id)?.answer === num 
-                    ? styles["selected"] 
+                answers.find((answer) => answer.question_id === question.id)?.answer === num
+                    ? styles["selected"]
                     : ""
             }`}
             onClick={() => handleAnswerChange(question.id, num)}

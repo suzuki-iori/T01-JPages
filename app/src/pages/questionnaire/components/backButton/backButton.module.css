@@ -1,12 +1,32 @@
 .backButton {
-    display: flex;
-    justify-content: left;
-    background-color: #CDE9B9;
-    color: #876344;
+    background-color: #876344;
+    color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 24px;
+    margin-left: 0;
+}
+
+.backButton::before {
+    content: '← ';
+}
+
+.backButton:hover {
+    background-color: #6d4f35;
+}
+
+@media (max-width: 600px) {
+    .backButton {
+        font-size: 14px;
+        padding: 10px 16px;
+        margin-bottom: 16px;
+    }
 }

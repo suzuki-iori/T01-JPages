@@ -24,7 +24,8 @@ class QuestionnaireRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:255'
+            'title' => 'required|max:255',
+            'is_active' => 'nullable|boolean'
         ];
     }
 
@@ -40,7 +41,7 @@ class QuestionnaireRequest extends FormRequest
     {
         $exception = $validator->getException();
 
-        throw (new $exception($validator, 
+        throw (new $exception($validator,
                 response(["status" => "ParameterError", "message" => "パラメーターエラー"], 400)
             ));
     }

@@ -2,24 +2,69 @@
 .questionnaire-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    flex-grow: 1; /* フォームが残りのスペースを埋める */
-    overflow-y: auto; /* 必要に応じてスクロール可能に */
+    gap: 24px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 12px 0 0;
+    line-height: 1.4;
 }
 
 /* 質問ごとのスタイル */
 .question-item {
-    background-color: #F2ECD4; 
-    padding: 15px;
-    border-radius: 15px;
+    background: #f2ecd4;
+    padding: 24px;
+    border-radius: 12px;
     text-align: left;
-    margin: 0 10px 0 10px;
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(135, 99, 68, 0.1);
+    transition: all 0.3s ease;
+}
+
+.question-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: rgba(135, 99, 68, 0.2);
 }
 
 /* 各質問のラベル */
 .question-label {
-    color: #876344; /* 濃緑 */
-    font-size: 18px;
-    margin-bottom: 10px;
+    color: #876344;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 16px;
     display: block;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 600px) {
+    .questionnaire-form {
+        gap: 16px;
+    }
+
+    .question-item {
+        padding: 18px;
+    }
+
+    .question-label {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .error-banner {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .error-text {
+        font-size: 14px;
+    }
 }

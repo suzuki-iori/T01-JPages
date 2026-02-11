@@ -15,7 +15,8 @@ class Questionnaire extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title'
+        'title',
+        'is_active'
     ];
     /**
      * 隠すフィールド
@@ -37,7 +38,7 @@ class Questionnaire extends Model
      */
     public function getCreatedAtAttribute($value)
     {
-        return date('Y-m-d H:i:s', strtotime($value)); 
+        return date('Y-m-d H:i:s', strtotime($value));
     }
 
     /**
@@ -45,8 +46,8 @@ class Questionnaire extends Model
      */
     public function getUpdatedAtAttribute($value)
     {
-        return date('Y-m-d H:i:s', strtotime($value)); 
+        return date('Y-m-d H:i:s', strtotime($value));
     }
 
-    
+
 }
