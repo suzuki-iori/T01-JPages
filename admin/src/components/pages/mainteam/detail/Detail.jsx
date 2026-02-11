@@ -18,8 +18,8 @@ const Detail = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [lastTeamId, setLastTeamId] = useState(null); // lastTeamIdを状態として定義
-  const { checkbool, toggleSidebar } = useSetSidebar(); 
-  const mypath = useSetUrlPath(); 
+  const { checkbool, toggleSidebar } = useSetSidebar();
+  const mypath = useSetUrlPath();
 
   useEffect(() => {
     Ajax(null, token.token, 'team', 'get')
@@ -32,7 +32,7 @@ const Detail = () => {
           if (id > (arrayLast ? arrayLast.id : 0)) {
             navigate('/admin/NoTeam');
           }
-        } 
+        }
       });
   }, [id, navigate, token]);
 

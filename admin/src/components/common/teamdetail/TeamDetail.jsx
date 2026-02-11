@@ -16,6 +16,13 @@ export default function TeamDetail(props) {
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+    // 年度計算ユーティリティ
+    const calculateFiscalYear = (createdAt) => {
+        const date = new Date(createdAt);
+        const year = date.getFullYear();
+        return date.getMonth() + 1 >= 4 ? year + 1 : year;
+    };
+
     const ShowModal = () => {
         fetchTeamData();
         setShowModal(true);
@@ -30,7 +37,7 @@ export default function TeamDetail(props) {
         .then((data) => {
             if (data.status === "success") {
             setTeamDetail(data );
-        } 
+        }
         });
     }
 
@@ -42,17 +49,17 @@ export default function TeamDetail(props) {
         <>
             <div className={styles.teamDetailArea}>
                     {showModal && (
-                <EditTeamModal 
-                    showFlag={showModal} 
-                    setShowModal={setShowModal} 
+                <EditTeamModal
+                    showFlag={showModal}
+                    setShowModal={setShowModal}
                     propsId={props.id}
                     teamData={teamDetail}
                 />
                 )}
                 {showDeleteModal && (
-                <DeleteTeamModal 
-                    showFlag={showDeleteModal} 
-                    setShowDeleteModal={setShowDeleteModal} 
+                <DeleteTeamModal
+                    showFlag={showDeleteModal}
+                    setShowDeleteModal={setShowDeleteModal}
                     propsId={props.id}
                     teamData={teamDetail}
                 />
@@ -73,6 +80,10 @@ export default function TeamDetail(props) {
                     {teamDetail ? (
                         <div className={styles.teamText}>
                             <div>
+                                <span>ID</span>
+                                <p>{teamDetail.team.id}</p>
+                            </div>
+                            <div>
                                 <span>チーム番号</span>
                                 <p>{teamDetail.team.num}</p>
                             </div>
@@ -82,8 +93,8 @@ export default function TeamDetail(props) {
                             </div>
                             <div>
                                 <span>メンバー</span>
-                                {teamDetail.team.students.map((student)=>(
-                                <p>{student.grade + "年  " + student.name}</p>
+                                {teamDetail.team.students.map((student, index) => (
+                                    <p key={index}>{student.grade + "年  " + student.name}</p>
                                 ))}
                             </div>
                             <div>
@@ -93,11 +104,22 @@ export default function TeamDetail(props) {
                         </div>
                     ) : (
                         <CircularProgress />
-                        )}
+                    )}
                     <div className={styles.teamImage}>
                         <div>
                             <span>ロゴ画像</span>
-                            <img src="" alt="チームロゴ" />
+                            {teamDetail ? (
+                                <img
+                                    src={`/assets/img/logo/${calculateFiscalYear(teamDetail.team.created_at)}/${teamDetail.team.num}.png`}
+                                    alt="チームロゴ"
+                                    onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/250x150.png?text=NoImage'}
+                                />
+                            ) : (
+                                <img
+                                    src="https://placehold.jp/dddddd/555555/250x150.png?text=NoImage"
+                                    alt="チームロゴ"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
