@@ -14,10 +14,11 @@ const SORT_OPTIONS = [
   { value: 'desc', label: '降順' },
 ];
 
-// 年度計算ユーティリティ
+// 年度計算ユーティリティ（4月始まり）
 const calculateFiscalYear = (createdAt) => {
   const date = new Date(createdAt);
   const year = date.getFullYear();
+  // 4月以降は翌年度、1-3月はその年度
   return date.getMonth() + 1 >= 4 ? year + 1 : year;
 };
 
@@ -25,6 +26,7 @@ const calculateFiscalYear = (createdAt) => {
 const TeamItem = ({ team, isCardView }) => {
   const year = calculateFiscalYear(team.created_at);
   const imagePath = `/assets/img/logo/${year}/${team.num}.png`;
+  console.log(imagePath);
 
   const itemClass = isCardView ? styles.cardItem : styles.listItem;
   const linkClass = isCardView ? styles.cardLink : styles.listLink;

@@ -16,10 +16,11 @@ export default function TeamDetail(props) {
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-    // 年度計算ユーティリティ
+    // 年度計算ユーティリティ（4月始まり）
     const calculateFiscalYear = (createdAt) => {
         const date = new Date(createdAt);
         const year = date.getFullYear();
+        // 4月以降は翌年度、1-3月はその年度
         return date.getMonth() + 1 >= 4 ? year + 1 : year;
     };
 
