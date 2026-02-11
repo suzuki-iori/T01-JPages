@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TextField, TableHead, Tabl
 import { Link } from "react-router-dom";
 import { useAuth } from '../../../context/AuthContext';
 import Ajax from '../../../hooks/Ajax';
+import { getCurrentFiscalYear, extractFiscalYears, filterByFiscalYear } from '../../../hooks/useFiscalYear';
 import styles from './Visitor.module.css';
 
 const divisionOptions = [
@@ -19,6 +20,8 @@ const Visitor = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [selectedDivision, setSelectedDivision] = useState('');
+  // 年度フィルター
+  const [selectedFiscalYear, setSelectedFiscalYear] = useState();
 
   const fetchVisitorData = () => {
     setLoading(true);
@@ -39,13 +42,20 @@ const Visitor = () => {
     return () => clearInterval(intervalId);
   }, [token]);
 
-  const filteredVisitors = visitorData.filter(visitor => {
-    const matchesSearch = visitor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          visitor.affiliation.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDivision = selectedDivision ? visitor.division === selectedDivision : true;
+  // 年度リスト抽出
+  const fiscalYearList = React.useMemo(() => {
+    return extractFiscalYears(visitorData);
+  }, [visitorData]);
 
-    return matchesSearch && matchesDivision;
-  });
+  // 年度・検索・部門フィルタ
+  const filteredVisitors = visitorData
+    ? filterByFiscalYear(visitorData, selectedFiscalYear).filter(visitor => {
+        const matchesSearch = visitor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          visitor.affiliation.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesDivision = selectedDivision ? visitor.division === selectedDivision : true;
+        return matchesSearch && matchesDivision;
+      })
+    : [];
 
   const downloadCSV = () => {
     const csvRows = [
@@ -64,7 +74,7 @@ const Visitor = () => {
     // UTF-8 BOMを追加
     const bom = '\uFEFF';
     const blob = new Blob([bom + csvString], { type: 'text/csv;charset=utf-8;' });
-    
+
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -81,28 +91,42 @@ const Visitor = () => {
       </div>
       <div className={styles.sortArea}>
         <div style={{ display: "flex" }}>
-          <TextField
-            variant="outlined"
-            placeholder="検索"
-            className={styles.searchArea}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ marginLeft: '20px' }}
-          />
-          <FormControl variant="outlined" className={styles.divisionSelect}>
+          {/* 年度セレクト追加 */}
+          <FormControl variant="outlined" style={{ minWidth: 110, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
+            <InputLabel>年度</InputLabel>
+            <Select
+              value={selectedFiscalYear}
+              onChange={e => setSelectedFiscalYear(e.target.value)}
+              label="年度"
+            >
+              <MenuItem value={''}>すべて</MenuItem>
+              {fiscalYearList.map(year => (
+                <MenuItem key={year} value={year}>{year}年度</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl variant="outlined" style={{ minWidth: 110, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
             <InputLabel>部門</InputLabel>
             <Select
               value={selectedDivision}
-              onChange={(e) => setSelectedDivision(e.target.value)}
+              onChange={e => setSelectedDivision(e.target.value)}
               label="部門"
             >
-              <MenuItem value="">
-                <em>すべて</em>
-              </MenuItem>
+              <MenuItem value={''}>すべて</MenuItem>
               {divisionOptions.map(option => (
                 <MenuItem key={option.id} value={option.id}>{option.label}</MenuItem>
               ))}
             </Select>
           </FormControl>
+          <TextField
+            variant="outlined"
+            size="small"
+            placeholder="検索"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+            inputProps={{ style: { height: 40, padding: '0 14px' } }}
+          />
         </div>
         <Button variant="outlined" color="primary" onClick={downloadCSV}>
           CSVダウンロード

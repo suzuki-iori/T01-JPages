@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, CircularProgress } from '@mui/material';
+import { Button, CircularProgress, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material';
 import styles from './Team.module.css';
 import TeamButton from '../../base/teambutton/TeamButton';
 import { useAuth } from '../../../context/AuthContext';
 import Ajax from '../../../hooks/Ajax';
+import { getCurrentFiscalYear, getFiscalYearFromDate, extractFiscalYears, filterByFiscalYear } from '../../../hooks/useFiscalYear';
 import AddTeamModal from '../../base/modal/addteamModal/AddTeamModal';
 
 // 定数
@@ -14,17 +15,11 @@ const SORT_OPTIONS = [
   { value: 'desc', label: '降順' },
 ];
 
-// 年度計算ユーティリティ（4月始まり）
-const calculateFiscalYear = (createdAt) => {
-  const date = new Date(createdAt);
-  const year = date.getFullYear();
-  // 4月以降は翌年度、1-3月はその年度
-  return date.getMonth() + 1 >= 4 ? year + 1 : year;
-};
+// 年度計算はutilに移動
 
 // チームアイテムコンポーネント
 const TeamItem = ({ team, isCardView }) => {
-  const year = calculateFiscalYear(team.created_at);
+  const year = getFiscalYearFromDate(team.created_at);
   const imagePath = `/assets/img/logo/${year}/${team.num}.png`;
 
   const itemClass = isCardView ? styles.cardItem : styles.listItem;
@@ -86,6 +81,8 @@ export const Team = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  // 年度フィルター
+  const [selectedFiscalYear, setSelectedFiscalYear] = useState();
 
   const fetchTeamData = useCallback(() => {
     Ajax(null, token, 'team', 'get')
@@ -104,12 +101,19 @@ export const Team = () => {
     return () => clearInterval(intervalId);
   }, [token, fetchTeamData]);
 
-  // フィルタ処理
-  const filteredTeams = teams.filter((t) =>
-    t.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // 年度リスト抽出
+  const fiscalYearList = React.useMemo(() => {
+    return extractFiscalYears(teams);
+  }, [teams]);
 
-  // ソート処理（バグ修正: numA.localeCompare(numA) → numA.localeCompare(numB)）
+  // 年度・検索フィルタ
+  const filteredTeams = teams
+    ? filterByFiscalYear(teams, selectedFiscalYear).filter((t) =>
+        t.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
+
+  // ソート処理
   const sortedTeams = [...filteredTeams].sort((a, b) => {
     const numA = a.num || '';
     const numB = b.num || '';
@@ -153,22 +157,43 @@ export const Team = () => {
         </div>
 
         <div className={styles.visualSet}>
-          <label className={styles.sortBox}>
-            <select value={sortOrder} onChange={handleSortChange}>
-              {SORT_OPTIONS.map(({ value, label }) => (
-                <option key={value} value={value}>{label}</option>
+          {/* 年度セレクト追加 */}
+          <FormControl variant="outlined" style={{ minWidth: 120, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
+            <InputLabel>年度</InputLabel>
+            <Select
+              value={selectedFiscalYear}
+              onChange={e => setSelectedFiscalYear(e.target.value)}
+              label="年度"
+            >
+              <MenuItem value={''}>すべて</MenuItem>
+              {fiscalYearList.map(year => (
+                <MenuItem key={year} value={year}>{year}年度</MenuItem>
               ))}
-            </select>
-          </label>
+            </Select>
+          </FormControl>
 
-          <label className={styles.searchArea}>
-            <input
-              type="search"
-              placeholder="チーム名で検索"
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-          </label>
+          <FormControl variant="outlined" style={{ minWidth: 100, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
+            <InputLabel>並び順</InputLabel>
+            <Select
+              value={sortOrder}
+              onChange={handleSortChange}
+              label="並び順"
+            >
+              {SORT_OPTIONS.map(({ value, label }) => (
+                <MenuItem key={value} value={value}>{label}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <TextField
+            variant="outlined"
+            size="small"
+            placeholder="検索"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            style={{ minWidth: 160, marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+            inputProps={{ style: { height: 40, padding: '0 14px' } }}
+          />
 
           <div className={styles.visualButtonArea}>
             <TeamButton visualType={VIEW_TYPES.CARD} onClick={() => setIsCardView(true)} isActive={isCardView} />

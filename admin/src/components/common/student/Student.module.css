@@ -21,22 +21,29 @@
     font-size: small;
 }
 
-.processingArea{
-    height: 10%;
-    width: 100%;
+
+.processingArea {
+    width: calc(100% - 40px);
     display: flex;
     align-items: center;
+    height: 80px;
 }
 
-.innerProcessing{
-    flex: 80%;
-}
 
-.buttonArea{
-    flex: 20%;
+.innerProcessing {
     display: flex;
+    align-items: center;
+    gap: 16px;
 }
-.buttonArea button{
+
+
+.buttonArea {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+.buttonArea button {
     height: 40px;
     background: #37ab9d;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, CircularProgress, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { getCurrentFiscalYear, getFiscalYearFromDate, extractFiscalYears, filterByFiscalYear } from '../../../hooks/useFiscalYear';
 import { Link } from "react-router-dom";
 import Ajax from '../../../hooks/Ajax';
 import { useAuth } from '../../../context/AuthContext';
@@ -19,6 +20,8 @@ export default function Student() {
   const [sortDirection, setSortDirection] = useState('ascending');
   const [selectedGrade, setSelectedGrade] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
+  // 年度フィルター
+  const [selectedFiscalYear, setSelectedFiscalYear] = useState();
 
   const ShowModal = () => {
     setLoading(true);
@@ -64,14 +67,20 @@ export default function Student() {
 
 
 
-  // 検索機能
-  const filteredStudents = studentData.filter(student => {
-    const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) || student.number.toString().includes(searchTerm);
-    const matchesGrade = selectedGrade ? student.grade === selectedGrade : true;
-    const matchesTeam = selectedTeam ? student.teamNum === selectedTeam : true;
-    // return true
-    return matchesSearch && matchesGrade && matchesTeam;
-  });
+  // 年度リスト抽出
+  const fiscalYearList = React.useMemo(() => {
+    return extractFiscalYears(studentData);
+  }, [studentData]);
+
+  // 年度・検索・学年・チームフィルタ
+  const filteredStudents = studentData
+    ? filterByFiscalYear(studentData, selectedFiscalYear).filter(student => {
+        const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) || student.number.toString().includes(searchTerm);
+        const matchesGrade = selectedGrade ? student.grade === selectedGrade : true;
+        const matchesTeam = selectedTeam ? student.teamNum === selectedTeam : true;
+        return matchesSearch && matchesGrade && matchesTeam;
+      })
+    : [];
 
   // ソート機能
   const sortedStudents = [...filteredStudents].sort((a, b) => {
@@ -105,6 +114,7 @@ export default function Student() {
     setSearchTerm('');
     setSelectedGrade('');
     setSelectedTeam('');
+    setSelectedFiscalYear(getCurrentFiscalYear());
   };
 
   return (
@@ -116,33 +126,41 @@ export default function Student() {
         </div>
         <div className={styles.processingArea}>
           <div className={styles.innerProcessing}>
-            <TextField
-              variant="outlined"
-              placeholder="検索"
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginLeft: '20px' }}
-            />
-            <FormControl variant="outlined" style={{ marginLeft: '20px', width: '100px' }}>
+            {/* 年度セレクト追加 */}
+            <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '110px', height: 40, display: 'flex', justifyContent: 'center' }}>
+              <InputLabel>年度</InputLabel>
+              <Select
+                value={selectedFiscalYear}
+                onChange={e => setSelectedFiscalYear(e.target.value)}
+                label="年度フィルター"
+              >
+                <MenuItem value={''}>すべて</MenuItem>
+                {fiscalYearList.map(year => (
+                  <MenuItem key={year} value={year}>{year}年度</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '100px', height: 40, display: 'flex', justifyContent: 'center' }}>
               <InputLabel>学年</InputLabel>
               <Select
                 value={selectedGrade}
                 onChange={handleGradeChange}
                 label="学年フィルター"
               >
-                <MenuItem value="">全て</MenuItem>
+                <MenuItem value="">すべて</MenuItem>
                 {Array.from(new Set(studentData.map(student => student.grade))).map(grade => (
                   <MenuItem key={grade} value={grade}>{grade}</MenuItem>
                 ))}
               </Select>
             </FormControl>
-            <FormControl variant="outlined" style={{ marginLeft: '20px', width: '100px' }}>
+            <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '100px', height: 40, display: 'flex', justifyContent: 'center' }}>
               <InputLabel>チーム</InputLabel>
               <Select
                 value={selectedTeam}
                 onChange={handleTeamChange}
                 label="チームフィルター"
               >
-                <MenuItem value="">全て</MenuItem>
+                <MenuItem value="">すべて</MenuItem>
                 {Array.from(new Set(studentData.map(student => student.teamNum)))
                   .sort((a, b) => a - b) // 数値としてソート
                   .map(team => (
@@ -150,7 +168,16 @@ export default function Student() {
                   ))}
               </Select>
             </FormControl>
-            <Button variant="outlined" color="secondary" onClick={resetFilters} style={{ marginLeft: '20px', marginTop: '10px' }}>
+            <TextField
+              variant="outlined"
+              size="small"
+              placeholder="検索"
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+              inputProps={{ style: { height: 40, padding: '0 14px' } }}
+            />
+            <Button variant="outlined" color="secondary" size="small" onClick={resetFilters} style={{ marginLeft: '20px', height: 40, alignSelf: 'center' }}>
               元に戻す
             </Button>
           </div>
