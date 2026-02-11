@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './StDetail.module.css';
 import { Button, CircularProgress } from '@mui/material';
 import StudentDeleteModal from '../../base/modal/studentDeleteModal/StudentDeleteModal';
@@ -61,7 +62,7 @@ export default function StDetail(props) {
                         <div className={styles.studentText}>
                             <div>
                                 <span>所属チーム</span>
-                                <p>{getTeamName(detailData.student.team_id)}</p>
+                                <p>{detailData.student.team_id ? (<Link to={`/admin/team/${detailData.student.team_id}`}>{getTeamName(detailData.student.team_id)}</Link>) : getTeamName(detailData.student.team_id)}</p>
                             </div>
                             <div>
                                 <span>学籍番号</span>
