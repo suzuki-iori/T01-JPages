@@ -81,20 +81,6 @@ export default function RoutingSidebar({ checkbool }) {
                         )}
                     </Link>
                 </li>
-                <li>
-                    <Link to="/admin/area">
-                        {checkbool ? (
-                            <div className={styles.innerList}>
-                                <FontAwesomeIcon icon={faPersonChalkboard} />
-                                <p className={`${currentPath === '/admin/area' ? styles.active : ''}`}>会場</p>
-                            </div>
-                        ) : (
-                            <div className={styles.iconArea}>
-                                <FontAwesomeIcon icon={faPersonChalkboard} />
-                            </div>
-                        )}
-                    </Link>
-                </li>
             </ul>
         </aside>
     );
