@@ -81,14 +81,14 @@ const QuestionnaireList = () => {
                             <TableBody>
                                 {loading && queData.length === 0 ? ( // 初回ロード時のみスピナーを出すように条件を少し調整推奨
                                     <TableRow>
-                                        <TableCell colSpan={3} style={{ textAlign: 'center' }}>
+                                        <TableCell colSpan={2} style={{ textAlign: 'center' }}>
                                             <CircularProgress />
                                             <p>ロード中...</p>
                                         </TableCell>
                                     </TableRow>
                                 ) : queData.length === 0 ? (
                                     <TableRow>
-                                        <TableCell colSpan={3} style={{ textAlign: 'center' }}>
+                                        <TableCell colSpan={2} style={{ textAlign: 'center' }}>
                                             <p>該当するデータは見つかりませんでした。</p>
                                         </TableCell>
                                     </TableRow>
