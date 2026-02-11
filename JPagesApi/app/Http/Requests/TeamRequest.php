@@ -43,7 +43,7 @@ class TeamRequest extends FormRequest
     {
         $exception = $validator->getException();
 
-        throw (new $exception($validator, 
+        throw (new $exception($validator,
                 response(["status" => "ParameterError", "message" => "パラメーターエラー"], 400)
             ));
     }

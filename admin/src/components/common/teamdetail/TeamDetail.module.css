@@ -44,29 +44,73 @@
 
 .inputArea{
     display: flex;
-    flex-wrap: wrap;
     margin: 24px;
-    padding: 18px 0;
+    padding: 24px;
     border: 1px solid #d2d5da;
     border-radius: 6px;
-}
-
-.inputArea div{
-    padding: 1rem 0 0 1.5rem;
-}
-.inputArea span{
-    font-size: 1rem;
-    font-weight: 800;
+    gap: 24px;
 }
 
 .teamText{
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
+
+.teamText > div{
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.teamText > div:last-child{
+    border-bottom: none;
+}
+
+.teamText span{
+    min-width: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6e7687;
+    padding-top: 2px;
+}
+
 .teamText p{
-    font-size: 1.2rem;
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
 }
-.textImage{
+
+.memberList{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.teamImage{
     width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.teamImage > div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.teamImage span{
+    margin-bottom: 10px;
+}
+.teamImage img{
+    max-width: 300px;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .None{
@@ -106,29 +150,29 @@
 }
 
 /* .dd {
-    margin: 0; 
+    margin: 0;
 } */
 textarea{
     resize: none;
     height: 100px;
 }
 textarea:focus{
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
 }
 
 .teamForm input[type="text"],textarea {
-    width: 90%; 
-    padding: 10px; 
+    width: 90%;
+    padding: 10px;
     margin: 0 auto;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .teamForm input[type="text"]:focus {
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
 }
 
 .teamForm input[id="detail"]{

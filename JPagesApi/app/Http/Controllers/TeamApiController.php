@@ -59,7 +59,12 @@ class TeamApiController extends Controller
                 $year++;
             }
             // 画像の名前を定義
-            $path = '/var/www/app/assets/img/logo' . $year;
+            $path = '/var/www/app/assets/img/logo/' . $year;
+
+            // ディレクトリが存在しない場合は作成
+            if (!file_exists($path)) {
+                mkdir($path, 0775, true);
+            }
 
             $fileName = $num . '.png';
             $request->file('logo')->move($path, $fileName);
@@ -177,9 +182,14 @@ class TeamApiController extends Controller
                 $year++;
             }
             // 画像の名前を定義
-            $path = '/var/www/htmls/public/assets/img/logo/' . $year;
+            $path = '/var/www/app/assets/img/logo/' . $year;
 
-            $fileName = $num . '.png';
+            // ディレクトリが存在しない場合は作成
+            if (!file_exists($path)) {
+                mkdir($path, 0775, true);
+            }
+
+            $fileName = $request->input('num', $team->num) . '.png';
             $request->file('logo')->move($path, $fileName);
         }
         // 更新があれば編集

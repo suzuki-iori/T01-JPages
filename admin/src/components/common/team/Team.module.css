@@ -21,7 +21,7 @@
 .visualSet{
     height: 50%;
     width: calc(100% - 40px);
-    
+
     margin-left: 20px;
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 250px; 
+    width: 250px;
     margin-left: 30px;
     overflow: hidden;
     border-radius: 3px;
@@ -95,12 +95,29 @@
     height: 2.3em;
     /* margin: 5px 20px 5px 0 ; */
     box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
-    border-radius: 3px; 
+    border-radius: 3px;
     border: none;
     color: #ebf6f5;
     background: #37ab9d;
     font-weight: 400;
     font-size: 1.3rem;
+}
+
+/* チーム追加ボタン */
+.addTeamButton {
+    margin-right: 20px;
+    height: 40px;
+    width: 150px;
+    background-color: #37ab9d !important;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
+    border-radius: 3px;
+    color: #ebf6f5;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.addTeamButton:hover {
+    background-color: #2f9386 !important;
 }
 
 /* ローディング */
@@ -146,30 +163,50 @@
     border: #e7e7e7 1px solid;
     border-radius:  5px;
     background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardLink {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
 }
 
 .cardItem h2{
     color: #576880;
     font-size: 1.2rem;
     font-weight: 600;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .cardItem p{
     color: #576880;
     font-size: 1rem;
     font-weight: 600;
+    margin: 2px 0;
 }
 
 .teamImgCardArea{
     display: flex;
     justify-content: center;
-    margin: 5px;
+    align-items: center;
+    margin: 5px 0;
     width: 100%;
+    flex: 1;
+    overflow: hidden;
 }
 .teamImgCardArea img{
     border-radius: 5px;
-    width: 250px;
-    max-height: 250px;
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
 }
 /* リスト表示 */
 .teamAreaList{
@@ -185,44 +222,83 @@
     background: #37ab9d;
     border-radius: 15px;
 }
+
+.listItem {
+    background-color: #fff;
+    margin: 8px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.listItem:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .listLink{
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-    /* background-color: #fff; */
+    padding: 16px 24px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    gap: 20px;
-    height: 80px;
+    gap: 32px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.listCol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 80px;
+}
+
+.listColName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 150px;
+}
+
+.listLabel {
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+.listCol span:last-child,
+.listColName span:last-child {
+    font-size: 1rem;
+    color: #576880;
+    font-weight: 600;
 }
 
 .listItem p{
     overflow: hidden;
 }
 
-.innerList{
-    width: calc(100% / 4);
-    height: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    text-align: center;
-}
 .teamImgListArea{
-    margin: 5px;
-    width: calc(100% / 4);
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-}
-.teamImgListArea *{
-margin: auto;
+    flex-shrink: 0;
 }
 
 .teamImgListArea img{
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}.teamImgListArea img{
     width: 100px;
     height: 100px;
 }
 
-
+/* チームID */
+.teamId {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 4px;
+}
