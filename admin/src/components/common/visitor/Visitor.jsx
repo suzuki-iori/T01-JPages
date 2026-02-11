@@ -92,7 +92,7 @@ const Visitor = () => {
       <div className={styles.sortArea}>
         <div style={{ display: "flex" }}>
           {/* 年度セレクト追加 */}
-          <FormControl variant="outlined" style={{ minWidth: 110, marginRight: 16 }} size="small">
+          <FormControl variant="outlined" style={{ minWidth: 110, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
             <InputLabel>年度</InputLabel>
             <Select
               value={selectedFiscalYear}
@@ -107,16 +107,23 @@ const Visitor = () => {
           </FormControl>
           <TextField
             variant="outlined"
+            size="small"
             placeholder="検索"
-            className={styles.searchArea}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ marginLeft: '20px' }}
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+            inputProps={{ style: { height: 40, padding: '0 14px' } }}
           />
-          <FormControl variant="outlined" className={styles.divisionSelect}>
+          <FormControl
+            variant="outlined"
+            className={styles.divisionSelect}
+            size="small"
+            style={{ minWidth: 120, marginRight: 16, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
             <InputLabel>部門</InputLabel>
             <Select
               value={selectedDivision}
-              onChange={(e) => setSelectedDivision(e.target.value)}
+              onChange={e => setSelectedDivision(e.target.value)}
               label="部門"
             >
               <MenuItem value="">

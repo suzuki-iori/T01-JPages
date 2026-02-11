@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, CircularProgress, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button, CircularProgress, FormControl, InputLabel, Select, MenuItem, TextField } from '@mui/material';
 import styles from './Team.module.css';
 import TeamButton from '../../base/teambutton/TeamButton';
 import { useAuth } from '../../../context/AuthContext';
@@ -158,7 +158,7 @@ export const Team = () => {
 
         <div className={styles.visualSet}>
           {/* 年度セレクト追加 */}
-          <FormControl variant="outlined" style={{ minWidth: 120, marginRight: 16 }} size="small">
+          <FormControl variant="outlined" style={{ minWidth: 120, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
             <InputLabel>年度</InputLabel>
             <Select
               value={selectedFiscalYear}
@@ -172,22 +172,28 @@ export const Team = () => {
             </Select>
           </FormControl>
 
-          <label className={styles.sortBox}>
-            <select value={sortOrder} onChange={handleSortChange}>
+          <FormControl variant="outlined" style={{ minWidth: 100, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
+            <InputLabel>並び順</InputLabel>
+            <Select
+              value={sortOrder}
+              onChange={handleSortChange}
+              label="並び順"
+            >
               {SORT_OPTIONS.map(({ value, label }) => (
-                <option key={value} value={value}>{label}</option>
+                <MenuItem key={value} value={value}>{label}</MenuItem>
               ))}
-            </select>
-          </label>
+            </Select>
+          </FormControl>
 
-          <label className={styles.searchArea}>
-            <input
-              type="search"
-              placeholder="チーム名で検索"
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-          </label>
+          <TextField
+            variant="outlined"
+            size="small"
+            placeholder="検索"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            style={{ minWidth: 160, marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+            inputProps={{ style: { height: 40, padding: '0 14px' } }}
+          />
 
           <div className={styles.visualButtonArea}>
             <TeamButton visualType={VIEW_TYPES.CARD} onClick={() => setIsCardView(true)} isActive={isCardView} />

@@ -127,7 +127,7 @@ export default function Student() {
         <div className={styles.processingArea}>
           <div className={styles.innerProcessing}>
             {/* 年度セレクト追加 */}
-            <FormControl variant="outlined" style={{ marginLeft: '20px', width: '110px' }}>
+            <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '110px', height: 40, display: 'flex', justifyContent: 'center' }}>
               <InputLabel>年度</InputLabel>
               <Select
                 value={selectedFiscalYear}
@@ -142,11 +142,14 @@ export default function Student() {
             </FormControl>
             <TextField
               variant="outlined"
+              size="small"
               placeholder="検索"
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginLeft: '20px' }}
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+              inputProps={{ style: { height: 40, padding: '0 14px' } }}
             />
-            <FormControl variant="outlined" style={{ marginLeft: '20px', width: '100px' }}>
+            <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '100px', height: 40, display: 'flex', justifyContent: 'center' }}>
               <InputLabel>学年</InputLabel>
               <Select
                 value={selectedGrade}
@@ -159,7 +162,7 @@ export default function Student() {
                 ))}
               </Select>
             </FormControl>
-            <FormControl variant="outlined" style={{ marginLeft: '20px', width: '100px' }}>
+            <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '100px', height: 40, display: 'flex', justifyContent: 'center' }}>
               <InputLabel>チーム</InputLabel>
               <Select
                 value={selectedTeam}
@@ -174,7 +177,7 @@ export default function Student() {
                   ))}
               </Select>
             </FormControl>
-            <Button variant="outlined" color="secondary" onClick={resetFilters} style={{ marginLeft: '20px', marginTop: '10px' }}>
+            <Button variant="outlined" color="secondary" size="small" onClick={resetFilters} style={{ marginLeft: '20px', height: 40, alignSelf: 'center' }}>
               元に戻す
             </Button>
           </div>
