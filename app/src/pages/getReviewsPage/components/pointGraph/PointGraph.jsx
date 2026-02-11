@@ -108,7 +108,7 @@ function PointGraph({ getReviewData }) {
     };
   }, [getReviewData]);
 
-  const labels = ['Plan', 'Design', 'Skill', 'Present'];
+  const labels = ['plan', 'design', 'skill', 'present'];
   const graphData = {
     labels: labels,
     datasets: [
@@ -130,7 +130,7 @@ function PointGraph({ getReviewData }) {
 					display: false
         },
     },
-    
+
     cutout: '40%', // ドーナツ内側の空白サイズ
     responsive: true,
     maintainAspectRatio: false,
