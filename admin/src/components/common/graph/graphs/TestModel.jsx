@@ -16,7 +16,6 @@ import styles from './graphs.module.css';
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend);
 
 const TestModel = ({ data, selectedYear, selectedDivisions,chartType = 'bar'}) => {
-  console.log(chartType);
   
   const chartData = useMemo(() => {
     const visitors = data?.visitor || [];
