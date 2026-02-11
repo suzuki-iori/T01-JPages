@@ -51,7 +51,7 @@ const TeanRanking = ({ selectedYear }) => {
                                     <span>{index + 1}</span>
                                 )}
                             </div>
-                            <p className={styles.rankingName}>{item.name}</p>
+                            <p className={styles.rankingName}>{item.name || '名称未設定'}</p>
                             <p className={styles.rankingScore}>{item.total.toLocaleString()}pt</p>
                         </div>
                     ))
