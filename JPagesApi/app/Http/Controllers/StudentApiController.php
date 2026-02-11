@@ -16,7 +16,9 @@ class StudentApiController extends Controller
     {
         $list = Student::with('team')->get()->makeHidden('token');
         foreach($list as $student) {
-            $student->teamNum = $student->team->name ?  $student->team->name : $student->team->num;
+            $student->teamNum = $student->team
+                ? ($student->team->name ?: $student->team->num)
+                : null;
         }
         $res = [
             'status' => 'success',
@@ -33,9 +35,11 @@ class StudentApiController extends Controller
         $req = $request->all();
 
         // チームの存在確認
-        $team = Team::find($req['team_id']);
-        if (!$team) {
-            return response(['status' => 'failure', 'message' => 'チームが存在しません'], 404);
+        if(!empty($req['team_id'])) {
+            $team = Team::find($req['team_id']);
+            if (!$team) {
+                return response(['status' => 'failure', 'message' => 'チームが存在しません'], 404);
+            }
         }
 
         // 学籍番号の重複チェック
@@ -89,6 +93,15 @@ class StudentApiController extends Controller
         }
 
         $req = $request->all();
+
+        // チームの存在確認（team_idが指定された場合のみ）
+        if(!empty($req['team_id'])) {
+            $team = Team::find($req['team_id']);
+            if (!$team) {
+                return response(['status' => 'failure', 'message' => 'チームが存在しません'], 404);
+            }
+        }
+
         // 重複チェック
         $existingStudent = Student::where('number', $req['number'])->where('id', '!=', $id)->first();
         if ($existingStudent) {

@@ -54,11 +54,14 @@ const StudentAddModal = (props) => {
         }
 
         const req = {
-            team_id: Number(putNum),
             number: putIDNumber,
             grade: Number(putGrade),
             name: putName
         };
+
+        if(putNum){
+            req.team_id = putNum;
+        }
 
         setApiError(''); // 送信前にエラーをクリア
 
