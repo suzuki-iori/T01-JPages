@@ -7,20 +7,22 @@ import { useAuth } from '../../../context/AuthContext';
 import styles from './QeDetail.module.css';
 import AddQueModal from "../../base/modal/addqueModal/AddQueModal";
 import Ajax from "../../../hooks/Ajax";
-import CircularProgress from '@mui/material/CircularProgress'; // CircularProgressをインポート
+import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from "react-router-dom";
 import DeleteModal from "../../base/modal/deleteModal/DeleteModal";
-import Button from '@mui/material/Button'; // MUIのボタンをインポート
+import Button from '@mui/material/Button';
+import Swal from 'sweetalert2';
 
 const QeDetail = () => {
   const token = useAuth();
   const [newque, setNewQue] = useState();
   const [queTitle, setQueTitle] = useState();
+  const [isActive, setIsActive] = useState(false);
   const [addFlag, setAddFlag] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true); // ローディング状態を追加
+  const [loading, setLoading] = useState(true);
   const getId = useParams();
 
   const ShowModal = () => {
@@ -31,12 +33,61 @@ const QeDetail = () => {
     setDeleteModal(true);
   };
 
+  const handlePublish = () => {
+    Swal.fire({
+      title: '公開しますか？',
+      text: `「${queTitle}」を公開します。\n（他の公開中アンケートは非公開になります）`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'はい、公開します',
+      cancelButtonText: 'キャンセル'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const req = {
+          title: queTitle,
+          is_active: true
+        };
+
+        Ajax(null, token.token, `questionnaire/${getId.id}`, 'put', req)
+          .then((data) => {
+            if (data.status === "success") {
+              setIsActive(true);
+              Swal.fire(
+                '完了',
+                '公開しました！',
+                'success'
+              );
+            } else {
+              Swal.fire(
+                'エラー',
+                '公開に失敗しました。',
+                'error'
+              );
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            Swal.fire(
+              'エラー',
+              'エラーが発生しました。',
+              'error'
+            );
+          });
+      }
+    });
+  };
+
   useEffect(() => {
     Ajax(null, token.token, 'questionnaire', 'get')
       .then((data) => {
         if (data.status === "success") {
           const filt = data.questionnaire.find(item => item.id === parseInt(getId.id, 10));
-          setQueTitle(filt.title);
+          if (filt) {
+            setQueTitle(filt.title);
+            setIsActive(filt.is_active);
+          }
         } 
       });
   }, [token.token, getId.id]); 
@@ -47,7 +98,6 @@ const QeDetail = () => {
       .then((data) => {
         if (data.status === "success") {
           setItems(data.questionnaire || []);
-          console.log(items);
         }
       })
       .finally(() => {
@@ -72,7 +122,16 @@ const QeDetail = () => {
         <div className={styles.chAreaWrapper}>
           <div className={styles.makeChangesArea}>
             <h2>{queTitle}</h2>
-            <div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <Button 
+                variant="contained" 
+                color={isActive ? "inherit" : "success"}
+                disabled={isActive}
+                onClick={handlePublish}
+                style={isActive ? { backgroundColor: '#e0e0e0', color: '#888' } : {}}
+              >
+                {isActive ? "公開中" : "公開する"}
+              </Button>
               <Button variant="contained" color="primary" onClick={ShowModal}>+質問追加</Button>
               <Button variant="contained" color="error" onClick={ShowDeleteModal}>×削除</Button>
             </div>
@@ -90,11 +149,11 @@ const QeDetail = () => {
           setShowModal={setDeleteModal} 
           queData={items || []} 
         />
-        {loading ? ( // ローディング中の表示
+        {loading ? (
           <article className={styles.loadingArea}>
             <CircularProgress color="primary" />
           </article>
-        ) : items.length === 0 ? ( // itemsが空の場合の表示
+        ) : items.length === 0 ? (
           <div className={styles.noQuestions}>
             <p>
               質問は登録されていません<br />
