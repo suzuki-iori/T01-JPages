@@ -140,15 +140,6 @@ export default function Student() {
                 ))}
               </Select>
             </FormControl>
-            <TextField
-              variant="outlined"
-              size="small"
-              placeholder="検索"
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-              style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
-              inputProps={{ style: { height: 40, padding: '0 14px' } }}
-            />
             <FormControl variant="outlined" size="small" style={{ marginLeft: '20px', width: '100px', height: 40, display: 'flex', justifyContent: 'center' }}>
               <InputLabel>学年</InputLabel>
               <Select
@@ -177,6 +168,15 @@ export default function Student() {
                   ))}
               </Select>
             </FormControl>
+            <TextField
+              variant="outlined"
+              size="small"
+              placeholder="検索"
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
+              inputProps={{ style: { height: 40, padding: '0 14px' } }}
+            />
             <Button variant="outlined" color="secondary" size="small" onClick={resetFilters} style={{ marginLeft: '20px', height: 40, alignSelf: 'center' }}>
               元に戻す
             </Button>

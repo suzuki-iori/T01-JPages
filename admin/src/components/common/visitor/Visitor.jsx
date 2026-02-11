@@ -105,6 +105,19 @@ const Visitor = () => {
               ))}
             </Select>
           </FormControl>
+          <FormControl variant="outlined" style={{ minWidth: 110, marginRight: 16, height: 40, display: 'flex', justifyContent: 'center' }} size="small">
+            <InputLabel>部門</InputLabel>
+            <Select
+              value={selectedDivision}
+              onChange={e => setSelectedDivision(e.target.value)}
+              label="部門"
+            >
+              <MenuItem value={''}>すべて</MenuItem>
+              {divisionOptions.map(option => (
+                <MenuItem key={option.id} value={option.id}>{option.label}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             variant="outlined"
             size="small"
@@ -114,26 +127,6 @@ const Visitor = () => {
             style={{ minWidth: 160, marginLeft: '20px', marginRight: 16, height: 40, display: 'flex', alignItems: 'center' }}
             inputProps={{ style: { height: 40, padding: '0 14px' } }}
           />
-          <FormControl
-            variant="outlined"
-            className={styles.divisionSelect}
-            size="small"
-            style={{ minWidth: 120, marginRight: 16, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <InputLabel>部門</InputLabel>
-            <Select
-              value={selectedDivision}
-              onChange={e => setSelectedDivision(e.target.value)}
-              label="部門"
-            >
-              <MenuItem value="">
-                <em>すべて</em>
-              </MenuItem>
-              {divisionOptions.map(option => (
-                <MenuItem key={option.id} value={option.id}>{option.label}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
         </div>
         <Button variant="outlined" color="primary" onClick={downloadCSV}>
           CSVダウンロード
