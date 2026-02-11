@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TextField, TableHead, TableRow, Paper, CircularProgress, Button, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../../context/AuthContext';
 import Ajax from '../../../hooks/Ajax';
 import { getCurrentFiscalYear, extractFiscalYears, filterByFiscalYear } from '../../../hooks/useFiscalYear';
@@ -16,6 +16,7 @@ const divisionOptions = [
 
 const Visitor = () => {
   const token = useAuth();
+  const navigate = useNavigate();
   const [visitorData, setVisitorData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
@@ -151,7 +152,12 @@ const Visitor = () => {
               </TableHead>
               <TableBody>
                 {filteredVisitors.map((row) => (
-                  <TableRow key={row.id} component={Link} to={`/admin/visitor/${row.id}`}>
+                  <TableRow
+                    key={row.id}
+                    hover
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => navigate(`/admin/visitor/${row.id}`)}
+                  >
                     <TableCell>{row.id}</TableCell>
                     <TableCell>{row.name}</TableCell>
                     <TableCell>{row.affiliation}</TableCell>
