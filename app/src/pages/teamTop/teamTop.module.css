@@ -1,11 +1,11 @@
 .container {
     background-color: #CDE9B9; /* 背景色 */
     padding: 16px; /* コンテンツ全体の内側余白 */
-    padding-top: 80px; /* Headerの高さ分の余白を追加 */
+    padding-top: 70px; /* Headerの高さ分の余白を追加 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 86px;
     box-sizing: border-box; /* パディングを含めてサイズを計算 */
 }
 
@@ -26,7 +26,7 @@
 }
 .space {
     width: 100%;
-    height: 80px;
+    height: 30px;
 }
 @keyframes rotate {
     0% , 100%{
