@@ -91,11 +91,13 @@ export default function TeamDetail(props) {
                                 <span>システム名</span>
                                 <p>{teamDetail.team.name || '情報がありません'}</p>
                             </div>
-                            <div>
+                            <div className={styles.memberItem}>
                                 <span>メンバー</span>
-                                {teamDetail.team.students.map((student, index) => (
-                                    <p key={index}>{student.grade + "年  " + student.name}</p>
-                                ))}
+                                <div className={styles.memberList}>
+                                    {teamDetail.team.students.map((student, index) => (
+                                        <p key={index}>{student.grade + "年  " + student.name}</p>
+                                    ))}
+                                </div>
                             </div>
                             <div>
                                 <span>詳細</span>
