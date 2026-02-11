@@ -1,206 +1,201 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useAuth } from '../../../../context/AuthContext';
-import { useParams } from 'react-router-dom';
 import styles from './EditTeamModal.module.css';
+import { API_BASE_URL } from '../../../../hooks/Ajax';
 import swal from 'sweetalert2';
 
+// 学年オプション
+const GRADE_OPTIONS = [
+    { value: '', label: '選択してください' },
+    { value: '2', label: '2年' },
+    { value: '3', label: '3年' },
+];
 
-const EditTeamModal = (props) => {
-    const token = useAuth();   
-    const queId = useParams();
-    const [putNum, setPutNum] = useState("");
-    const [putName, setPutName] = useState("");
-    const [putDetail, setPutDetail] = useState("");
-    const [logoFile, setLogoFile] = useState();
-    const [numError, setNumError] = useState("");
-    const [nameError, setNameError] = useState("");
-    const [detailError, setDetailError] = useState("");
-    const [teamGrade, setTeamGrade] = useState('');
+const EditTeamModal = ({ showFlag, setShowModal, propsId, teamData }) => {
+    const { token } = useAuth();
+    const [formData, setFormData] = useState({
+        num: '',
+        name: '',
+        detail: '',
+        grade: '',
+        logo: null,
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    
-    const closeModal = () => {
-        props.setShowModal(false);
-    };  
 
-    const inputTeamNum = (e) => {
-        const value = e.target.value;
-        if (value.length > 5) {
-            setNumError("チーム番号は5文字以内で入力してください");
-        } else {
-            setNumError("");
+    const closeModal = useCallback(() => {
+        setShowModal(false);
+        setFormData({
+            num: '',
+            name: '',
+            detail: '',
+            grade: '',
+            logo: null,
+        });
+    }, [setShowModal]);
+
+    const handleInputChange = useCallback((e) => {
+        const { name, value, files } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: files ? files[0] : value,
+        }));
+    }, []);
+
+    const handleKeyDown = useCallback((e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
         }
-        setPutNum(value);
-    };
+    }, []);
 
-    const inputTeamName = (e) => {
-        const value = e.target.value;
-        if (value.length > 20) {
-            setNameError("システム名は20文字以内で入力してください");
-        } else {
-            setNameError("");
-        }
-        setPutName(value);
-    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
 
-    const inputTeamDetail = (e) => {
-        const value = e.target.value;
-        if (value.length > 100) {
-            setDetailError("詳細は100文字以内で入力してください");
-        } else {
-            setDetailError("");
-        }
-        setPutDetail(value);
-    };
-
-    const handleGradeChange = (e) => {
-        setTeamGrade(e.target.value);
-    };
-
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setLogoFile(file);
-
-        }
-    };
-
-    const handleSubmit = (ev) => {
-        ev.preventDefault();
-        if (numError || nameError || detailError) {
-            return;
+        const submitData = new FormData();
+        submitData.append('_method', 'PUT');
+        submitData.append('num', formData.num || teamData.team.num);
+        submitData.append('name', formData.name || teamData.team.name || '');
+        submitData.append('detail', formData.detail || teamData.team.detail || '');
+        submitData.append('grade', formData.grade || teamData.team.grade);
+        if (formData.logo) {
+            submitData.append('logo', formData.logo);
         }
 
-        const formData = new FormData();
-        formData.append('num', putNum || props.teamData.team.num);
-        formData.append('logo', logoFile);
-        formData.append('name', putName || props.teamData.team.name);
-        formData.append('grade',  Number(teamGrade));
-        formData.append('detail', putDetail || props.teamData.team.detail);
-        const url = `https://jpages.jp/JPagesApi/public/api/team/${props.propsId}`;
-        const options = {
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${token.token}`,
-            },
-            body: formData,
-        };
+        try {
+            const response = await fetch(`${API_BASE_URL}/team/${propsId}`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                body: submitData,
+            });
 
-        fetch(url, options)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    closeModal();
-                    swal.fire({
-                        title: '完了',
-                        text: '登録が完了しました！',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            })
-            .catch(error => {
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                closeModal();
+                swal.fire({
+                    title: '完了',
+                    text: '登録が完了しました！',
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                });
+            } else {
                 swal.fire({
                     title: 'エラー',
-                    text: 'エラーが発生しました。時間をおいてもう一度やり直してください',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                });                  
+                    text: data.message || '更新に失敗しました',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                });
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            swal.fire({
+                title: 'エラー',
+                text: '通信エラーが発生しました',
+                icon: 'error',
+                confirmButtonText: 'OK',
             });
-            closeModal();
-        };
-    
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const isFormValid = (formData.num || teamData?.team?.num) && (formData.grade || teamData?.team?.grade);
+
+    if (!showFlag) return null;
+
     return (
-        <div id={styles.overlay} style={overlay}>
-            <div id={styles.modalContent} style={modalContent}>
+        <div className={styles.overlay}>
+            <div className={styles.modalContent}>
                 <div className={styles.addModalTitleArea}>
                     <h2>登録情報の編集</h2>
-                    <button className={styles.cancelButton} onClick={closeModal}><span>×</span></button>
+                    <button className={styles.cancelButton} onClick={closeModal} aria-label="閉じる">
+                        <span>×</span>
+                    </button>
                 </div>
-                <div className={styles.formArea}>
-                    <form onSubmit={handleSubmit} className={styles.editForm}>
-                        <dl className={styles.innerForm}>
-                            <div className={styles.teamForm}>
-                                <dt><label htmlFor="team">チーム番号</label></dt>
-                                <dd>
-                                    <input
-                                        type="text"
-                                        id="team"
-                                        onChange={inputTeamNum}
-                                        maxLength={5}
-                                        value={putNum || props.teamData.team.num || ""}
-                                        required
-                                    />
-                                </dd>
-                                {numError && <span className={styles.error}>{numError}</span>} 
-                            </div>
-                            <div className={styles.teamForm}>
-                                <dt><label htmlFor="system">システム名</label></dt>
-                                <dd>
-                                    <input
-                                        type="text"
-                                        id="system"
-                                        onChange={inputTeamName}
-                                        maxLength={20}
-                                        value={putName || props.teamData.team.name || ""}
-                                        required
-                                    />
-                                </dd>
-                                {nameError && <span className={styles.error}>{nameError}</span>} 
-                            </div>
-                            <div className={styles.teamForm}>
-                                <dt><label htmlFor="detail">詳細</label></dt>
-                                <dd>
-                                    <textarea
-                                        id="detail"
-                                        onChange={inputTeamDetail}
-                                        maxLength={100}
-                                        value={putDetail || props.teamData.team.detail || ""}
-                                    />
-                                </dd>
-                                {detailError && <span className={styles.error}>{detailError}</span>} 
-                            </div>
-                            <div className={styles.teamForm}>
-                                <dt><label htmlFor="logo">ロゴ画像</label></dt>
-                                <dd>
-                                    <input type="file" name="logo" accept='.png' onChange={handleFileChange} />                                </dd>
-                            </div>
-                            <div className={styles.selectArea}>
-                                <dt><label htmlFor="select">学年</label></dt>
-                                <dd>
-                                    <select value={teamGrade} onChange={handleGradeChange} className={styles.checkText} required>
-                                        <option value="">選択してください</option>
-                                        <option value="2">2年</option>
-                                        <option value="3">3年</option>
-                                    </select>
-                                </dd>
-                            </div>
-                            <button type="submit" className={styles.submitButton}>OK</button>
-                        </dl>
-                    </form>
-                </div>
+
+                <form onSubmit={handleSubmit}>
+                    <dl className={styles.addInnerForm}>
+                        <div className={styles.addTeamTitleForm}>
+                            <dt><label htmlFor="name">システム名</label></dt>
+                            <dd>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    maxLength={30}
+                                    value={formData.name || teamData?.team?.name || ''}
+                                    onChange={handleInputChange}
+                                    onKeyDown={handleKeyDown}
+                                />
+                            </dd>
+
+                            <dt><label htmlFor="num">チーム番号 <span className={styles.required}>*</span></label></dt>
+                            <dd>
+                                <input
+                                    type="text"
+                                    id="num"
+                                    name="num"
+                                    maxLength={30}
+                                    value={formData.num || teamData?.team?.num || ''}
+                                    onChange={handleInputChange}
+                                    onKeyDown={handleKeyDown}
+                                    required
+                                />
+                            </dd>
+
+                            <dt><label htmlFor="detail">チーム詳細</label></dt>
+                            <dd>
+                                <textarea
+                                    id="detail"
+                                    name="detail"
+                                    value={formData.detail || teamData?.team?.detail || ''}
+                                    onChange={handleInputChange}
+                                    onKeyDown={handleKeyDown}
+                                />
+                            </dd>
+
+                            <dt><label htmlFor="logo">ロゴ画像</label></dt>
+                            <dd>
+                                <input
+                                    type="file"
+                                    id="logo"
+                                    name="logo"
+                                    accept=".png"
+                                    onChange={handleInputChange}
+                                />
+                            </dd>
+
+                            <dt><label htmlFor="grade">学年 <span className={styles.required}>*</span></label></dt>
+                            <dd>
+                                <select
+                                    id="grade"
+                                    name="grade"
+                                    value={formData.grade || teamData?.team?.grade || ''}
+                                    onChange={handleInputChange}
+                                    className={styles.checkText}
+                                    required
+                                >
+                                    {GRADE_OPTIONS.map(({ value, label }) => (
+                                        <option key={value} value={value}>{label}</option>
+                                    ))}
+                                </select>
+                            </dd>
+                        </div>
+                        <button
+                            type="submit"
+                            className={!isFormValid || isSubmitting ? styles.disabled : styles.submitButton}
+                            disabled={!isFormValid || isSubmitting}
+                        >
+                            {isSubmitting ? '送信中...' : 'OK'}
+                        </button>
+                    </dl>
+                </form>
             </div>
         </div>
     );
-};
-
-const modalContent = {
-    background: "white",
-    width: "500px",
-    height: "720px",
-    padding: "10px",
-    borderRadius: "10px",
-};
-
-const overlay = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0,0,0,0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
 };
 
 export default EditTeamModal;

@@ -1,3 +1,26 @@
+/* オーバーレイ */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* モーダルコンテンツ */
+.modalContent {
+    background: white;
+    width: 500px;
+    height: 600px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .addModalTitleArea{
     display: flex;
     align-items: center;
@@ -21,98 +44,104 @@
     height: 100%;
     color: #6b6a6a;
 }
-.formArea {
+
+.addInnerForm {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f9f9f9; /* 背景色 */
-    border-radius: 8px; /* 角を丸く */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 20px;
 }
 
-.editForm {
+.addTeamTitleForm {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.addTeamTitleForm dt {
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.addTeamTitleForm dd {
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.addTeamTitleForm input[type="text"] {
     width: 100%;
-    max-width: 600px; /* フォームの最大幅 */
-    background-color: #fff; /* フォームの背景色 */
-    padding: 20px;
-    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
-.innerForm {
-    display: flex;
-    flex-direction: column; /* 縦に配置 */
-}
-
-.teamForm {
-    margin-bottom: 15px; /* 各項目の間隔 */
-}
-
-.teamForm dt {
-    margin-bottom: 5px; /* ラベルと入力フィールドの間隔 */
-    font-weight: bold; /* ラベルを太字に */
-}
-
-/* .dd {
-    margin: 0; 
-} */
-textarea{
-    resize: none;
-    height: 100px;
-}
-textarea:focus{
-    border-color: #F8A100; 
-    outline: none; 
-}
-
-.teamForm input[type="text"],textarea {
-    width: 90%; 
-    padding: 10px; 
-    margin: 0 auto;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 16px; 
-}
-
-.teamForm input[type="text"]:focus {
-    border-color: #F8A100; 
-    outline: none; 
-}
-
-.teamForm input[id="detail"]{
-    height: 100px;
+.addTeamTitleForm input[type="text"]:focus {
+    border-color: #F8A100;
+    outline: none;
 }
 
 .checkText{
-    width: 90%;
+    width: 100%;
     height: 40px;
-    margin: 20px 0;
     font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .checkText:focus{
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
 }
-
-
-.error{
-    color: red;
-}
-
 
 .submitButton {
     width: 60%;
-    padding: 10px 15px; /* ボタンのパディング */
-    margin: 0 auto;
-    background-color: #e9c685; /* ボタンの背景色 */
-    color: white; /* ボタンのテキスト色 */
-    border: none; /* ボーダーを削除 */
-    border-radius: 4px; /* 角を丸く */
-    font-size: 16px; /* フォントサイズ */
-    cursor: pointer; /* カーソルをポインターに */
-    transition: background-color 0.3s; /* ホバー時のトランジション */
+    padding: 10px 15px;
+    margin: 12px auto 10px;
+    background-color: #e9c685;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .submitButton:hover {
-    background-color: #F8A100   ; /* ホバー時の色 */
+    background-color: #F8A100;
+}
+
+.disabled {
+    width: 60%;
+    padding: 10px 15px;
+    margin: 12px auto 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
+textarea{
+    resize: none;
+    height: 80px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+textarea:focus{
+    border-color: #F8A100;
+    outline: none;
+}
+
+/* 必須マーク */
+.required {
+    color: #e53935;
+    font-weight: bold;
+    margin-left: 2px;
 }

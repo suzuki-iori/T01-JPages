@@ -95,29 +95,29 @@
 }
 
 /* .dd {
-    margin: 0; 
+    margin: 0;
 } */
 textarea{
     resize: none;
     height: 100px;
 }
 textarea:focus{
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
 }
 
 .teamForm input[type="text"],textarea {
-    width: 90%; 
-    padding: 10px; 
+    width: 100%;
+    padding: 10px;
     margin: 0 auto;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .teamForm input[type="text"]:focus {
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
 }
 
 .teamForm input[id="detail"]{

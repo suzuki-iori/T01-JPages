@@ -1,3 +1,26 @@
+/* オーバーレイ */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* モーダルコンテンツ */
+.modalContent {
+    background: white;
+    width: 500px;
+    height: 600px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .addModalTitleArea{
     display: flex;
     align-items: center;
@@ -11,56 +34,62 @@
 }
 .addInnerForm {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 20px;
 }
 
 .addTeamTitleForm {
-    margin-bottom: 5px; 
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .addTeamTitleForm dt {
-    margin-bottom: 5px; 
-    font-weight: bold; 
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.addTeamTitleForm dd {
+    margin: 0;
+    margin-bottom: 4px;
 }
 
 .addTeamTitleForm input[type="text"] {
-    width: 90%; 
-    padding: 10px; 
-    margin: 0 auto;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 16px; 
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 .addTeamTitleForm input[type="text"]:focus {
-    border-color: #F8A100; 
-    outline: none; 
-}
-
-.selectArea dt{
-    margin-bottom: 5px;
-    font-weight: bold; 
+    border-color: #F8A100;
+    outline: none;
 }
 
 .checkText{
-    width: 90%;
+    width: 100%;
     height: 40px;
-    margin: 0 auto;
     font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .checkText:focus{
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
 }
 
 .submitButton {
     width: 60%;
-    padding: 10px 15px; 
-    margin: 10px auto;
-    background-color: #e9c685; 
-    color: white; 
+    padding: 10px 15px;
+    margin: 12px auto 10px;
+    background-color: #e9c685;
+    color: white;
     border: none;
-    border-radius: 4px; 
+    border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -69,10 +98,10 @@
 .disabled {
     width: 60%;
     padding: 10px 15px;
-    margin: 10px auto;
+    margin: 12px auto 10px;
     border: none;
-    border-radius: 4px; 
-    font-size: 16px; 
+    border-radius: 4px;
+    font-size: 16px;
     background-color: gray;
     color: white;
     cursor: not-allowed;
@@ -80,7 +109,7 @@
 
 
 .submitButton:hover {
-    background-color: #F8A100 
+    background-color: #F8A100
 }
 .cancelButton{
     border: none;
@@ -96,9 +125,22 @@
 
 textarea{
     resize: none;
-    height: 100px;
+    height: 80px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 textarea:focus{
-    border-color: #F8A100; 
-    outline: none; 
+    border-color: #F8A100;
+    outline: none;
+}
+
+/* 必須マーク */
+.required {
+    color: #e53935;
+    font-weight: bold;
+    margin-left: 2px;
 }
