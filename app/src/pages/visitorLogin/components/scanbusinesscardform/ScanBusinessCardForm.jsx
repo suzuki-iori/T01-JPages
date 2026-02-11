@@ -8,6 +8,18 @@ const  ScanBusinessCardForm =(props) =>  {
 const { handleSubmit, visitorType, setVisitorType, setErrorMessage, errorMessage, text, setText, loading, handleRescan } = props;
 const [inputErrors, setInputErrors] = useState({ name: '', email: '', companyName: ''});
 
+// 来場者区分に応じたplaceholderを取得
+const getCompanyNamePlaceholder = () => {
+	switch (visitorType) {
+		case '1': return '会社名';
+		case '2': return '学科・部署';
+		case '3': return '学科・入学年次（例：23JZ）';
+		case '4': return '学科・入学年次（例：23JZ）';
+		case '5': return '所属';
+		default: return '所属';
+	}
+};
+
 
 useEffect(() => {
 	if (visitorType === '2' || visitorType === '3') {
@@ -68,7 +80,7 @@ return (
 			type="text"
 			value={text.companyName}
 			onChange={e => handleInputChange('companyName', e.target.value)}
-			placeholder="所属"
+			placeholder={getCompanyNamePlaceholder()}
 		/>
 		{inputErrors.companyName && <div className={styles["warning"]}>{inputErrors.companyName}</div>}
 
