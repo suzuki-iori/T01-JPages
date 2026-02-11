@@ -42,15 +42,15 @@ function RandomHamburger() {
 			<RandomComponent onActivate={handleActivate} isActive={isActive}/>
 			<ul className={`${styles.activeMenu} ${isActive ? styles.active : ''}`}>
 				<li className={`${styles.menu} ${styles.menu1}`} onClick={() => {setGrade(grade === 3 ? 2 : 3); setIsActive(false) }}>
-					<figure><img src={`/assets/img/home_${grade === 3 ? 2 : 3}jz.svg`} style={{width: '50%'}} alt="home" /></figure>
+					<figure className={styles[`img-${grade}`]}><img src={`/assets/img/home_${grade === 3 ? 2 : 3}jz.svg`} alt="home" /></figure>
 					<figcaption>{grade === 3 ? '進級制作' : '卒業制作'}</figcaption>
 				</li>
 				<li className={`${styles.menu} ${styles.menu2}`} onClick={() => setAppState('ranking')}>
-					<figure><img src={`/assets/img/ranking${appState === 'ranking' ? '_active' : ''}.svg`} style={{width: '32%'}} alt="ranking" /></figure>
+					<figure><img src={`/assets/img/ranking${appState === 'ranking' ? '_active' : ''}.svg`} alt="ranking" /></figure>
 					<figcaption>ランキング</figcaption>
 				</li>
 				{(loginType === 'visitor' && !isPosted) && <li className={`${styles.menu} ${styles.menu3}`} onClick={() => setAppState('question')}>
-					<figure><img src={`/assets/img/go_home.svg`} alt="question" /></figure>
+					<figure className={styles[`img-gohome`]}><img src={`/assets/img/go_home.svg`} alt="question" /></figure>
 					<figcaption>帰る</figcaption>
 				</li>}
 			</ul>
