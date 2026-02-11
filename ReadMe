@@ -1,0 +1,148 @@
+# JPages アプリケーション機能一覧
+
+## 概要
+JPages は卒業制作展のチーム評価・管理システムです。
+- **app**: 来場者・学生向けフロントエンド
+- **admin**: 管理者向けダッシュボード
+
+---
+
+## App（来場者・学生向け）
+
+来場者や学生がチームを評価したり、ランキングを閲覧するためのアプリケーション。
+
+### ページ一覧
+
+| ページ | 機能 |
+|--------|------|
+| **StudentLogin** | 学生ログイン画面 |
+| **VisitorLogin** | 来場者ログイン画面 |
+| **HomePage** | ホーム画面 |
+| **TeamTop** | チームトップページ（キャラクター表示） |
+| **RankingPage** | チームランキング表示 |
+| **ReviewPage** | チーム評価入力画面 |
+| **GetReviewsPage** | 評価結果確認画面 |
+| **LevelUpPage** | キャラクターレベルアップ演出 |
+| **ProfilePage** | プロフィール画面 |
+| **Questionnaire** | アンケート回答画面 |
+
+### 共通コンポーネント
+
+| コンポーネント | 機能 |
+|----------------|------|
+| Header | ヘッダー |
+| Navigation | ナビゲーションメニュー |
+| HamburgerMenu | ハンバーガーメニュー |
+| Character | キャラクター表示 |
+| Progress | 進捗バー |
+| Loading | ローディング表示 |
+| Toast | トースト通知 |
+| HelpModal | ヘルプモーダル |
+
+### 主な機能
+- 🎯 チームへの評価（デザイン、企画、技術、発表）
+- 🏆 ランキング閲覧
+- 🐾 キャラクター育成（評価でポイント獲得→レベルアップ）
+- 📝 アンケート回答
+
+---
+
+## Admin（管理者向けダッシュボード）
+
+チーム、学生、来場者、アンケートを管理するための管理画面。
+
+### ページ一覧
+
+| パス | ページ | 機能 |
+|------|--------|------|
+| `/admin/` | Dashboard | ダッシュボード（統計情報） |
+| `/admin/login` | Login | 管理者ログイン |
+| `/admin/team` | MainTeamPage | チーム一覧（カード/リスト表示切替） |
+| `/admin/team/:id` | Detail | チーム詳細・編集・削除 |
+| `/admin/student` | StudentPage | 学生一覧 |
+| `/admin/student/:id` | DetailStudent | 学生詳細 |
+| `/admin/visitor` | VisitorsLogPage | 来場者ログ一覧 |
+| `/admin/visitor/:id` | VisitorsLogDetail | 来場者詳細 |
+| `/admin/reception` | ReceptionPage | 受付管理 |
+| `/admin/question` | QuestionnairePage | アンケート一覧 |
+| `/admin/questionnairedetail/:id` | QuestionnaireDetail | アンケート詳細 |
+
+### 共通コンポーネント
+
+| コンポーネント | 機能 |
+|----------------|------|
+| Header | ヘッダー |
+| Sidebar | サイドバーナビゲーション |
+| InfoArea | 情報表示エリア |
+| Graph | グラフ表示 |
+
+### チーム管理機能
+- ✅ チーム一覧表示（カード/リスト切替）
+- ✅ チーム追加モーダル
+- ✅ チーム編集モーダル
+- ✅ チーム削除モーダル
+- ✅ ロゴ画像アップロード
+- ✅ 年度別フォルダ管理
+
+### 学生管理機能
+- ✅ 学生一覧表示
+- ✅ 学生詳細表示
+- ✅ チームへの所属管理
+
+### 来場者管理機能
+- ✅ 来場者ログ一覧
+- ✅ 来場者詳細
+
+### アンケート管理機能
+- ✅ アンケート一覧
+- ✅ アンケート詳細・集計
+
+---
+
+## 技術スタック
+
+| 項目 | 技術 |
+|------|------|
+| Frontend | React 18+, Vite |
+| UI Library | MUI (Material-UI) |
+| Routing | React Router |
+| State Management | React Context |
+| Styling | CSS Modules, SCSS |
+| Notifications | SweetAlert2 |
+| Backend | Laravel (PHP) |
+| Database | MySQL |
+
+---
+
+## ディレクトリ構造
+
+```
+T01-JPages/
+├── app/                    # 来場者・学生向けアプリ
+│   └── src/
+│       ├── pages/          # ページコンポーネント
+│       ├── components/     # 共通コンポーネント
+│       ├── context/        # React Context
+│       ├── hooks/          # カスタムフック
+│       └── lib/            # ユーティリティ
+│
+├── admin/                  # 管理者向けアプリ
+│   └── src/
+│       ├── components/
+│       │   ├── pages/      # ページコンポーネント
+│       │   ├── common/     # 共通コンポーネント
+│       │   └── base/       # 基本UIコンポーネント
+│       ├── context/        # React Context
+│       ├── hooks/          # カスタムフック（Ajax等）
+│       └── assets/         # アイコン等
+│
+├── JPagesApi/              # Laravel API
+│   ├── app/
+│   │   ├── Http/Controllers/
+│   │   ├── Models/
+│   │   └── Http/Requests/
+│   ├── routes/
+│   └── database/
+│
+└── docker/                 # Docker設定
+```
