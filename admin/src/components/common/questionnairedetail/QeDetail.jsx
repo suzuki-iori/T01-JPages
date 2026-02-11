@@ -46,7 +46,8 @@ const QeDetail = () => {
     Ajax(null, token.token, `questionnaire/${getId.id}`, 'get')
       .then((data) => {
         if (data.status === "success") {
-          setItems(data.questionnaire);
+          setItems(data.questionnaire || []);
+          console.log(items);
         }
       })
       .finally(() => {
@@ -73,7 +74,7 @@ const QeDetail = () => {
             <h2>{queTitle}</h2>
             <div>
               <Button variant="contained" color="primary" onClick={ShowModal}>+質問追加</Button>
-              <Button variant="contained" color="secondary" onClick={ShowDeleteModal}>×削除</Button>
+              <Button variant="contained" color="error" onClick={ShowDeleteModal}>×削除</Button>
             </div>
           </div>
         </div>
@@ -82,12 +83,12 @@ const QeDetail = () => {
           setNewQue={setNewQue} 
           showFlag={showModal} 
           setShowModal={setShowModal} 
-          items={items} 
+          items={items || []} 
         />
         <DeleteModal 
           showFlag={deleteModal} 
           setShowModal={setDeleteModal} 
-          items={items} 
+          queData={items || []} 
         />
         {loading ? ( // ローディング中の表示
           <article className={styles.loadingArea}>
