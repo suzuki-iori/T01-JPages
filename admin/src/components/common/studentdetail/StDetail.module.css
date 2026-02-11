@@ -1,20 +1,28 @@
 .studentDetailArea{
     margin: 0 auto;
     width: 100%;
-    max-width: 1100px;
-    height: 80%;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
-.titleAndEdit{
+.titleAndButton{
     padding: 15px 0;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     border-bottom: 1px solid #d2d5da;
 }
+.titleAndButton h1{
+    margin: auto 30px;
+    text-align: center;
+}
+
+.buttonWrapper{
+    display: flex;
+    gap: 20px;
+}
 .expArea{
-    padding: 12px;
+    padding: 24px 0;
 }
 
 .expArea p{
@@ -34,28 +42,46 @@
     font-feature-settings: "palt" 1;
     color: #6e7687;
 }
-.detailArea{
-    /* display: flex; */
-    flex-wrap: wrap;
-    margin: 24px;
-    padding: 18px ;
+
+.inputArea{
+    display: flex;
+    padding: 24px;
     border: 1px solid #d2d5da;
     border-radius: 6px;
 }
 
-.detailArea div{
-    padding: 1rem 0 0 1.5rem;
-}
-.detailArea span{
-    font-size: 1rem;
-    font-weight: 800;
+.studentText{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
-.teamText{
-    width: 50%;
+.studentText > div{
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
 }
-.teamText p{
-    font-size: 1.2rem;
+
+.studentText > div:last-child{
+    border-bottom: none;
+}
+
+.studentText span{
+    min-width: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6e7687;
+    padding-top: 2px;
+}
+
+.studentText p{
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
 }
 
 .None{
@@ -139,23 +165,4 @@ textarea:focus{
 
 .submitButton:hover {
     background-color: #F8A100   ; /* ホバー時の色 */
-}
-
-.deleteButtonWrapper{
-    display: flex;
-    justify-content: end;
-}
-
-.delete{
-    width: 100px;
-    height: 30px;
-    border-radius: 24px;
-    border: 1px #f00000 solid;
-    background: #ff0000;
-}
-
-.delete p{
-    color: #f5f5f5;
-    font-size: large;
-    font-weight: 900;
 }
