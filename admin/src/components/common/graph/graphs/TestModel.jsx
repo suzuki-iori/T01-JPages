@@ -67,7 +67,7 @@ const TestModel = ({ data, selectedYear, selectedDivisions,chartType = 'bar'}) =
       barPercentage: 0.5,
       maxBarThickness: 20,
       stack: 'stacked',
-      tension: 0.3, 
+      tension: 0, 
       pointRadius: 4,
     }));
 
