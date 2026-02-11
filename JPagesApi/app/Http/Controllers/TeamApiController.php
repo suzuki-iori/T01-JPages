@@ -131,7 +131,7 @@ class TeamApiController extends Controller
         $team->count = $count;
 
         // キャラクターの次のレベル
-        $levelBorder = [10000, 6500, 4000, 2000, 600];
+        $levelBorder = [13000, 8000, 4000, 2000, 600];
         $level = $team->character->level;
 
         if ($level < 1 || $level > 6) {
