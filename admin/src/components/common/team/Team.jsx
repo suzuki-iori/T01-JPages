@@ -27,25 +27,50 @@ const TeamItem = ({ team, isCardView }) => {
   const imagePath = `/assets/img/logo/${year}/${team.num}.png`;
 
   const itemClass = isCardView ? styles.cardItem : styles.listItem;
-  const linkClass = isCardView ? '' : styles.listLink;
-  const innerClass = isCardView ? '' : styles.innerList;
+  const linkClass = isCardView ? styles.cardLink : styles.listLink;
   const imgAreaClass = isCardView ? styles.teamImgCardArea : styles.teamImgListArea;
 
+  if (isCardView) {
+    return (
+      <div className={itemClass}>
+        <Link to={`/admin/team/${team.id}`} className={linkClass}>
+          <p className={styles.teamId}>ID: {team.id}</p>
+          <p>{team.num}</p>
+          <h2>{team.name || '未設定'}</h2>
+          <div className={imgAreaClass}>
+            <img
+              src={imagePath}
+              alt="ロゴ"
+              onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/250x150.png?text=NoImage'}
+            />
+          </div>
+        </Link>
+      </div>
+    );
+  }
+
+  // リスト表示
   return (
     <div className={itemClass}>
       <Link to={`/admin/team/${team.id}`} className={linkClass}>
-        <div className={innerClass}>
-          <p>{team.num}</p>
+        <div className={styles.listCol}>
+          <span className={styles.listLabel}>ID</span>
+          <span>{team.id}</span>
+        </div>
+        <div className={styles.listCol}>
+          <span className={styles.listLabel}>No.</span>
+          <span>{team.num}</span>
+        </div>
+        <div className={styles.listColName}>
+          <span className={styles.listLabel}>チーム名</span>
+          <span>{team.name || '未設定'}</span>
         </div>
         <div className={imgAreaClass}>
           <img
             src={imagePath}
             alt="ロゴ"
-            onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/250x150.png?text=NoImage'}
+            onError={(e) => e.target.src = 'https://placehold.jp/dddddd/555555/100x100.png?text=NoImage'}
           />
-        </div>
-        <div className={innerClass}>
-          <h2>{team.name || '未設定'}</h2>
         </div>
       </Link>
     </div>
