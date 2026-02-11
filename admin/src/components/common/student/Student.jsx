@@ -134,7 +134,7 @@ export default function Student() {
                 onChange={e => setSelectedFiscalYear(e.target.value)}
                 label="年度フィルター"
               >
-                <MenuItem value={''}>全て</MenuItem>
+                <MenuItem value={''}>すべて</MenuItem>
                 {fiscalYearList.map(year => (
                   <MenuItem key={year} value={year}>{year}年度</MenuItem>
                 ))}
@@ -147,7 +147,7 @@ export default function Student() {
                 onChange={handleGradeChange}
                 label="学年フィルター"
               >
-                <MenuItem value="">全て</MenuItem>
+                <MenuItem value="">すべて</MenuItem>
                 {Array.from(new Set(studentData.map(student => student.grade))).map(grade => (
                   <MenuItem key={grade} value={grade}>{grade}</MenuItem>
                 ))}
@@ -160,7 +160,7 @@ export default function Student() {
                 onChange={handleTeamChange}
                 label="チームフィルター"
               >
-                <MenuItem value="">全て</MenuItem>
+                <MenuItem value="">すべて</MenuItem>
                 {Array.from(new Set(studentData.map(student => student.teamNum)))
                   .sort((a, b) => a - b) // 数値としてソート
                   .map(team => (
