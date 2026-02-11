@@ -10,7 +10,7 @@ const ItemTypes = {
   CARD: "card"
 };
 
-export const SortableItem = ({ item, index, onSortEnd }) => {
+export const SortableItem = ({ item, index, onSortEnd, onSaveOrder }) => {
   const token = useAuth();
   const ref = useRef(null);
   const [loading, setLoading] = useState(false); 
@@ -57,6 +57,12 @@ export const SortableItem = ({ item, index, onSortEnd }) => {
     item: () => {
       return { id: item.id, index };
     },
+    end: (item, monitor) => {
+      const didDrop = monitor.didDrop();
+      if (didDrop && onSaveOrder) {
+        onSaveOrder(); 
+      }
+    },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -66,7 +72,7 @@ export const SortableItem = ({ item, index, onSortEnd }) => {
 
   drag(drop(ref));
 
-  // グラフ用解凍件数計算
+  // グラフ用回答件数計算
   const answerCount = {};
   item.number_answers?.forEach(answer => {
     const key = answer.answer; 
@@ -123,7 +129,6 @@ export const SortableItem = ({ item, index, onSortEnd }) => {
       ) : (
         <div style={{ width: '100%', height: '250px', display: 'flex',justifyContent:'center' }} >
           <Bar data={chartData} options={{
-            
             responsive: true,
             plugins:{
               legend:{
@@ -132,7 +137,6 @@ export const SortableItem = ({ item, index, onSortEnd }) => {
             },
             scales: {
               x: {
-              
               },
               y: {
                 beginAtZero: true,
@@ -140,7 +144,6 @@ export const SortableItem = ({ item, index, onSortEnd }) => {
                   display: true,
                   text: '件数'
                 },
-                
               }
             }
           }} />
