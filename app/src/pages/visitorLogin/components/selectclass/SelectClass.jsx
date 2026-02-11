@@ -1,30 +1,67 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./selectClass.module.css";
 
-const SelectClass = (props) =>  {
-	const {visitorType, setVisitorType, setErrorMessage, loading } = props;
-	return (
-		<>
-			<select
-				className={styles["select-box"]}
-				value={visitorType}
-				onChange={e => {
-					setVisitorType(e.target.value);
-					// エラーメッセージをリセット
-					if (e.target.value !== '0') {
-						setErrorMessage('');
-					}
-				}}
-			>
-				<option value="0">来場者区分</option>
-				<option value="1">企業の方</option>
-				<option value="2">教員</option>
-				<option value="3">日本電子専門学校生</option>
-				<option value="4">卒業生</option>
-				<option value="5">その他の方</option>
-			</select>
+const OPTIONS = [
+	{ value: '1', label: '企業の方' },
+	{ value: '2', label: '教職員' },
+	{ value: '3', label: '日本電子専門学校生' },
+	{ value: '4', label: '卒業生' },
+	{ value: '5', label: 'その他の方' },
+];
 
-		</>
-	)
+const SelectClass = ({ visitorType, setVisitorType, setErrorMessage, loading }) => {
+	const [isOpen, setIsOpen] = useState(false);
+	const dropdownRef = useRef(null);
+
+	const selectedOption = OPTIONS.find(opt => opt.value === visitorType);
+	const displayText = selectedOption ? selectedOption.label : '来場者区分';
+
+	// 外側クリックで閉じる
+	useEffect(() => {
+		const handleClickOutside = (e) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+				setIsOpen(false);
+			}
+		};
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => document.removeEventListener('mousedown', handleClickOutside);
+	}, []);
+
+	const handleSelect = (value) => {
+		setVisitorType(value);
+		setIsOpen(false);
+		if (value !== '0') {
+			setErrorMessage('');
+		}
+	};
+
+	return (
+		<div className={styles.dropdown} ref={dropdownRef}>
+			<button
+				type="button"
+				className={`${styles.trigger} ${visitorType === '0' ? styles.placeholder : ''}`}
+				onClick={() => setIsOpen(!isOpen)}
+				disabled={loading}
+			>
+				{displayText}
+				<span className={`${styles.arrow} ${isOpen ? styles.open : ''}`}>▼</span>
+			</button>
+
+			{isOpen && (
+				<ul className={styles.menu}>
+					{OPTIONS.map((option) => (
+						<li
+							key={option.value}
+							className={`${styles.option} ${visitorType === option.value ? styles.selected : ''}`}
+							onClick={() => handleSelect(option.value)}
+						>
+							{option.label}
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
+	);
 };
+
 export default SelectClass;
