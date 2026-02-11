@@ -15,7 +15,7 @@ export default function Student() {
   const [showCSVModal, setShowCSVModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortKey, setSortKey] = useState('grade');
+  const [sortKey, setSortKey] = useState('id');
   const [sortDirection, setSortDirection] = useState('ascending');
   const [selectedGrade, setSelectedGrade] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
@@ -40,7 +40,7 @@ export default function Student() {
       .then((data) => {
         if (data.status === "success") {
           setTeamData(data.team);
-        } 
+        }
         setShowCSVModal(true);
       })
       .finally(() => {
@@ -54,16 +54,16 @@ export default function Student() {
       .then((data) => {
         if (data.status === "success") {
           setStudentData(data.student);
-        } 
+        }
       })
       .finally(() => {
         setLoading(false);
       });
   }, [token]);
 
-  
 
-  
+
+
   // 検索機能
   const filteredStudents = studentData.filter(student => {
     const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) || student.number.toString().includes(searchTerm);
@@ -165,18 +165,18 @@ export default function Student() {
         </div>
 
         {showModal && (
-          <StudentAddModal 
-            showFlag={showModal} 
-            setShowModal={setShowModal} 
-            selectData={teamData} 
+          <StudentAddModal
+            showFlag={showModal}
+            setShowModal={setShowModal}
+            selectData={teamData}
           />
         )}
 
         {showCSVModal && (
-          <StudentCSVAddModal 
-            showFlag={showCSVModal} 
-            setShowCSVModal={setShowCSVModal} 
-            selectData={teamData} 
+          <StudentCSVAddModal
+            showFlag={showCSVModal}
+            setShowCSVModal={setShowCSVModal}
+            selectData={teamData}
           />
         )}
 
@@ -196,20 +196,19 @@ export default function Student() {
                   </TableCell>
                   <TableCell>氏名</TableCell>
                   <TableCell>学籍番号</TableCell>
-                  <TableCell>内定先ID</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {loading ? (
                   <TableRow>
-                    <TableCell colSpan={6} style={{ textAlign: 'center' }}>
+                    <TableCell colSpan={5} style={{ textAlign: 'center' }}>
                       <CircularProgress />
                       <p>ロード中...</p>
                     </TableCell>
                   </TableRow>
                 ) : sortedStudents.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={6} style={{ textAlign: 'center' }}>
+                    <TableCell colSpan={5} style={{ textAlign: 'center' }}>
                       <p>該当するデータは見つかりませんでした。</p>
                     </TableCell>
                   </TableRow>
@@ -221,7 +220,6 @@ export default function Student() {
                       <TableCell>{item.teamNum}</TableCell>
                       <TableCell>{item.name}</TableCell>
                       <TableCell>{item.number}</TableCell>
-                      <TableCell>{item.employment_target_id}</TableCell>
                     </TableRow>
                   ))
                 )}
