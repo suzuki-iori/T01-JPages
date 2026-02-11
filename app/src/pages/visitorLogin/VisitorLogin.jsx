@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import Styles from './VisitorLogin.module.css'
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import Ajax from '../../lib/Ajax';
 import Camera from './components/camera/Camera'
 import ScanBusinessCardForm from './components/scanbusinesscardform/ScanBusinessCardForm'
 import LoadingMessage from './components/loadingmessage/LoadingMessage';
@@ -16,7 +15,7 @@ const VisitorLogin = () => {
 	const [isImageCaptured, setIsImageCaptured] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 
-	const {setLoginToken,  setLoginType, loading, setLoading, setToast } = useContext(AppContext);
+	const {loading, setLoading } = useContext(AppContext);
 
 	const videoRef = useRef(null);
 	const canvasRef = useRef(null);
@@ -189,54 +188,7 @@ const VisitorLogin = () => {
 		});
 	};
 
-	const handleSubmit = (ev) => {
-		ev.preventDefault();
 
-		if (!text.name || !text.email || !text.companyName) {
-			setErrorMessage('すべての情報を入力してください');
-			return
-		} else if (text.name.length >= 256 || text.email.length >= 256 || text.companyName.length >= 256) {
-			setErrorMessage('情報は256文字以内で入力してください')
-			return
-		} else {
-			setErrorMessage('');
-		}
-
-		if (visitorType === '0') {
-				setErrorMessage('来場者区分を選択してください');
-				return; // これ以降の処理を中断
-		} else {
-				setErrorMessage(''); // エラーメッセージをリセット
-		}
-
-		setLoading(true);
-
-		const req = {
-			affiliation: text.companyName,
-			// employment_target_id: '8011105000934', // 法人番号を仮で設定
-			name: text.name,
-			email: text.email,
-			division: Number(visitorType) // リクエストボディにdivisionを追加
-		};
-
-		Ajax(null, 'visitor', 'POST', req)
-		.then((data) => {
-			if(data.status === 'failure') {
-				// 失敗
-				setToast({toast: true, state: 'visitorLogin', message: 'エラーが発生しました。'})
-			} else if (data.status === 'ParameterError'){
-				setErrorMessage('入力されたパラメーターが違います');
-				setToast({toast: true, state: 'visitorLogin', message: 'エラーが発生しました。もう一度お願いします。'})
-			} else {
-				setLoginToken(data.token);
-				setLoginType('visitor');
-			}
-			setLoading(false);
-		}).catch((error) => {
-			console.error('通信エラー:', error);
-			setLoading(false);
-		});
-	};
 
 	const handleRescan = async () => {
 		setIsImageCaptured(false);
@@ -254,21 +206,19 @@ const VisitorLogin = () => {
 				/>
 			) : (
 				<ScanBusinessCardForm
-					handleSubmit={handleSubmit}
 					visitorType={visitorType}
 					setVisitorType={setVisitorType}
 					setErrorMessage={setErrorMessage}
 					errorMessage={errorMessage}
 					text={text}
-					loading={loading}
 					setText={setText}
-					handleRescan={handleRescan} // 追加
+					handleRescan={handleRescan}
 				/>
 		)}
 		<LoadingMessage
 			loading={loading}
 			canvasRef={canvasRef}
-			/>
+		/>
 		</div>
 	);
 };

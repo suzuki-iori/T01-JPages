@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, useContext } from "react";
 import SelectClass from "../selectclass/SelectClass";
 import SubmitButton from "../../../../components/submitbutton/SubmitButton";
 import RescanButton from "../rescanButton/RescanButton";
 import styles from "./scanBusinessCardForm.module.css";
+import Ajax from "../../../../lib/Ajax";
+import { AppContext } from "../../../../context/AppContextProvider";
 
 // 来場者区分の定数
 const VISITOR_TYPE = {
@@ -32,17 +34,63 @@ const AFFILIATION_NOTES = {
 };
 
 const ScanBusinessCardForm = ({
-	handleSubmit,
 	visitorType,
 	setVisitorType,
 	setErrorMessage,
 	errorMessage,
 	text,
 	setText,
-	loading,
 	handleRescan,
 }) => {
+	const { setLoginToken, setLoginType, loading, setLoading, setToast } = useContext(AppContext);
 	const [inputErrors, setInputErrors] = useState({ name: '', email: '', companyName: '' });
+
+	// フォーム送信処理
+	const handleSubmit = (ev) => {
+		ev.preventDefault();
+
+		if (!text.name || !text.email || !text.companyName) {
+			setErrorMessage('すべての情報を入力してください');
+			return;
+		}
+		if (text.name.length >= 256 || text.email.length >= 256 || text.companyName.length >= 256) {
+			setErrorMessage('情報は256文字以内で入力してください');
+			return;
+		}
+
+		if (visitorType === VISITOR_TYPE.UNSELECTED) {
+			setErrorMessage('来場者区分を選択してください');
+			return;
+		}
+
+		setErrorMessage('');
+		setLoading(true);
+
+		const req = {
+			affiliation: text.companyName,
+			name: text.name,
+			email: text.email,
+			division: Number(visitorType),
+		};
+
+		Ajax(null, 'visitor', 'POST', req)
+			.then((data) => {
+				if (data.status === 'failure') {
+					setToast({ toast: true, state: 'visitorLogin', message: 'エラーが発生しました。' });
+				} else if (data.status === 'ParameterError') {
+					setErrorMessage('入力されたパラメーターが違います');
+					setToast({ toast: true, state: 'visitorLogin', message: 'エラーが発生しました。もう一度お願いします。' });
+				} else {
+					setLoginToken(data.token);
+					setLoginType('visitor');
+				}
+				setLoading(false);
+			})
+			.catch((error) => {
+				console.error('通信エラー:', error);
+				setLoading(false);
+			});
+	};
 
 	// 来場者区分に応じたplaceholderを取得
 	const companyNamePlaceholder = useMemo(
