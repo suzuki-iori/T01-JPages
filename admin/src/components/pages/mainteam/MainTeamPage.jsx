@@ -10,15 +10,15 @@ import useRequireAuth from '../../../hooks/useRequireAuth';
 
 export default function MainTeamPage() {
   useRequireAuth();
-const {checkbool,toggleSidebar} = useSetSidebar();
-const mypath = useSetUrlPath();
-return (
-<>
-<Header toggleSidebar={toggleSidebar} path={mypath}/>
+  const {checkbool,toggleSidebar} = useSetSidebar();
+  const mypath = useSetUrlPath();
+  return (
+    <>
+      <Header toggleSidebar={toggleSidebar} path={mypath}/>
       <div className={styles.flex}>
         <RoutingSidebar checkbool={checkbool}/>
         <Team/>
-      </div> 
-</>
+      </div>
+    </>
   )
 }
