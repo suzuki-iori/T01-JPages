@@ -17,27 +17,25 @@ export default function DetailStudent() {
     const {checkbool,toggleSidebar} = useSetSidebar();
     const mypath = useSetUrlPath();
     const [studentData,setStudentData] = useState();
+
+    const fetchStudentData = () => {
+        Ajax(null, token.token, `student/${id}`, 'get')
+        .then((data) => {
+            if (data.status === "success") {
+                setStudentData(data);
+            }
+        });
+    };
+
     useEffect(() => {
-    Ajax(null, token.token, `student/${id}`, 'get')
-    .then((data) => {
-        if (data.status === "success") {
-            setStudentData(data);
-        } else {
-            swal.fire({
-                title: 'エラー',
-                text: 'エラーが発生しました。もう一度お試しください',
-                icon: 'warning',
-                confirmButtonText: 'OK'
-            });
-        }
-    });
-}, [token]);
+        fetchStudentData();
+    }, [token, id]);
     return (
     <>
     <Header toggleSidebar={toggleSidebar} path={mypath}/>
         <div className={styles.flex}>
             <RoutingSidebar checkbool={checkbool}/>
-            <StDetail stData={studentData} />
+            <StDetail stData={studentData} onRefresh={fetchStudentData} />
         </div>
     </>
     )

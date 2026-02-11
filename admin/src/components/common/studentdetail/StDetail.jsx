@@ -13,21 +13,27 @@ export default function StDetail(props) {
     const [teamData, setTeamData] = useState([]);
 
     const detailData = props.stData;
+    const onRefresh = props.onRefresh;
 
-    const ShowModal = () => {
-        setShowModal(true);
+    // チームデータを初期表示時に取得
+    useEffect(() => {
         Ajax(null, token.token, 'team', 'get')
         .then((data) => {
             if (data.status === "success") {
-            setTeamData(data.team);
-            } else {
-            console.log(data.status);
+                setTeamData(data.team);
             }
-            setShowModal(true);
-        })
-        .finally(() => {
-            setLoading(false);
         });
+    }, [token]);
+
+    // チームIDからチーム名を取得
+    const getTeamName = (teamId) => {
+        if (!teamId) return '未割り当て';
+        const team = teamData.find(t => t.id === teamId);
+        return team ? (team.name || team.num) : teamId;
+    };
+
+    const ShowModal = () => {
+        setShowModal(true);
     };
 
     const ShowDeleteModal = () => {
@@ -37,7 +43,7 @@ export default function StDetail(props) {
     return (
         <>
             <div className={styles.studentDetailArea}>
-                <EditStudentModal showFlag={showModal} setShowModal={setShowModal} teamData={teamData} />
+                <EditStudentModal showFlag={showModal} setShowModal={setShowModal} teamData={teamData} studentData={detailData} onSuccess={onRefresh} />
                 <StudentDeleteModal showFlag={showDeleteModal} setShowDeleteModal={setShowDeleteModal} data={detailData} />
                 <div className={styles.titleAndButton}>
                     <h1>学生情報</h1>
@@ -55,11 +61,7 @@ export default function StDetail(props) {
                         <div className={styles.studentText}>
                             <div>
                                 <span>所属チーム</span>
-                                <p>{detailData.student.team_id || '未割り当て'}</p>
-                            </div>
-                            <div>
-                                <span>学年</span>
-                                <p>{detailData.student.grade ? `${detailData.student.grade}年` : '情報がありません'}</p>
+                                <p>{getTeamName(detailData.student.team_id)}</p>
                             </div>
                             <div>
                                 <span>学籍番号</span>
@@ -68,6 +70,10 @@ export default function StDetail(props) {
                             <div>
                                 <span>氏名</span>
                                 <p>{detailData.student.name || '情報がありません'}</p>
+                            </div>
+                            <div>
+                                <span>学年</span>
+                                <p>{detailData.student.grade ? `${detailData.student.grade}年` : '情報がありません'}</p>
                             </div>
                         </div>
                     ) : (
