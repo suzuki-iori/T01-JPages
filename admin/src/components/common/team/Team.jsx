@@ -26,7 +26,6 @@ const calculateFiscalYear = (createdAt) => {
 const TeamItem = ({ team, isCardView }) => {
   const year = calculateFiscalYear(team.created_at);
   const imagePath = `/assets/img/logo/${year}/${team.num}.png`;
-  console.log(imagePath);
 
   const itemClass = isCardView ? styles.cardItem : styles.listItem;
   const linkClass = isCardView ? styles.cardLink : styles.listLink;
