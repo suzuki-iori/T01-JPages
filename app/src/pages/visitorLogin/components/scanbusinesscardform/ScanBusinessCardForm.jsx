@@ -112,7 +112,7 @@ const ScanBusinessCardForm = ({
 				type="email"
 				value={text.email}
 				onChange={e => handleInputChange('email', e.target.value)}
-				placeholder="e-mail"
+				placeholder="メールアドレス"
 			/>
 			{inputErrors.email && <div className={styles["warning"]}>{inputErrors.email}</div>}
 

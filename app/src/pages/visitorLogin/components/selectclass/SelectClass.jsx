@@ -16,7 +16,7 @@ const SelectClass = (props) =>  {
 					}
 				}}
 			>
-				<option value="0">来場者区分</option>
+				<option value="0" disabled hidden>来場者区分</option>
 				<option value="1">企業の方</option>
 				<option value="2">教員</option>
 				<option value="3">日本電子専門学校生</option>
