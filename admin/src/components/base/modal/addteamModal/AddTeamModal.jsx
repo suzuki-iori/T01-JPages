@@ -1,10 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import styles from './AddTeamModal.module.css';
 import { useAuth } from '../../../../context/AuthContext';
+import { API_BASE_URL } from '../../../../hooks/Ajax';
 import swal from 'sweetalert2';
-
-// API設定
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://jpages.jp/JPagesApi/public/api';
 
 // 初期フォーム状態
 const INITIAL_FORM_STATE = {
