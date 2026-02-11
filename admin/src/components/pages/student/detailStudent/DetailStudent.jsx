@@ -28,7 +28,7 @@ export default function DetailStudent() {
                 text: 'エラーが発生しました。もう一度お試しください',
                 icon: 'warning',
                 confirmButtonText: 'OK'
-            });              
+            });
         }
     });
 }, [token]);
