@@ -16,27 +16,37 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        gap: 4px;
+
+        figure {
+            border-radius: 99px;
+            height: fit-content;
+            overflow: hidden;
+            text-align: center;
+            line-height: 0;
+        }
+        img {
+            display: inline;
+            width: 38%;
+        }
 
         .img-2 img {
             margin-top: 3px;
             width: 35%;
         }
-        figure {
-            border-radius: 99px;
-            overflow: hidden;
-            text-align: center;
+        .img-3 img {
+            margin-top: 3px;
+            width: 51%;
         }
-        img {
-            display: inline;
-            width: 55%;
+        .img-gohome img {
+            margin-top: 8px;
+            width: 33%;
+            scale: 105%;
         }
         figcaption {
             font-size: 12px;
         }
-        .img-gohome img {
-            margin-top: 5px;
-            width: 45%;
-        }
+
     }
     .menu1 {
         left: 100px;
