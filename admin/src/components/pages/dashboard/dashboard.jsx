@@ -13,11 +13,11 @@ const dashboard = () => {
     const mypath = useSetUrlPath();
     return (
     <>
-    <Header toggleSidebar={toggleSidebar} path={mypath}/>
-        <div className={styles.flex}>
-        <RoutingSidebar checkbool={checkbool}/>
-        <Graphs/>
-        </div>
+        <Header toggleSidebar={toggleSidebar} path={mypath}/>
+            <div className={styles.flex}>
+                <RoutingSidebar checkbool={checkbool}/>
+                <Graphs/>
+            </div>
     </>
     )
 }

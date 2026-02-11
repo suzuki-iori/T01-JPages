@@ -1,55 +1,49 @@
-import React from 'react'
-import Ajax from '../../../../hooks/Ajax';
-import { useAuth } from '../../../../context/AuthContext';
-import { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './graphs.module.css'
 import { faPersonShelter } from '@fortawesome/free-solid-svg-icons';
+import styles from './graphs.module.css';
 
+const VisitorCounter = ({ count, selectedYear }) => {
+  const [displayCount, setDisplayCount] = useState(0);
 
-const VisitorCounter = () => {
-    const token = useAuth();
-    const [visitorData, setVisitorData] = useState([]);
-    const [isCounting, setIsCounting] = useState(false);
+  useEffect(() => {
+    let start = 0;
+    const end = count || 0; 
+    const duration = 1000; 
 
-    const fetchCount = () => {
-        Ajax(null, token.token, 'visitor', 'get')
-          .then((data) => {
-            if (data.status === "success") {
-                setVisitorData(data.visitor.length); 
-                startCountAnimation(data.visitor.length);
-            }
-          });
-      };
+    if (end === 0) {
+      setDisplayCount(0);
+      return;
+    }
 
-      const startCountAnimation = (targetCount) => {
-        setIsCounting(true);
-        let currentCount = 0;
-        const duration = 1000; // 2秒でカウントアップ
-        const stepTime = duration / targetCount;
+    const intervalTime = 20;
+    const totalSteps = duration / intervalTime;
+    const step = Math.ceil(end / totalSteps); 
 
-        const interval = setInterval(() => {
-            currentCount += 1;
-            setVisitorData(currentCount);
-            if (currentCount >= targetCount) {
-                clearInterval(interval);
-                setIsCounting(false);
-            }
-        }, stepTime);
-    };
-    useEffect(() => {
-        fetchCount();
-        const intervalId = setInterval(fetchCount, 100000);
-        return () => clearInterval(intervalId); // クリーンアップ
-    }, []);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+      setDisplayCount(start);
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, [count]);
 
   return (
     <div className={styles.VisitorCounter}>
-        <FontAwesomeIcon icon={faPersonShelter} style={{width:"100px",height:"100px", color:"#37ab9d"}}/>
-        <span>累計来場者数</span>
-        <p>{visitorData}</p>
+      <FontAwesomeIcon 
+        icon={faPersonShelter} 
+        style={{ width: "80px", height: "80px", color: "#37ab9d" }} 
+      />
+      
+      <span>{selectedYear}年度 累計来場者数</span>
+      
+      <p>{displayCount.toLocaleString()}人</p>
     </div>
-  )
-}
+  );
+};
 
-export default VisitorCounter
+export default VisitorCounter;
