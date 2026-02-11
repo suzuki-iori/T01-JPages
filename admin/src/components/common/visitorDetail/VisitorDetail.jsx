@@ -125,7 +125,7 @@ const VisitorDetail = () => {
                           <TableCell>{rating.plan}</TableCell>
                           <TableCell>{rating.skill}</TableCell>
                           <TableCell>{rating.present}</TableCell>
-                          <TableCell>{total}</TableCell> {/* 合計を表示 */}
+                          <TableCell>{total}</TableCell>
                           <TableCell>{rating.positive}</TableCell>
                           <TableCell>{rating.negative}</TableCell>
                           <TableCell>{rating.other}</TableCell>
