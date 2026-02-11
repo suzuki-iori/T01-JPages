@@ -37,8 +37,6 @@ const DeleteModal = ({ showFlag, setShowModal, queData }) => {
         endpoint = 'survey'; 
     }
 
-    console.log(`削除リクエスト送信先: ${endpoint}/${selectedId}`); // デバッグ用
-
     try {
       const data = await Ajax(null, token.token, `${endpoint}/${selectedId}`, 'delete');
       
