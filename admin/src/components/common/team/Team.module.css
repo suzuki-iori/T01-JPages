@@ -21,7 +21,7 @@
 .visualSet{
     height: 50%;
     width: calc(100% - 40px);
-    
+
     margin-left: 20px;
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 250px; 
+    width: 250px;
     margin-left: 30px;
     overflow: hidden;
     border-radius: 3px;
@@ -95,12 +95,29 @@
     height: 2.3em;
     /* margin: 5px 20px 5px 0 ; */
     box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
-    border-radius: 3px; 
+    border-radius: 3px;
     border: none;
     color: #ebf6f5;
     background: #37ab9d;
     font-weight: 400;
     font-size: 1.3rem;
+}
+
+/* チーム追加ボタン */
+.addTeamButton {
+    margin-right: 20px;
+    height: 40px;
+    width: 150px;
+    background-color: #37ab9d !important;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
+    border-radius: 3px;
+    color: #ebf6f5;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.addTeamButton:hover {
+    background-color: #2f9386 !important;
 }
 
 /* ローディング */
