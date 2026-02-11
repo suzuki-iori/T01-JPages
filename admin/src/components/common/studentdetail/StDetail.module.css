@@ -84,6 +84,14 @@
     line-height: 1.5;
 }
 
+.studentText a{
+    color: inherit;
+    text-decoration: none;
+}
+.studentText a:hover{
+    text-decoration: underline;
+}
+
 .None{
     display: none;
 }
