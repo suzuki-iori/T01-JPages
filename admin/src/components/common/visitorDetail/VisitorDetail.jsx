@@ -88,10 +88,6 @@ const VisitorDetail = () => {
                   <span>メールアドレス</span>
                   <p>{visitorDetail.visitor.email || '情報がありません'}</p>
                 </div>
-                <div>
-                  <span>法人番号</span>
-                  <p>{visitorDetail.visitor.employment_target_id || '詳細情報がありません'}</p>
-                </div>
               </div>
             </div>
           ) : (
