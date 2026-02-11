@@ -64,7 +64,7 @@ class CharacterApiController extends Controller
         $point = $character->point + $req['point'];
         $level = $character->level;
 
-        $levelBorder = [10000, 6500, 4000, 2000, 600];
+        $levelBorder = [13000, 8000, 4000, 2000, 600];
 
         // レベルアップの計算
         if($point >= $levelBorder[0]) {

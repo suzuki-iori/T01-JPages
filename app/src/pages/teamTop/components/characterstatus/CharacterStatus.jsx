@@ -6,7 +6,7 @@ const CharacterStatus = ({ level, point, count }) => {
 	const [progress, setProgress] = useState(0);
 
 	// レベル境界値（バックエンドと同じ）
-	const levelBorder = [10000, 6500, 4000, 2000, 600];
+	const levelBorder = [13000, 8000, 4000, 2000, 600];
 
 	// ポイントバーの長さを決める
 	useEffect(() => {
