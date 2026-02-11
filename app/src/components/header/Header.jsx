@@ -51,16 +51,25 @@ function Header() {
 		}
 	}
 	return (
-		<header className={styles[pageInfo[appState].color]}> 
-			<h1 className={styles.logo}><div className={styles.logoImg} onClick={() => setAppState('home')}>
-				<img src={`/assets/img/home_${grade}jz_active.svg`} alt={activeTeam.num + 'トップ'}  />
-			</div></h1>
+		<header className={styles[pageInfo[appState].color]}>
+			<h1 className={styles.logo}>
+				<div
+					className={styles.logoImg}
+					onClick={() => setAppState('home')}
+				>
+					<img
+						src={`/assets/img/home_${grade}jz_active.svg`}
+						className={styles[`logoImg${grade}`]}
+						alt={activeTeam.num + 'トップ'}
+					/>
+				</div>
+			</h1>
 			<h2>
 				{pageInfo[appState].isShow && <span className={styles.number} onClick={() => setAppState('teamTop')}>{activeTeam.num}</span>}
 				<p className={styles.title}>{pageInfo[appState].title}</p>
 			</h2>
 			<HelpButton />
-		</header> 
+		</header>
 	);
 }
 
