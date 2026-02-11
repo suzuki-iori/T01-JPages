@@ -54,26 +54,14 @@ const QeDetail = () => {
           .then((data) => {
             if (data.status === "success") {
               setIsActive(true);
-              Swal.fire(
-                '完了',
-                '公開しました！',
-                'success'
-              );
+              Swal.fire('完了', '公開しました！', 'success');
             } else {
-              Swal.fire(
-                'エラー',
-                '公開に失敗しました。',
-                'error'
-              );
+              Swal.fire('エラー', '公開に失敗しました。', 'error');
             }
           })
           .catch((err) => {
             console.error(err);
-            Swal.fire(
-              'エラー',
-              'エラーが発生しました。',
-              'error'
-            );
+            Swal.fire('エラー', 'エラーが発生しました。', 'error');
           });
       }
     });
@@ -97,7 +85,7 @@ const QeDetail = () => {
     Ajax(null, token.token, `questionnaire/${getId.id}`, 'get')
       .then((data) => {
         if (data.status === "success") {
-          setItems(data.questionnaire || []);
+          setItems(data.questionnaire || []);  
         }
       })
       .finally(() => {
@@ -116,6 +104,21 @@ const QeDetail = () => {
     );
   }, []);
 
+  const handleSaveOrder = () => {
+    const promises = items.map((item, index) => {
+      const req = {
+        questionnaire_id : item.questionnaire_id,
+        question: item.question, 
+        isstring: item.isstring,
+        order: index + 1  
+      };
+
+      return Ajax(null, token.token, `survey/${item.id}`, 'put', req);
+    });
+
+    Promise.all(promises)
+  };
+ 
   return (
     <>
       <div className={styles.queDetailWrapper}>
@@ -171,6 +174,7 @@ const QeDetail = () => {
                         index={index}
                         item={item}
                         onSortEnd={handleSort}
+                        onSaveOrder={handleSaveOrder} 
                       />)
                     ))}
                   </ul>
