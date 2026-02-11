@@ -5,25 +5,28 @@ const CharacterStatus = ({ level, point, count }) => {
 	// data
 	const [progress, setProgress] = useState(0);
 
+	// レベル境界値（バックエンドと同じ）
+	const levelBorder = [10000, 6500, 4000, 2000, 600];
+
 	// ポイントバーの長さを決める
 	useEffect(() => {
 		const calculateProgress = (point) => { // returnはprogressのwidth
-			if (point >= 10000 ) {
+			if (point >= levelBorder[0]) {
 				return 100;
 			}
-			else if (point >= 6500 ) {
-				return ((point - 6500 ) / 3500) * 100; 
+			else if (point >= levelBorder[1]) {
+				return ((point - levelBorder[1]) / (levelBorder[0] - levelBorder[1])) * 100;
 			}
-			else if (point >= 4000 ) {
-				return ((point - 3800 ) / 2500) * 100; 
+			else if (point >= levelBorder[2]) {
+				return ((point - levelBorder[2]) / (levelBorder[1] - levelBorder[2])) * 100;
 			}
-			else if (point >= 2000 ) {
-				return ((point - 2000 ) / 2000) * 100; 
+			else if (point >= levelBorder[3]) {
+				return ((point - levelBorder[3]) / (levelBorder[2] - levelBorder[3])) * 100;
 			}
-			else if (point >= 600 ) {
-				return ((point - 600 ) / 1400) * 100; 
+			else if (point >= levelBorder[4]) {
+				return ((point - levelBorder[4]) / (levelBorder[3] - levelBorder[4])) * 100;
 			}
-			return (point / 600 ) * 100;
+			return (point / levelBorder[4]) * 100;
 		};
 		setProgress(calculateProgress(point))
 	}, [point]);
