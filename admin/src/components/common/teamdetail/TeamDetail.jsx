@@ -1,4 +1,5 @@
 import React, { useState , useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import styles from './TeamDetail.module.css'
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
@@ -96,7 +97,7 @@ export default function TeamDetail(props) {
                                 <span>メンバー</span>
                                 <div className={styles.memberList}>
                                     {teamDetail.team.students.map((student, index) => (
-                                        <p key={index}>{student.grade + "年  " + student.name}</p>
+                                        <p key={index}><Link to={`/admin/student/${student.id}`}>{student.grade + "年  " + student.name}</Link></p>
                                     ))}
                                 </div>
                             </div>
