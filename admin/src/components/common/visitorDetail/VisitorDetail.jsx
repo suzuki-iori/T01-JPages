@@ -73,21 +73,17 @@ const VisitorDetail = () => {
         <div className={styles.inputArea}>
           {visitorDetail ? (
             <div className={styles.visitorText}>
-              <div className={styles.dataArea}>
-                <div>
-                  <span>氏名</span>
-                  <p>{visitorDetail.visitor.name || '情報がありません'}</p>
-                </div>
-                <div>
-                  <span>所属</span>
-                  <p>{visitorDetail.visitor.affiliation || '情報がありません'}</p>
-                </div>
+              <div>
+                <span>氏名</span>
+                <p>{visitorDetail.visitor.name || '情報がありません'}</p>
               </div>
-              <div className={styles.dataArea}>
-                <div>
-                  <span>メールアドレス</span>
-                  <p>{visitorDetail.visitor.email || '情報がありません'}</p>
-                </div>
+              <div>
+                <span>所属</span>
+                <p>{visitorDetail.visitor.affiliation || '情報がありません'}</p>
+              </div>
+              <div>
+                <span>メールアドレス</span>
+                <p>{visitorDetail.visitor.email || '情報がありません'}</p>
               </div>
             </div>
           ) : (
