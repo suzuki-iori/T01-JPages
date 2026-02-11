@@ -10,9 +10,9 @@ const StudentAddModal = (props) => {
     const [putName, setPutName] = useState();
     const [putGrade, setPutGrade] = useState();
     const [putIDNumber, setPutIDNumber] = useState();
-    const [putStudentEmployment, setStudentEmployment] = useState();
-    
+
     const [errors, setErrors] = useState({}); // エラーメッセージ用ステート
+    const [apiError, setApiError] = useState(''); // APIエラー表示用
 
     const token = useAuth();
     const navigate = useNavigate();
@@ -21,6 +21,7 @@ const StudentAddModal = (props) => {
     const closeModal = () => {
         props.setShowModal(false);
         setErrors({}); // モーダルを閉じるときにエラーをリセット
+        setApiError(''); // APIエラーもリセット
     };
 
     const inputTeamNum = (e) => {
@@ -39,10 +40,6 @@ const StudentAddModal = (props) => {
         setPutIDNumber(e.target.value);
     };
 
-    const inputStudentEmployment = (e) => {
-        setStudentEmployment(e.target.value);
-    };
-
     const handleSubmit = (ev) => {
         ev.preventDefault();
         const newErrors = {};
@@ -59,23 +56,28 @@ const StudentAddModal = (props) => {
         const req = {
             team_id: Number(putNum),
             number: putIDNumber,
-            employment_target_id: putStudentEmployment,
             grade: Number(putGrade),
             name: putName
         };
+
+        setApiError(''); // 送信前にエラーをクリア
 
         Ajax(null, token.token, 'student', 'post', req)
             .then((data) => {
                 if (data.status === "success") {
                     closeModal();
-                    alert("");
                     swal.fire({
                         title: '完了',
                         text: '登録が完了しました',
                         icon: 'success',
                         confirmButtonText: 'OK'
-                    });                      
-                } 
+                    });
+                } else {
+                    setApiError(data.message || '登録に失敗しました');
+                }
+            })
+            .catch((error) => {
+                setApiError('通信エラーが発生しました');
             });
     };
 
@@ -90,6 +92,7 @@ const StudentAddModal = (props) => {
                             <p>登録する学生の情報を入力してください</p>
                             <button className={styles.cancelButton} onClick={closeModal}><span>×</span></button>
                         </div>
+                        {apiError && <div className={styles.apiError}>{apiError}</div>}
                         <div className={styles.formArea}>
                             <form onSubmit={handleSubmit} className={styles.addForm}>
                                 <dl className={styles.addInnerForm}>
@@ -103,10 +106,6 @@ const StudentAddModal = (props) => {
                                                 ))}
                                             </select>
                                         </dd>
-                                    </div>
-                                    <div className={styles.addStudentForm}>
-                                        <dt><label htmlFor="text">法人番号</label></dt>
-                                        <dd><input type="text" id="employment_target_id" onChange={inputStudentEmployment}></input></dd>
                                     </div>
                                     <div className={styles.addStudentForm}>
                                         <dt><label htmlFor="text">学籍番号</label></dt>
@@ -129,9 +128,9 @@ const StudentAddModal = (props) => {
                                             {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
                                         </dd>
                                     </div>
-                                    <button 
-                                        type="submit" 
-                                        className={`${isButtonDisabled ? styles.disabled : styles.submitButton}`} 
+                                    <button
+                                        type="submit"
+                                        className={`${isButtonDisabled ? styles.disabled : styles.submitButton}`}
                                         disabled={isButtonDisabled}
                                     >
                                         登録
