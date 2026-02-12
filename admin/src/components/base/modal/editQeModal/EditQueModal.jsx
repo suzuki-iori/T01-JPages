@@ -1,79 +1,93 @@
 import React, { useState, useEffect } from 'react';
 import Ajax from '../../../../hooks/Ajax';
+import Swal from 'sweetalert2';
 import { useAuth } from '../../../../context/AuthContext';
 import styles from './EditQueModal.module.css';
 
 const EditQueModal = (props) => {
   const token = useAuth();
-  const initialTarget = props.item || (props.items && props.items.length > 0 ? props.items[0] : null);
+  const { showFlag, items = [], setShowModal } = props;
+  const initialTarget = items.length > 0 ? items[0] : null;
 
-  const [selectedId, setSelectedId] = useState(initialTarget ? initialTarget.id : '');
+  const [selectedId, setSelectedId] = useState(initialTarget ? String(initialTarget.id) : '');
   const [question, setQuestion] = useState(initialTarget ? (initialTarget.question || initialTarget.title || '') : '');
-  const [isString, setIsString] = useState(initialTarget ? initialTarget.isstring : 2);
+  const [isString, setIsString] = useState(initialTarget ? Number(initialTarget.isstring) === 1 : true);
+  const [notice, setNotice] = useState(null);
 
   useEffect(() => {
-    if (props.showFlag && props.items && props.items.length > 0) {
-      const target = props.item || props.items[0];
-      if (target) {
-        setSelectedId(target.id);
-        setQuestion(target.question || target.title || '');
-        setIsString(target.isstring);
-      }
+    if (!showFlag) return;
+    const target = items.length > 0 ? items[0] : null;
+    if (target) {
+      setSelectedId(String(target.id));
+      setQuestion(target.question || target.title || '');
+      setIsString(Number(target.isstring) === 1);
+      setNotice(null);
     }
-  }, [props.showFlag, props.item, props.items]);
+  }, [showFlag, items]);
 
   const handleSelectChange = (e) => {
-    const newId = parseInt(e.target.value, 10);
+    const newId = e.target.value;
     setSelectedId(newId);
-    
-    const target = props.items.find(item => item.id === newId);
+    setNotice(null);
+
+    const target = items.find(it => String(it.id) === newId);
     if (target) {
       setQuestion(target.question || target.title || '');
-      setIsString(target.isstring);
+      setIsString(Number(target.isstring) === 1);
     }
   };
 
   const closeModal = () => {
-    props.setShowModal(false);
+    setShowModal(false);
+    setNotice(null);
   };
 
   const handleEdit = (e) => {
     e.preventDefault();
 
-    if (!selectedId) {
-      alert("編集する項目が見つかりません");
+    if (selectedId === '') {
+      setNotice({ text: '編集する項目が見つかりません', type: 'error' });
       return;
     }
 
-    const originalItem = props.items.find(item => item.id === selectedId);
+    const originalItem = items.find(it => String(it.id) === selectedId);
     if (!originalItem) {
-      alert("データの取得に失敗しました");
+      setNotice({ text: 'データの取得に失敗しました', type: 'error' });
       return;
     }
 
     const req = {
       questionnaire_id: originalItem.questionnaire_id,
       question: question,
-      isstring: parseInt(isString, 10),
+      isstring: isString ? 1 : 0,
       order: originalItem.order || 0
     };
 
-    Ajax(null, token.token, `survey/${selectedId}`, 'put', req)
+    Ajax(null, token.token, `survey/${originalItem.id}`, 'put', req)
       .then((data) => {
-        if (data.status === "success") {
-          window.location.reload(); 
-          closeModal();
+        if (data.status === 'success') {
+          Swal.fire({
+            title: '完了',
+            text: '更新しました',
+            icon: 'success',
+            confirmButtonText: '閉じる'
+          }).then(() => {
+            closeModal();
+          });
         } else {
-          alert("更新に失敗しました");
+          setNotice({ text: '更新に失敗しました', type: 'error' });
         }
       })
       .catch(err => {
         console.error(err);
-        alert("システムエラーが発生しました。");
+        setNotice({ text: 'システムエラーが発生しました。', type: 'error' });
       });
   };
 
-  if (!props.showFlag) return null;
+  if (!showFlag) return null;
+
+  const selectedItem = items.find(it => String(it.id) === selectedId) || (selectedId === '' && items.length > 0 ? items[0] : null);
+  const displayQuestion = question || (selectedItem ? (selectedItem.question || selectedItem.title || '') : '');
 
   return (
     <div className={styles.overlay}>
@@ -82,7 +96,17 @@ const EditQueModal = (props) => {
           <h2>質問を編集</h2>
           <button className={styles.closeButton} onClick={closeModal} type="button">×</button>
         </div>
-        
+
+        {notice && (
+          <div style={{
+            padding: '8px',
+            margin: '8px 0',
+            borderRadius: 4,
+            color: notice.type === 'error' ? '#7a0000' : '#063',
+            background: notice.type === 'error' ? '#fff1f0' : '#f0fff4'
+          }}>{notice.text}</div>
+        )}
+
         <form onSubmit={handleEdit}>
           <div className={styles.formGroup}>
             <label htmlFor="selectQuestion">編集する項目を選択</label>
@@ -92,9 +116,9 @@ const EditQueModal = (props) => {
               value={selectedId}
               onChange={handleSelectChange}
             >
-              {props.items && props.items.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.question || item.title}
+              {items && items.map((it) => (
+                <option key={it.id} value={String(it.id)}>
+                  {it.question || it.title}
                 </option>
               ))}
             </select>
@@ -102,12 +126,12 @@ const EditQueModal = (props) => {
 
           <div className={styles.formGroup}>
             <label htmlFor="editQuestion">質問内容の変更</label>
-            <input 
+            <input
               id="editQuestion"
-              type="text" 
+              type="text"
               className={styles.input}
-              value={question} 
-              onChange={(e) => setQuestion(e.target.value)}
+              value={displayQuestion}
+              onChange={(e) => { setQuestion(e.target.value); setNotice(null); }}
               required
             />
           </div>
@@ -117,14 +141,14 @@ const EditQueModal = (props) => {
             <select
               id="editIsString"
               className={styles.input}
-              value={isString}
-              onChange={(e) => setIsString(e.target.value)}
+              value={isString ? '1' : '0'}
+              onChange={(e) => { setIsString(e.target.value === '1'); setNotice(null); }}
             >
               <option value="1">テキスト</option>
-              <option value="2">数値</option>
+              <option value="0">数値</option>
             </select>
           </div>
-          
+
           <button type="submit" className={styles.submitButton}>
             変更を保存
           </button>

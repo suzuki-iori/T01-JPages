@@ -6,7 +6,7 @@ import { SortableItem } from "../../base/DnD/SortableItem";
 import { useAuth } from '../../../context/AuthContext';
 import styles from './QeDetail.module.css';
 import AddQueModal from "../../base/modal/addqueModal/AddQueModal";
-import EditQueModal from "../../base/modal/editQeModal/EditQueModal"; 
+import EditQueModal from "../../base/modal/editQeModal/EditQueModal";
 import Ajax from "../../../hooks/Ajax";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from "react-router-dom";
@@ -20,12 +20,11 @@ const QeDetail = () => {
   const [queTitle, setQueTitle] = useState();
   const [isActive, setIsActive] = useState(false);
   const [addFlag, setAddFlag] = useState(false);
-  
+
   const [showModal, setShowModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const [editingItem, setEditingItem] = useState(null);
-  
+
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const getId = useParams();
@@ -38,10 +37,7 @@ const QeDetail = () => {
     setDeleteModal(true);
   };
 
-  const handleEditClick = (item) => {
-    setEditingItem(item);
-    setEditModal(true);
-  };
+  // 編集はモーダル内で項目を選んで行うため、親側で editingItem を持たない
 
   const handlePublish = () => {
     Swal.fire({
@@ -86,16 +82,16 @@ const QeDetail = () => {
             setQueTitle(filt.title);
             setIsActive(filt.is_active);
           }
-        } 
+        }
       });
-  }, [token.token, getId.id]); 
+  }, [token.token, getId.id]);
 
   useEffect(() => {
-    setLoading(true); 
+    setLoading(true);
     Ajax(null, token.token, `questionnaire/${getId.id}`, 'get')
       .then((data) => {
         if (data.status === "success") {
-          setItems(data.questionnaire || []);  
+          setItems(data.questionnaire || []);
         }
       })
       .finally(() => {
@@ -118,9 +114,9 @@ const QeDetail = () => {
   const handleSaveOrder = () => {
     const promises = items.map((item, index) => {
       const req = {
-        question: item.question, 
+        question: item.question,
         isstring: item.isstring,
-        order_number: index + 1 
+        order_number: index + 1
       };
       return Ajax(null, token.token, `survey/${item.id}`, 'put', req);
     });
@@ -135,8 +131,8 @@ const QeDetail = () => {
           <div className={styles.makeChangesArea}>
             <h2>{queTitle}</h2>
             <div style={{ display: 'flex', gap: '10px' }}>
-              <Button 
-                variant="contained" 
+              <Button
+                variant="contained"
                 color={isActive ? "inherit" : "success"}
                 disabled={isActive}
                 onClick={handlePublish}
@@ -145,33 +141,32 @@ const QeDetail = () => {
                 {isActive ? "公開中" : "公開する"}
               </Button>
               <Button variant="contained" color="primary" onClick={ShowModal}>+質問追加</Button>
-              <Button variant="contained" color="secondary" onClick={handleEditClick}>質問の編集</Button>
+              <Button variant="contained" color="secondary" onClick={() => setEditModal(true)}>質問の編集</Button>
               <Button variant="contained" color="error" onClick={ShowDeleteModal}>×削除</Button>
             </div>
           </div>
         </div>
 
-        <AddQueModal 
-          setAddFlag={setAddFlag} 
-          setNewQue={setNewQue} 
-          showFlag={showModal} 
-          setShowModal={setShowModal} 
-          items={items || []} 
+        <AddQueModal
+          setAddFlag={setAddFlag}
+          setNewQue={setNewQue}
+          showFlag={showModal}
+          setShowModal={setShowModal}
+          items={items || []}
         />
 
        {editModal && (
-          <EditQueModal 
+          <EditQueModal
             showFlag={editModal}
             setShowModal={setEditModal}
-            item={editingItem}
             items={items || []}
           />
         )}
 
-        <DeleteModal 
-          showFlag={deleteModal} 
-          setShowModal={setDeleteModal} 
-          queData={items || []} 
+        <DeleteModal
+          showFlag={deleteModal}
+          setShowModal={setDeleteModal}
+          queData={items || []}
         />
 
         {loading ? (
@@ -188,7 +183,7 @@ const QeDetail = () => {
         ) : (
           <>
               <div className={styles.queArea}>
-                <DndProvider backend={HTML5Backend}>    
+                <DndProvider backend={HTML5Backend}>
                   <ul className={styles.dndArea}>
                     {items && (items.map((item, index) => (
                       <SortableItem
@@ -196,7 +191,7 @@ const QeDetail = () => {
                         index={index}
                         item={item}
                         onSortEnd={handleSort}
-                        onSaveOrder={handleSaveOrder} 
+                        onSaveOrder={handleSaveOrder}
                       />)
                     ))}
                   </ul>
