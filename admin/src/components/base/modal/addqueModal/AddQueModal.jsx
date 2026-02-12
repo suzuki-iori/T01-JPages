@@ -92,8 +92,8 @@ const maxOrder = props.items && props.items.length > 0
                   <dt><label htmlFor="select">回答形式</label></dt>
                   <dd>
                     <select value={selectedValue} onChange={handleChange} className={styles.checkText}>
-                      <option value="1">text形式</option>
-                      <option value="2">その他の形式</option>
+                      <option value="1">テキスト</option>
+                      <option value="2">数値</option>
                     </select>
                   </dd>
                 </div>

@@ -6,6 +6,7 @@ import { SortableItem } from "../../base/DnD/SortableItem";
 import { useAuth } from '../../../context/AuthContext';
 import styles from './QeDetail.module.css';
 import AddQueModal from "../../base/modal/addqueModal/AddQueModal";
+import EditQueModal from "../../base/modal/editQeModal/EditQueModal"; 
 import Ajax from "../../../hooks/Ajax";
 import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from "react-router-dom";
@@ -19,8 +20,12 @@ const QeDetail = () => {
   const [queTitle, setQueTitle] = useState();
   const [isActive, setIsActive] = useState(false);
   const [addFlag, setAddFlag] = useState(false);
+  
   const [showModal, setShowModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const getId = useParams();
@@ -31,6 +36,11 @@ const QeDetail = () => {
 
   const ShowDeleteModal = () => {
     setDeleteModal(true);
+  };
+
+  const handleEditClick = (item) => {
+    setEditingItem(item);
+    setEditModal(true);
   };
 
   const handlePublish = () => {
@@ -104,21 +114,20 @@ const QeDetail = () => {
     );
   }, []);
 
+
   const handleSaveOrder = () => {
     const promises = items.map((item, index) => {
       const req = {
-        questionnaire_id : item.questionnaire_id,
         question: item.question, 
         isstring: item.isstring,
-        order: index + 1  
+        order_number: index + 1 
       };
-
       return Ajax(null, token.token, `survey/${item.id}`, 'put', req);
     });
 
-    Promise.all(promises)
+    Promise.all(promises);
   };
- 
+
   return (
     <>
       <div className={styles.queDetailWrapper}>
@@ -136,10 +145,12 @@ const QeDetail = () => {
                 {isActive ? "公開中" : "公開する"}
               </Button>
               <Button variant="contained" color="primary" onClick={ShowModal}>+質問追加</Button>
+              <Button variant="contained" color="secondary" onClick={handleEditClick}>質問の編集</Button>
               <Button variant="contained" color="error" onClick={ShowDeleteModal}>×削除</Button>
             </div>
           </div>
         </div>
+
         <AddQueModal 
           setAddFlag={setAddFlag} 
           setNewQue={setNewQue} 
@@ -147,11 +158,22 @@ const QeDetail = () => {
           setShowModal={setShowModal} 
           items={items || []} 
         />
+
+       {editModal && (
+          <EditQueModal 
+            showFlag={editModal}
+            setShowModal={setEditModal}
+            item={editingItem}
+            items={items || []}
+          />
+        )}
+
         <DeleteModal 
           showFlag={deleteModal} 
           setShowModal={setDeleteModal} 
           queData={items || []} 
         />
+
         {loading ? (
           <article className={styles.loadingArea}>
             <CircularProgress color="primary" />
