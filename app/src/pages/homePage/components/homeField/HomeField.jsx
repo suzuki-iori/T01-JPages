@@ -20,6 +20,7 @@ function HomeField() {
     setLoading,
     loginToken,
     loginType,
+    loginTeamId,
     grade,
     setToast
   } = useContext(AppContext);
@@ -68,14 +69,14 @@ function HomeField() {
 
   return (
     <div className={styles.homeField} >
-      {showCharacters.length > 0 && 
-      <ul className={styles.teamGroup}>  
+      {showCharacters.length > 0 &&
+      <ul className={styles.teamGroup}>
         {showCharacters.map((data, index) => (
           <li
             key={index}
             id={`image-${index}`}
           >
-            <SpeechBubble num={data.num}/>
+            <SpeechBubble num={data.num} isMine={String(data.id) === String(loginTeamId)} />
             <Character id={data.id} num={data.num} data={data.character}/>
           </li>
         ))}

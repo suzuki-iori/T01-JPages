@@ -23,3 +23,12 @@
   transform: skew(-14deg);
   transform-origin: top;
 }
+
+/* highlight when it's the logged-in team */
+.mine {
+  background-color: #337ab7;
+  color: #ffffff;
+}
+.mine::after {
+  border-color: #337ab7 transparent transparent;
+}

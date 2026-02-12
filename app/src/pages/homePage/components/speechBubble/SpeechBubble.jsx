@@ -1,8 +1,8 @@
 import style from './SpeechBubble.module.scss';
 function SpeechBubble(props) {
-  const {num} = props;
+  const {num, isMine} = props;
   return (
-    <div className={style.speechBubble}>{num}</div>
+    <div className={`${style.speechBubble} ${isMine ? style.mine : ''}`}>{num}</div>
   );
 }
 
