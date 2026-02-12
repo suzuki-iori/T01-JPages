@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactLoading from "react-loading";
 import Ajax from '../../../hooks/Ajax';
 import { useAuth } from '../../../context/AuthContext';
+import VisitorDeleteModal from '../../base/modal/visitorDeleteModal/VisitorDeleteModal';
 import {
   Table,
   TableBody,
@@ -12,6 +13,7 @@ import {
   TableRow,
   Paper,
   Typography,
+  Button,
 } from '@mui/material';
 import styles from './VisitorDetail.module.css';
 
@@ -20,6 +22,8 @@ const VisitorDetail = () => {
   const [teamData, setTeamData] = useState();
   const params = useParams();
   const token = useAuth();
+  const navigate = useNavigate();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const fetchVisitorData = () => {
     Ajax(null, token.token, `visitor/${params.id}`, 'get')
@@ -43,6 +47,10 @@ const VisitorDetail = () => {
     fetchVisitorData();
     fetchTeamData();
   }, []);
+
+  const showDelete = () => {
+    setShowDeleteModal(true);
+  };
 
   const getRatingsData = () => {
     if (!visitorDetail || !teamData) return [];
@@ -69,7 +77,9 @@ const VisitorDetail = () => {
       <div className={styles.visitorDetailArea}>
         <div className={styles.titleAndButton}>
           <h1>来場者詳細情報</h1>
+          <Button variant="contained" color="error" onClick={showDelete}>削除</Button>
         </div>
+        <VisitorDeleteModal showFlag={showDeleteModal} setShowDeleteModal={setShowDeleteModal} />
         <div className={styles.inputArea}>
           {visitorDetail ? (
             <div className={styles.visitorText}>

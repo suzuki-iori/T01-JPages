@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import styles from "./graphs.module.css";
+import styles from "./Graphs.module.css";
 import { VisitorPie } from "./graphs/VisitorPie";
 import VisitorCounter from "./graphs/VisitorCounter";
 import TeanRanking from "./graphs/TeanRanking";

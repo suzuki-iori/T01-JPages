@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Team;
 use App\Http\Requests\StudentRequest;
@@ -42,12 +43,18 @@ class StudentApiController extends Controller
             }
         }
 
-        // 学籍番号の重複チェック
-        $existingStudent = Student::where('number', $req['number'])->first();
+        // 学籍番号の重複チェック（同年度のみ重複不可）
+        $now = Carbon::now();
+        $fy = $now->month >= 4 ? $now->year + 1 : $now->year;
+        $fyStart = Carbon::create($fy - 1, 4, 1)->startOfDay();
+        $fyEnd = Carbon::create($fy, 3, 31)->endOfDay();
+        $existingStudent = Student::where('number', $req['number'])
+            ->whereBetween('created_at', [$fyStart, $fyEnd])
+            ->first();
         if ($existingStudent) {
             return response([
                 'status' => 'failure',
-                'message' => 'この学籍番号は既に使用されています'
+                'message' => 'この年度では同じ学籍番号が既に使用されています'
             ], 422);
         }
 
@@ -102,12 +109,19 @@ class StudentApiController extends Controller
             }
         }
 
-        // 重複チェック
-        $existingStudent = Student::where('number', $req['number'])->where('id', '!=', $id)->first();
+        // 重複チェック（同年度のみ重複不可）
+        $created = Carbon::parse($student->created_at);
+        $fy = $created->month >= 4 ? $created->year + 1 : $created->year;
+        $fyStart = Carbon::create($fy - 1, 4, 1)->startOfDay();
+        $fyEnd = Carbon::create($fy, 3, 31)->endOfDay();
+        $existingStudent = Student::where('number', $req['number'])
+            ->where('id', '!=', $id)
+            ->whereBetween('created_at', [$fyStart, $fyEnd])
+            ->first();
         if ($existingStudent) {
             return response([
                 'status' => 'failure',
-                'message' => 'この学籍番号は既に使用されています'
+                'message' => 'この年度では同じ学籍番号が既に使用されています'
             ], 422);
         }
         $student->update($req);
