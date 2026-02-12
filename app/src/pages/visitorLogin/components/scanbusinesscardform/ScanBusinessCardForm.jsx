@@ -28,7 +28,7 @@ const PLACEHOLDER_MAP = {
 // 来場者区分に応じた注意書き
 const AFFILIATION_NOTES = {
 	[VISITOR_TYPE.GRADUATE]: '※学生時代の学科名を入力してください。\n例：高度情報処理科',
-	[VISITOR_TYPE.OTHER]: '※所属には在籍中の組織名を入力してください。\n在校生のご家族の方は、学生の氏名をご記入ください',
+	[VISITOR_TYPE.OTHER]: '※所属には在籍中の組織名を入力してください。\n在校生のご家族の方は、所属に学生の氏名をご記入ください',
 };
 
 const ScanBusinessCardForm = ({
