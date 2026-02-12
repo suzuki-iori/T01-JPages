@@ -109,7 +109,7 @@ export const Team = () => {
   // 年度・検索フィルタ
   const filteredTeams = teams
     ? filterByFiscalYear(teams, selectedFiscalYear).filter((t) =>
-        t.name?.toLowerCase().includes(searchTerm.toLowerCase())
+        (t.name || '未設定').toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
 
