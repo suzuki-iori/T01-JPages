@@ -5,11 +5,11 @@ import styles from './EditQueModal.module.css';
 
 const EditQueModal = (props) => {
   const token = useAuth();
-
   const initialTarget = props.item || (props.items && props.items.length > 0 ? props.items[0] : null);
 
   const [selectedId, setSelectedId] = useState(initialTarget ? initialTarget.id : '');
   const [question, setQuestion] = useState(initialTarget ? (initialTarget.question || initialTarget.title || '') : '');
+  const [isString, setIsString] = useState(initialTarget ? initialTarget.isstring : 2);
 
   useEffect(() => {
     if (props.showFlag && props.items && props.items.length > 0) {
@@ -17,6 +17,7 @@ const EditQueModal = (props) => {
       if (target) {
         setSelectedId(target.id);
         setQuestion(target.question || target.title || '');
+        setIsString(target.isstring);
       }
     }
   }, [props.showFlag, props.item, props.items]);
@@ -24,9 +25,11 @@ const EditQueModal = (props) => {
   const handleSelectChange = (e) => {
     const newId = parseInt(e.target.value, 10);
     setSelectedId(newId);
+    
     const target = props.items.find(item => item.id === newId);
     if (target) {
       setQuestion(target.question || target.title || '');
+      setIsString(target.isstring);
     }
   };
 
@@ -43,7 +46,6 @@ const EditQueModal = (props) => {
     }
 
     const originalItem = props.items.find(item => item.id === selectedId);
-
     if (!originalItem) {
       alert("データの取得に失敗しました");
       return;
@@ -52,7 +54,8 @@ const EditQueModal = (props) => {
     const req = {
       questionnaire_id: originalItem.questionnaire_id,
       question: question,
-      isstring: originalItem.isstring, 
+      isstring: parseInt(isString, 10),
+      order: originalItem.order || 0
     };
 
     Ajax(null, token.token, `survey/${selectedId}`, 'put', req)
@@ -65,7 +68,7 @@ const EditQueModal = (props) => {
         }
       })
       .catch(err => {
-        console.error("更新エラー:", err);
+        console.error(err);
         alert("システムエラーが発生しました。");
       });
   };
@@ -107,6 +110,19 @@ const EditQueModal = (props) => {
               onChange={(e) => setQuestion(e.target.value)}
               required
             />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="editIsString">回答タイプ</label>
+            <select
+              id="editIsString"
+              className={styles.input}
+              value={isString}
+              onChange={(e) => setIsString(e.target.value)}
+            >
+              <option value="1">テキスト</option>
+              <option value="2">数値</option>
+            </select>
           </div>
           
           <button type="submit" className={styles.submitButton}>
