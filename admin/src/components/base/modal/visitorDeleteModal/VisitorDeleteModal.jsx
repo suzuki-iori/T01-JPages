@@ -1,31 +1,30 @@
 import React from "react";
-import styles from './StudentDeleteModal.module.css'
+import styles from './VisitorDeleteModal.module.css'
 import Ajax from "../../../../hooks/Ajax";
 import { useAuth } from "../../../../context/AuthContext";
-import { useParams,useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert2';
 
 
-const StudentDeleteModal = (props) => {
+const VisitorDeleteModal = (props) => {
     const token = useAuth();
-    // const studentId = props.stID
     const navigate = useNavigate();
     const { id } = useParams();
     const closeModal = () => {
         props.setShowDeleteModal(false);
     };
-    const deleteStudent = () => {
-        Ajax(null, token.token, `student/${id}`, 'DELETE')
+    const deleteVisitor = () => {
+        Ajax(null, token.token, `visitor/${id}`, 'DELETE')
         .then((data) => {
-            if(data.status === "success") {
+            if(data && data.status === "success") {
                 closeModal();
                 swal.fire({
                     title: '削除完了',
-                    text: '学生情報の削除が完了しました。',
+                    text: '来場者情報の削除が完了しました。',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
-                navigate('/admin/student');
+                navigate('/admin/visitor');
             } else {
                 swal.fire({
                     title: 'エラー',
@@ -34,7 +33,14 @@ const StudentDeleteModal = (props) => {
                     confirmButtonText: 'OK'
                 });
             }
-            setShowDeleteModal(true);
+        })
+        .catch(() => {
+            swal.fire({
+                title: 'エラー',
+                text: '通信エラーが発生しました。',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         });
     }
 
@@ -43,11 +49,11 @@ const StudentDeleteModal = (props) => {
             {props.showFlag ? (
         <div id={styles.overlay} style={overlay}>
             <div id={styles.modalContent} style={modalContent}>
-                    <h2>この学生の情報を削除します</h2>
+                    <h2>この来場者の情報を削除します</h2>
                     <p>本当によろしいですか</p>
             <div className={styles.buttonWrapper}>
                 <button className={styles.cancelButton} onClick={closeModal}>キャンセル</button>
-                <button className={styles.corectButton} onClick={deleteStudent} >削除</button>
+                <button className={styles.corectButton} onClick={deleteVisitor} >削除</button>
             </div>
             </div>
         </div>
@@ -60,8 +66,9 @@ const modalContent = {
     background: "white",
     width:"500px",
     height:"150px",
-    zIndex: 1500,
+    padding: "10px",
     borderRadius: "10px",
+        zIndex: 1500,
 
   };
 
@@ -74,9 +81,9 @@ const modalContent = {
     backgroundColor: "rgba(0,0,0,0.5)",
     display: "flex",
     alignItems: "center",
-    zIndex: 1400,
     justifyContent: "center",
+        zIndex: 1400,
   };
 
 
-export default StudentDeleteModal;
+export default VisitorDeleteModal;
