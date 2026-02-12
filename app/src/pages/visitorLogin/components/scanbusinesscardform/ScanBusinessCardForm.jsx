@@ -9,26 +9,26 @@ import { AppContext } from "../../../../context/AppContextProvider";
 // 来場者区分の定数
 const VISITOR_TYPE = {
 	UNSELECTED: '0',
-	COMPANY: '1',
-	TEACHER: '2',
-	STUDENT: '3',
-	GRADUATE: '4',
-	OTHER: '5',
+	COMPANY: '1', //企業の方
+	TEACHER: '2', //教職員の方
+	STUDENT: '3', //学生の方
+	GRADUATE: '4', //卒業生の方
+	OTHER: '5', //その他
 };
 
 // 来場者区分に応じたplaceholder設定
 const PLACEHOLDER_MAP = {
 	[VISITOR_TYPE.COMPANY]: '会社名',
 	[VISITOR_TYPE.TEACHER]: '学科・部署',
-	[VISITOR_TYPE.STUDENT]: '学科・入学年次（例：23JZ）',
-	[VISITOR_TYPE.GRADUATE]: '学科・入学年次（例：23JZ）',
+	[VISITOR_TYPE.STUDENT]: '学籍番号（例：23JZ0199）',
+	[VISITOR_TYPE.GRADUATE]: '学科名（例：高度情報処理科）',
 	[VISITOR_TYPE.OTHER]: '所属',
 };
 
 // 来場者区分に応じた注意書き
 const AFFILIATION_NOTES = {
-	[VISITOR_TYPE.GRADUATE]: '※学生時代の学科名を入力してください。\n例：23JZ',
-	[VISITOR_TYPE.OTHER]: '※所属には在籍中の組織名を入力してください。',
+	[VISITOR_TYPE.GRADUATE]: '※学生時代の学科名を入力してください。\n例：高度情報処理科',
+	[VISITOR_TYPE.OTHER]: '※所属には在籍中の組織名を入力してください。\n在校生のご家族の方は、所属に学生の氏名をご記入ください',
 };
 
 const ScanBusinessCardForm = ({
