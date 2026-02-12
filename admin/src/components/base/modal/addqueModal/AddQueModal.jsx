@@ -9,8 +9,8 @@ import swal from 'sweetalert2';
 const AddQueModal = (props) => {
   const token = useAuth();
   const queId = useParams(); // 質問登録用アンケートID
-const maxOrder = props.items && props.items.length > 0 
-    ? Math.max(...props.items.map(item => item.order)) + 1 
+const maxOrder = props.items && props.items.length > 0
+    ? Math.max(...props.items.map(item => item.order)) + 1
     : 1;
       const [inputValue, setInputValue] = useState('');
   const [selectedValue, setSelectedValue] = useState("1"); // 初期値を文字列に変更
@@ -25,7 +25,7 @@ const maxOrder = props.items && props.items.length > 0
 
   const closeModal = () => {
     props.setShowModal(false);
-  };  
+  };
 
   const handleAddQue = (event) => {
     event.preventDefault();
@@ -45,7 +45,7 @@ const maxOrder = props.items && props.items.length > 0
             confirmButtonText: 'OK'
           });
           closeModal();
-          
+
         } else {
           console.error(data.message);
         }
@@ -58,7 +58,7 @@ const maxOrder = props.items && props.items.length > 0
           icon: 'warning',
           confirmButtonText: 'OK'
         });
-        
+
       });
   };
 
@@ -78,13 +78,13 @@ const maxOrder = props.items && props.items.length > 0
                 <div className={styles.addQueTitleForm}>
                   <dt><label htmlFor="QueTitle">質問内容</label></dt>
                   <dd>
-                    <input 
-                      type="text" 
-                      id="QueTitle" 
-                      maxLength={30} 
-                      onChange={inputTitle} 
-                      value={inputValue} 
-                      required 
+                    <input
+                      type="text"
+                      id="QueTitle"
+                      maxLength={30}
+                      onChange={inputTitle}
+                      value={inputValue}
+                      required
                     />
                   </dd>
                 </div>
@@ -92,14 +92,14 @@ const maxOrder = props.items && props.items.length > 0
                   <dt><label htmlFor="select">回答形式</label></dt>
                   <dd>
                     <select value={selectedValue} onChange={handleChange} className={styles.checkText}>
-                      <option value="1">text形式</option>
-                      <option value="2">その他の形式</option>
+                      <option value="1">テキスト</option>
+                      <option value="0">数値</option>
                     </select>
                   </dd>
                 </div>
-                <button 
-                  type="submit" 
-                  className={!inputValue ? styles.disabled : styles.submitButton} 
+                <button
+                  type="submit"
+                  className={!inputValue ? styles.disabled : styles.submitButton}
                   disabled={!inputValue}
                 >
                   OK
